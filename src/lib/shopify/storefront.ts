@@ -50,8 +50,8 @@ export async function shopifyStorefrontGraphQL<T>(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-          "X-Shopify-Storefront-Access-Token": token,
-        "Accept-Language": "fr",
+        "X-Shopify-Storefront-Access-Token": token,
+  "Accept-Language": "fr",
       },
       body: JSON.stringify({ query, variables }),
       // Le catalogue public est raisonnablement stable : revalidation toutes

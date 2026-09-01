@@ -15,7 +15,7 @@ export default function CGVPage() {
 
       <header className={styles.header}>
         <h1>Conditions Générales de Vente</h1>
-        <p className={styles.intro}>Dernière mise à jour : 18 août 2026.</p>
+        <p className={styles.intro}>Dernière mise à jour : 2 septembre 2026.</p>
       </header>
 
       <section className={styles.section}>
@@ -117,11 +117,21 @@ export default function CGVPage() {
       <section className={styles.section}>
         <h2>Article 12 — Médiation de la consommation</h2>
         <p>
-          Conformément à l&apos;article L.616-1 du Code de la consommation, tout consommateur a le droit de recourir
-          gratuitement à un médiateur de la consommation en vue de la résolution amiable d&apos;un litige, après
-          démarche préalable écrite auprès de notre service client. Le médiateur compétent n&apos;est pas encore
-          désigné à ce jour ; ses coordonnées seront ajoutées à cette page dès qu&apos;il sera choisi. En attendant,
-          contactez-nous à <a href={`mailto:${COMPANY_EMAIL}`}>{COMPANY_EMAIL}</a>.
+          Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, en cas de litige
+          non résolu à l&apos;amiable après démarche préalable écrite auprès de notre service client,
+          le consommateur peut recourir gratuitement au médiateur de la consommation suivant :
+        </p>
+        <p>
+          <strong>CM2C — Centre de Médiation de la Consommation des Conciliateurs de Justice</strong><br />
+          14 rue Saint-Jean — 75017 Paris<br />
+          Site : <a href="https://www.cm2c.net" target="_blank" rel="noopener noreferrer">www.cm2c.net</a><br />
+          Email : <a href="mailto:cm2c@cm2c.net">cm2c@cm2c.net</a>
+        </p>
+        <p>
+          La plateforme européenne de règlement en ligne des litiges est également accessible à :{" "}
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
+            https://ec.europa.eu/consumers/odr
+          </a>.
         </p>
       </section>
 

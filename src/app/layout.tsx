@@ -1,4 +1,6 @@
 import Script from 'next/script'
+import SiteLayout from '@/components/layout/SiteLayout'
+import './globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
       </head>
-      <body>{children}</body>
+      <body>
+        <SiteLayout>{children}</SiteLayout>
+      </body>
     </html>
   )
 }

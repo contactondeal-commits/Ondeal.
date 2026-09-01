@@ -79,3 +79,46 @@ export async function getCustomer(): Promise<{ firstName: string; lastName: stri
 
   return data?.customer ?? null;
 }
+export interface CustomerOrder {
+  id: string;
+  orderNumber: number;
+  processedAt: string;
+  financialStatus: string;
+  fulfillmentStatus: string | null;
+  currentTotalPrice: { amount: string; currencyCode: string };
+  lineItems: { title: string; quantity: number }[];
+}
+
+export async function getCustomerOrders(): Promise<CustomerOrder[]> {
+  const token = await getCustomerToken();
+  if (!token) return [];
+
+  const { data } = await storefrontFetch(`
+    query getCustomerOrders($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) {
+        orders(first: 20, sortKey: PROCESSED_AT, reverse: true) {
+          edges {
+            node {
+              id
+              orderNumber
+              processedAt
+              financialStatus
+              fulfillmentStatus
+              currentTotalPrice { amount currencyCode }
+              lineItems(first: 5) {
+                edges { node { title quantity } }
+              }
+            }
+          }
+        }
+      }
+    }
+  `, { customerAccessToken: token });
+
+  return (
+    data?.customer?.orders?.edges?.map(({ node }: { node: CustomerOrder & { lineItems: { edges: { node: { title: string; quantity: number } }[] } } }) => ({
+      ...node,
+      lineItems: node.lineItems.edges.map((e: { node: { title: string; quantity: number } }) => e.node),
+    })) ?? []
+  );
+}

@@ -4,7 +4,7 @@ const CUSTOMER_TOKEN_COOKIE = "shopify_customer_token";
 const PROTECTED_PATHS = ["/account"];
 const LOGIN_PATH = "/login";
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const isProtected = PROTECTED_PATHS.some((p) => pathname.startsWith(p));
 

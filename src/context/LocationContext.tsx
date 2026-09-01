@@ -22,6 +22,13 @@ export const LOCATION_CONFIG: Record<string, Omit<LocationData, "country_code" |
   ES: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
   IT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
   CH: { currency: "CHF", currency_symbol: "CHF", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
+  NL: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
+  PT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
+  PL: { currency: "PLN", currency_symbol: "PLN", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "5-8 jours ouvrés" },
+  AT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
+  SE: { currency: "SEK", currency_symbol: "SEK", ships_to: true, shipping_rate: "9,99EUR", delivery_days: "5-8 jours ouvrés" },
+  DK: { currency: "DKK", currency_symbol: "DKK", ships_to: true, shipping_rate: "9,99EUR", delivery_days: "5-8 jours ouvrés" },
+  IE: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "5-8 jours ouvrés" },
   GB: { currency: "GBP", currency_symbol: "GBP", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "7-14 jours ouvrés" },
   US: { currency: "USD", currency_symbol: "USD", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "10-20 jours ouvrés" },
   CA: { currency: "CAD", currency_symbol: "CAD", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "10-20 jours ouvrés" },
@@ -34,7 +41,7 @@ export const LOCATION_CONFIG: Record<string, Omit<LocationData, "country_code" |
 
 const FALLBACK_RATES: Record<string, number> = {
   EUR: 1, CHF: 0.97, GBP: 0.86, USD: 1.08, CAD: 1.47,
-  MAD: 10.8, DZD: 146, TND: 3.3, XOF: 655,
+  MAD: 10.8, DZD: 146, TND: 3.3, XOF: 655, PLN: 4.3, SEK: 11.5, DKK: 7.5,
 };
 
 const DEFAULT: LocationData = {

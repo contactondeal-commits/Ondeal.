@@ -14,7 +14,6 @@ interface CartSummaryProps {
 
 function parseShippingRate(rate: string): number {
   try {
-    // Extrait le premier nombre décimal ex: "19,90€" → 19.90
     const match = rate.match(/(\d+)[,.](\d+)/);
     if (match) return parseFloat(`${match[1]}.${match[2]}`);
     const simple = rate.match(/(\d+)/);
@@ -44,7 +43,7 @@ export default function CartSummary({ subtotal, itemCount }: CartSummaryProps) {
 
   return (
     <div className={styles.root}>
-      <h2>Resume</h2>
+      <h2>Résumé</h2>
 
       {subtotal > 0 && isFR && (
         <div className={styles.freeShippingProgress}>
@@ -53,8 +52,11 @@ export default function CartSummary({ subtotal, itemCount }: CartSummaryProps) {
               Encore {formatPrice(remainingForFreeShipping)} pour la livraison offerte !
             </p>
           ) : (
-            <p className={styles.freeShippingNoteDone}>Livraison offerte debloquee</p>
+            <p className={styles.freeShippingNoteDone}>✓ Livraison offerte débloquée !</p>
           )}
+          <div className={styles.progressBar}>
+            <div className={styles.progressFill} style={{ width: `${progressPercent}%` }} />
+          </div>
         </div>
       )}
 
@@ -87,4 +89,3 @@ export default function CartSummary({ subtotal, itemCount }: CartSummaryProps) {
     </div>
   );
 }
-

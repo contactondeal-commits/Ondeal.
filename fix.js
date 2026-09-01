@@ -1,0 +1,1 @@
+var fs=require('fs');var f=fs.readFileSync('src/lib/shopify/storefront.ts','utf8');f=f.replace('    const match = trimmed.match','    const trimmed = line.trim();\n    const match = trimmed.match');fs.writeFileSync('src/lib/shopify/storefront.ts',f,'utf8');console.log('OK');  

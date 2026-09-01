@@ -1,0 +1,147 @@
+.root {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  pointer-events: none;
+}
+
+/* MobileStickyCta.module.css affiche une barre "Ajouter au panier" fixée en
+   bas de l'écran sur mobile (≤640px, z-index 80, ~80px de haut avec ses
+   marges). Si le bandeau cookies se superpose à cette zone, son z-index
+   supérieur intercepte tous les clics destinés au bouton d'ajout au panier
+   (régression détectée par tests/mobile-sticky-cta.spec.ts, CAS D). Décalé
+   vers le haut sur mobile pour ne jamais chevaucher cette barre, présente ou
+   non sur la page courante. */
+@media (max-width: 640px) {
+  .root {
+    bottom: 84px;
+  }
+}
+
+.card {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 720px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg, 0 8px 24px rgba(16, 22, 34, 0.18));
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading {
+  font-size: 16px;
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.text p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.text a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.primaryButton {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.primaryButton:hover {
+  background: var(--color-primary-hover);
+}
+
+.secondaryButton {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+
+.secondaryButton:hover {
+  background: var(--color-background);
+}
+
+.prefList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prefRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.prefRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.prefRow strong {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.prefRow p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.prefRow input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .actions {
+    justify-content: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1;
+    text-align: center;
+  }
+}

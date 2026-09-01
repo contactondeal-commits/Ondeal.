@@ -1,0 +1,22 @@
+.section {
+  padding: 28px 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.seeAll {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.seeAll:hover {
+  text-decoration: underline;
+}

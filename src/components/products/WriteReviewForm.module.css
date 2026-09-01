@@ -1,0 +1,138 @@
+.openBtn {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.openBtn:hover {
+  background: var(--color-background);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 420px;
+  margin-top: 8px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-background);
+}
+
+.heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.starBtn {
+  border: none;
+  background: none;
+  padding: 2px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.input,
+.textarea {
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+.input:focus,
+.textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--color-text-subtle);
+}
+
+/* Piège à robots — jamais visible pour un vrai visiteur, invisible aussi
+   pour un lecteur d'écran (aria-hidden côté composant). */
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.error {
+  font-size: 12px;
+  color: var(--color-danger);
+  margin: 0;
+}
+
+.success {
+  font-size: 13px;
+  color: var(--color-success);
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.submitBtn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}

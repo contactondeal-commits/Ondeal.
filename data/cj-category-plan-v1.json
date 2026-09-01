@@ -1,0 +1,1330 @@
+{
+  "generatedAt": "2026-08-12",
+  "safety": {
+    "active": 893,
+    "archived": 7175,
+    "draft": 301
+  },
+  "v2Baseline": {
+    "high": 462,
+    "medium": 24,
+    "low": 407,
+    "uncategorized": 387,
+    "total": 893
+  },
+  "repartitionActuelle": [
+    {
+      "categoryId": "homme-montres",
+      "name": "Montres",
+      "current": 108,
+      "coverageLevel": "BONNE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "audio",
+      "name": "Audio",
+      "current": 54,
+      "coverageLevel": "BONNE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "jouets",
+      "name": "Jouets",
+      "current": 33,
+      "coverageLevel": "MOYENNE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "vetements-mixte",
+      "name": "Vêtements mixte / unisexe",
+      "current": 29,
+      "coverageLevel": "MOYENNE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "decoration",
+      "name": "Décoration",
+      "current": 28,
+      "coverageLevel": "MOYENNE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "bebes",
+      "name": "Bébés",
+      "current": 27,
+      "coverageLevel": "MOYENNE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "femme-vetements",
+      "name": "Vêtements (femme)",
+      "current": 26,
+      "coverageLevel": "MOYENNE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "accessoires-electronique",
+      "name": "Accessoires électroniques",
+      "current": 22,
+      "coverageLevel": "MOYENNE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "homme-vetements",
+      "name": "Vêtements (homme)",
+      "current": 22,
+      "coverageLevel": "MOYENNE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "maquillage",
+      "name": "Maquillage",
+      "current": 20,
+      "coverageLevel": "MOYENNE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "electromenager",
+      "name": "Électroménager",
+      "current": 19,
+      "coverageLevel": "FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "photo",
+      "name": "Photo",
+      "current": 16,
+      "coverageLevel": "FAIBLE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "cuisine",
+      "name": "Cuisine",
+      "current": 14,
+      "coverageLevel": "FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "bien-etre-massage",
+      "name": "Bien-être / Massage",
+      "current": 12,
+      "coverageLevel": "FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "soins-visage",
+      "name": "Soins visage",
+      "current": 10,
+      "coverageLevel": "FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "fitness",
+      "name": "Fitness",
+      "current": 10,
+      "coverageLevel": "FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "claviers",
+      "name": "Claviers",
+      "current": 9,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "videoprojecteurs",
+      "name": "Vidéoprojecteurs",
+      "current": 8,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "rangement",
+      "name": "Rangement",
+      "current": 8,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "mobilier-jardin",
+      "name": "Mobilier de jardin",
+      "current": 5,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "meubles",
+      "name": "Meubles",
+      "current": 4,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "ecrans",
+      "name": "Écrans",
+      "current": 3,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "souris",
+      "name": "Souris",
+      "current": 3,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "outils-jardin",
+      "name": "Outils",
+      "current": 3,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "jeux-video",
+      "name": "Jeux vidéo",
+      "current": 3,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "telephones",
+      "name": "Téléphones",
+      "current": 2,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "parfums",
+      "name": "Parfums",
+      "current": 2,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "tablettes",
+      "name": "Tablettes",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "pc-portables",
+      "name": "PC portables",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "femme-sacs",
+      "name": "Sacs (femme)",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "running",
+      "name": "Running",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "quincaillerie",
+      "name": "Quincaillerie",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "chiens",
+      "name": "Chiens",
+      "current": 1,
+      "coverageLevel": "TRES_FAIBLE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "ordinateurs",
+      "name": "Ordinateurs",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 50
+    },
+    {
+      "categoryId": "tv",
+      "name": "Télévisions",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "femme-chaussures",
+      "name": "Chaussures (femme)",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "homme-chaussures",
+      "name": "Chaussures (homme)",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P1"
+    },
+    {
+      "categoryId": "pc-fixes",
+      "name": "PC fixes",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "femme-accessoires",
+      "name": "Accessoires (femme)",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "homme-accessoires",
+      "name": "Accessoires (homme)",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P2"
+    },
+    {
+      "categoryId": "chats",
+      "name": "Chats",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "P3"
+    },
+    {
+      "categoryId": "filles",
+      "name": "Filles",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "garcons",
+      "name": "Garçons",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "barbecue",
+      "name": "Barbecue",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "football",
+      "name": "Football",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "romans",
+      "name": "Romans",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "bd",
+      "name": "BD",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "jeunesse-livres",
+      "name": "Jeunesse",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "jeux-societe",
+      "name": "Jeux de société",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    },
+    {
+      "categoryId": "outillage",
+      "name": "Outillage",
+      "current": 0,
+      "coverageLevel": "ABSENTE",
+      "priority": "NONE"
+    }
+  ],
+  "prioriteP1": [
+    {
+      "categoryId": "femme-chaussures",
+      "name": "Chaussures (femme)",
+      "current": 0,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 80
+    },
+    {
+      "categoryId": "homme-chaussures",
+      "name": "Chaussures (homme)",
+      "current": 0,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 80
+    },
+    {
+      "categoryId": "tablettes",
+      "name": "Tablettes",
+      "current": 1,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 79
+    },
+    {
+      "categoryId": "telephones",
+      "name": "Téléphones",
+      "current": 2,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 78
+    },
+    {
+      "categoryId": "videoprojecteurs",
+      "name": "Vidéoprojecteurs",
+      "current": 8,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 72
+    },
+    {
+      "categoryId": "rangement",
+      "name": "Rangement",
+      "current": 8,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 72
+    },
+    {
+      "categoryId": "vetements-mixte",
+      "name": "Vêtements mixte / unisexe",
+      "current": 29,
+      "priority": "P1",
+      "objective": 80,
+      "toSourceFromCJ": 51
+    }
+  ],
+  "prioriteP2": [
+    {
+      "categoryId": "pc-fixes",
+      "name": "PC fixes",
+      "current": 0,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 50
+    },
+    {
+      "categoryId": "femme-accessoires",
+      "name": "Accessoires (femme)",
+      "current": 0,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 50
+    },
+    {
+      "categoryId": "homme-accessoires",
+      "name": "Accessoires (homme)",
+      "current": 0,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 50
+    },
+    {
+      "categoryId": "pc-portables",
+      "name": "PC portables",
+      "current": 1,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 49
+    },
+    {
+      "categoryId": "femme-sacs",
+      "name": "Sacs (femme)",
+      "current": 1,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 49
+    },
+    {
+      "categoryId": "running",
+      "name": "Running",
+      "current": 1,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 49
+    },
+    {
+      "categoryId": "parfums",
+      "name": "Parfums",
+      "current": 2,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 48
+    },
+    {
+      "categoryId": "ecrans",
+      "name": "Écrans",
+      "current": 3,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 47
+    },
+    {
+      "categoryId": "souris",
+      "name": "Souris",
+      "current": 3,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 47
+    },
+    {
+      "categoryId": "outils-jardin",
+      "name": "Outils",
+      "current": 3,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 47
+    },
+    {
+      "categoryId": "jeux-video",
+      "name": "Jeux vidéo",
+      "current": 3,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 47
+    },
+    {
+      "categoryId": "meubles",
+      "name": "Meubles",
+      "current": 4,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 46
+    },
+    {
+      "categoryId": "mobilier-jardin",
+      "name": "Mobilier de jardin",
+      "current": 5,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 45
+    },
+    {
+      "categoryId": "claviers",
+      "name": "Claviers",
+      "current": 9,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 41
+    },
+    {
+      "categoryId": "soins-visage",
+      "name": "Soins visage",
+      "current": 10,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 40
+    },
+    {
+      "categoryId": "fitness",
+      "name": "Fitness",
+      "current": 10,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 40
+    },
+    {
+      "categoryId": "bien-etre-massage",
+      "name": "Bien-être / Massage",
+      "current": 12,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 38
+    },
+    {
+      "categoryId": "cuisine",
+      "name": "Cuisine",
+      "current": 14,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 36
+    },
+    {
+      "categoryId": "electromenager",
+      "name": "Électroménager",
+      "current": 19,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 31
+    },
+    {
+      "categoryId": "ordinateurs",
+      "name": "Ordinateurs",
+      "current": 0,
+      "priority": "P2",
+      "objective": 50,
+      "toSourceFromCJ": 50
+    }
+  ],
+  "prioriteP3": [
+    {
+      "categoryId": "chats",
+      "name": "Chats",
+      "current": 0,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 30
+    },
+    {
+      "categoryId": "quincaillerie",
+      "name": "Quincaillerie",
+      "current": 1,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 29
+    },
+    {
+      "categoryId": "chiens",
+      "name": "Chiens",
+      "current": 1,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 29
+    },
+    {
+      "categoryId": "photo",
+      "name": "Photo",
+      "current": 16,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 14
+    },
+    {
+      "categoryId": "maquillage",
+      "name": "Maquillage",
+      "current": 20,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 10
+    },
+    {
+      "categoryId": "accessoires-electronique",
+      "name": "Accessoires électroniques",
+      "current": 22,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 8
+    },
+    {
+      "categoryId": "homme-vetements",
+      "name": "Vêtements (homme)",
+      "current": 22,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 8
+    },
+    {
+      "categoryId": "femme-vetements",
+      "name": "Vêtements (femme)",
+      "current": 26,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 4
+    },
+    {
+      "categoryId": "decoration",
+      "name": "Décoration",
+      "current": 28,
+      "priority": "P3",
+      "objective": 30,
+      "toSourceFromCJ": 2
+    }
+  ],
+  "neJamaisPrioriser": [
+    {
+      "categoryId": "audio",
+      "name": "Audio",
+      "current": 54,
+      "priority": "NONE",
+      "objective": 54,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "homme-montres",
+      "name": "Montres",
+      "current": 108,
+      "priority": "NONE",
+      "objective": 108,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "bebes",
+      "name": "Bébés",
+      "current": 27,
+      "priority": "NONE",
+      "objective": 27,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "filles",
+      "name": "Filles",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "garcons",
+      "name": "Garçons",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "barbecue",
+      "name": "Barbecue",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "football",
+      "name": "Football",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "romans",
+      "name": "Romans",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "bd",
+      "name": "BD",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "jeunesse-livres",
+      "name": "Jeunesse",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "jeux-societe",
+      "name": "Jeux de société",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "jouets",
+      "name": "Jouets",
+      "current": 33,
+      "priority": "NONE",
+      "objective": 33,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "outillage",
+      "name": "Outillage",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    },
+    {
+      "categoryId": "tv",
+      "name": "Télévisions",
+      "current": 0,
+      "priority": "NONE",
+      "objective": 0,
+      "toSourceFromCJ": 0
+    }
+  ],
+  "categoriesAbsentesAnalyse": [
+    {
+      "categoryId": "ordinateurs",
+      "name": "Ordinateurs",
+      "potentielCommercial": "Élevé en théorie (catégorie très recherchée) mais faible pertinence pour du dropshipping CJ : produits lourds/fragiles, coûts de port élevés, attentes de garantie fortes, marge CJ souvent faible sur PC complets.",
+      "difficulteApprovisionnementCJ": "Élevée — peu de références PC complets fiables chez CJ, essentiellement des mini-PC/accessoires.",
+      "risqueFaibleDemande": "Faible risque de demande, mais risque commercial élevé (retours, SAV, concurrence Amazon/Fnac).",
+      "prioriteRecommandee": "P2 — se limiter à des mini-PC/accessoires informatiques plutôt que des PC complets.",
+      "nombreARechercher": "15-20 (mini-PC, accessoires) plutôt que des PC complets."
+    },
+    {
+      "categoryId": "tv",
+      "name": "Télévisions",
+      "potentielCommercial": "Faible pour du dropshipping — produit volumineux, fragile, marge CJ faible, concurrence frontale avec la grande distribution.",
+      "difficulteApprovisionnementCJ": "Très élevée — peu ou pas de vraies télévisions chez CJ, frais de port prohibitifs.",
+      "risqueFaibleDemande": "Élevé risque d'échec commercial (retours transport, SAV).",
+      "prioriteRecommandee": "NE PAS PRIORISER — catégorie à éviter en dropshipping classique.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "femme-chaussures",
+      "name": "Chaussures (femme)",
+      "potentielCommercial": "Élevé (catégorie mode à fort volume) mais risque de retours important (pointures).",
+      "difficulteApprovisionnementCJ": "Moyenne — large choix CJ, mais qualité/tailles variables à vérifier produit par produit.",
+      "risqueFaibleDemande": "Faible si sélection qualité, sinon taux de retour élevé.",
+      "prioriteRecommandee": "P1 — bon complément à Vêtements femme déjà bien représenté.",
+      "nombreARechercher": "40-60"
+    },
+    {
+      "categoryId": "homme-chaussures",
+      "name": "Chaussures (homme)",
+      "potentielCommercial": "Élevé, même logique que chaussures femme.",
+      "difficulteApprovisionnementCJ": "Moyenne.",
+      "risqueFaibleDemande": "Faible si sélection qualité.",
+      "prioriteRecommandee": "P1 — même raisonnement, complément à Vêtements homme.",
+      "nombreARechercher": "40-60"
+    },
+    {
+      "categoryId": "femme-accessoires",
+      "name": "Accessoires (femme)",
+      "potentielCommercial": "Bon — catégorie facile à approvisionner (écharpes, ceintures, lunettes, bijoux si créée).",
+      "difficulteApprovisionnementCJ": "Faible — très large offre CJ.",
+      "risqueFaibleDemande": "Faible.",
+      "prioriteRecommandee": "P2.",
+      "nombreARechercher": "25-35"
+    },
+    {
+      "categoryId": "homme-accessoires",
+      "name": "Accessoires (homme)",
+      "potentielCommercial": "Bon, mêmes raisons.",
+      "difficulteApprovisionnementCJ": "Faible.",
+      "risqueFaibleDemande": "Faible.",
+      "prioriteRecommandee": "P2.",
+      "nombreARechercher": "25-35"
+    },
+    {
+      "categoryId": "filles",
+      "name": "Filles",
+      "potentielCommercial": "Moyen — chevauche déjà partiellement Bébés (27 produits) et Jouets (33 produits).",
+      "difficulteApprovisionnementCJ": "Faible.",
+      "risqueFaibleDemande": "Moyen — dépend de la différenciation réelle avec Bébés/Jouets.",
+      "prioriteRecommandee": "P3 — utile mais pas urgent, à combiner avec la clarification vêtements enfants trouvée dans les 387 sans catégorie.",
+      "nombreARechercher": "15-20"
+    },
+    {
+      "categoryId": "garcons",
+      "name": "Garçons",
+      "potentielCommercial": "Moyen, même logique que Filles.",
+      "difficulteApprovisionnementCJ": "Faible.",
+      "risqueFaibleDemande": "Moyen.",
+      "prioriteRecommandee": "P3.",
+      "nombreARechercher": "15-20"
+    },
+    {
+      "categoryId": "barbecue",
+      "name": "Barbecue",
+      "potentielCommercial": "Faible dans le positionnement actuel (catalogue majoritairement gadgets/mode/maison, pas de whitespace évident).",
+      "difficulteApprovisionnementCJ": "Moyenne — produit volumineux, coûts de port élevés.",
+      "risqueFaibleDemande": "Élevé — forte saisonnalité, concurrence spécialisée (Weber, grande distribution).",
+      "prioriteRecommandee": "NE PAS PRIORISER pour l'instant.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "football",
+      "name": "Football",
+      "potentielCommercial": "Faible — hors positionnement actuel, marché dominé par des acteurs spécialisés/licences officielles.",
+      "difficulteApprovisionnementCJ": "Moyenne (équipements génériques oui, maillots officiels non — risque de contrefaçon, voir règles qualité section 13).",
+      "risqueFaibleDemande": "Élevé.",
+      "prioriteRecommandee": "NE PAS PRIORISER.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "romans",
+      "name": "Romans",
+      "potentielCommercial": "Très faible pour du dropshipping international — le livre en langue française n'est presque jamais un produit CJ (fournisseur asiatique), et la marge/logistique livre est incompatible avec le modèle CJ.",
+      "difficulteApprovisionnementCJ": "Très élevée — quasiment aucune offre pertinente en français.",
+      "risqueFaibleDemande": "Très élevé.",
+      "prioriteRecommandee": "NE PAS PRIORISER — probablement à retirer de la stratégie CJ, ce n'est pas le bon canal pour cette catégorie.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "bd",
+      "name": "BD",
+      "potentielCommercial": "Très faible, même raison que Romans.",
+      "difficulteApprovisionnementCJ": "Très élevée.",
+      "risqueFaibleDemande": "Très élevé.",
+      "prioriteRecommandee": "NE PAS PRIORISER.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "jeunesse-livres",
+      "name": "Jeunesse (livres)",
+      "potentielCommercial": "Très faible, même raison.",
+      "difficulteApprovisionnementCJ": "Très élevée (hors quelques livres d'éveil sensoriel déjà vus dans le catalogue, classés Bébés/Jouets).",
+      "risqueFaibleDemande": "Très élevé.",
+      "prioriteRecommandee": "NE PAS PRIORISER.",
+      "nombreARechercher": "0"
+    },
+    {
+      "categoryId": "jeux-societe",
+      "name": "Jeux de société",
+      "potentielCommercial": "Faible à moyen — quelques références génériques existent chez CJ, mais marché dominé par des éditeurs identifiés (risque marque/contrefaçon).",
+      "difficulteApprovisionnementCJ": "Moyenne.",
+      "risqueFaibleDemande": "Moyen à élevé.",
+      "prioriteRecommandee": "P3 si volonté de diversifier, sinon NE PAS PRIORISER dans l'immédiat.",
+      "nombreARechercher": "0-10"
+    },
+    {
+      "categoryId": "outillage",
+      "name": "Outillage",
+      "potentielCommercial": "Moyen — chevauche partiellement Bricolage/Quincaillerie et Outils de jardin déjà existants.",
+      "difficulteApprovisionnementCJ": "Faible — large offre CJ (outillage à main, électroportatif basique).",
+      "risqueFaibleDemande": "Moyen.",
+      "prioriteRecommandee": "P3.",
+      "nombreARechercher": "15-20"
+    },
+    {
+      "categoryId": "chats",
+      "name": "Chats",
+      "potentielCommercial": "Bon — catégorie facile, produits légers, marché porteur (animalerie).",
+      "difficulteApprovisionnementCJ": "Faible.",
+      "risqueFaibleDemande": "Faible.",
+      "prioriteRecommandee": "P3 — pourrait passer en P2 si Chiens (actuellement 1 seul produit) est également renforcé en parallèle.",
+      "nombreARechercher": "15-20"
+    },
+    {
+      "categoryId": "pc-fixes",
+      "name": "PC fixes (non listé explicitement par l'utilisateur mais également à 0 dans les données réelles)",
+      "potentielCommercial": "Faible pour le dropshipping, mêmes raisons qu'Ordinateurs.",
+      "difficulteApprovisionnementCJ": "Élevée.",
+      "risqueFaibleDemande": "Élevé.",
+      "prioriteRecommandee": "NE PAS PRIORISER — signalé ici par souci d'exhaustivité (absent des données réelles mais pas mentionné dans la liste des 16 fournie).",
+      "nombreARechercher": "0"
+    }
+  ],
+  "famillesProduitsSansCategorie": {
+    "totalSansCategorie": 387,
+    "familles": {
+      "Bijoux (bagues, colliers, boucles d'oreilles, pendentifs)": {
+        "count": 147,
+        "exemples": [
+          "S925 Sterling Silver Three-Stone Drop Earrings, D-VVS1 Moissanite Bezel-Set Dangle, Platinum Plated 1.8g Women's Jewelry Gift Box",
+          "S925 Sterling Silver Pave Huggie Hoop Earrings, 86 D-VVS1 Moissanite, Platinum Plated 1.7g Women's Jewelry Gift Box",
+          "S925 Sterling Silver Gold Plated Single Row Huggie Earrings, 36 D-VVS1 Moissanite, 4.7g Women's Jewelry Gift Box",
+          "S925 Sterling Silver Emerald Cut Moissanite Stud Earrings, 0.8&1ct D-VVS1, Platinum Plated 1g Women's Jewelry Gift Box",
+          "S925 Sterling Silver Star Stud Earrings, 3mm D-VVS1 Moissanite, Platinum Plated 2.1g Women's Jewelry Gift Box"
+        ]
+      },
+      "Jardinage / extérieur (arrosage, tondeuses, éclairage solaire, outils)": {
+        "count": 74,
+        "exemples": [
+          "Sprinkler Hose Car Wash High Pressure Garden Suit",
+          "50FT Garden Hose Pipe Expandable Flexible Extensible Water Hose",
+          "Lawn Mower Head Twist Wire Bowl Wire Rust Removal",
+          "Garden Shears Fruit Tree Shears Pruning Shears",
+          "Gardening Tools Lawn Hay Rake Garden Deciduous Rake Soil Ripper Garden Soil Rake"
+        ]
+      },
+      "Compléments alimentaires / nutrition (sport et beauté ingérable)": {
+        "count": 14,
+        "exemples": [
+          "Tonique Vitamine C Hydratant Visage Femme — Éclat Teint",
+          "Chewing-Gum Menthe Sans Sucre — Fraîcheur Haleine",
+          "Masque Nuit Collagène Anti-Rides Naturel — Soin Intensif",
+          "Bonbons Moelleux Collagène — Complément Alimentaire Beauté",
+          "Gummies Collagène Complément Alimentaire Beauté — Peau Cheveux"
+        ]
+      },
+      "Maquillage non détecté par les mots-clés actuels": {
+        "count": 18,
+        "exemples": [
+          "Stylo Vernis à Ongles Gel Multicolore Facile — Manucure Maison",
+          "Vernis à Ongles Paresseux 6 en 1 Femme — Manucure Express",
+          "Stylo Gel Magnétique Cat Eye Ongles — Effet Miroir",
+          "Patch Ongles Lisse Respirant Facile à Appliquer — Nail Art",
+          "Rouge à Lèvres Curcuma Citron 5g — Soin Lèvres Naturel"
+        ]
+      },
+      "Soins visage/corps non détectés par les mots-clés actuels": {
+        "count": 32,
+        "exemples": [
+          "Huile Souchet Lissante Soyeuse — Soin Corps Naturel",
+          "Déodorant Antiperspirant Sans Aluminium — Protection Naturelle",
+          "Masque Yeux Or 24K 60 Pièces — Anti-Rides Contour des Yeux",
+          "Savon Noir Nettoyant Bain 100g — Soin Corps Naturel",
+          "Essence Éclaircissante Lèvres Rose 30ml — Soin Lèvres"
+        ]
+      },
+      "Soins cheveux (extensions, lissage, coiffure)": {
+        "count": 12,
+        "exemples": [
+          "Shampoing Botanique Anti-Chute Cheveux — Soin Naturel",
+          "Pince à Cheveux Halloween Fantôme PVC — Accessoire Tendance",
+          "Fer à Boucler Automatique Sans Fil Multifonction — Coiffure",
+          "Perruque Femme Cheveux Naturels Bob Court Brésilien — Remy",
+          "Extension Cheveux Naturels Bouclés Longs — Pose Facile"
+        ]
+      },
+      "Instruments de musique": {
+        "count": 22,
+        "exemples": [
+          "Piano Enroulable Électronique 88 Touches — Ultra-Portable",
+          "Housse Universelle pour Instrument à Vent — Si Bémol Portable",
+          "Ocarina 3 Tubes Fumé — Accord Do Médium",
+          "Corps de Guitare DIY — Kit de Montage en Forme de T",
+          "Guitare Électrique ST Style Lightning — Débutant Multicolore"
+        ]
+      },
+      "Montres/bracelets connectés non détectés (mot composé \"wristwatch/wristband\")": {
+        "count": 4,
+        "exemples": [
+          "Screen Free Sports Smart Wristband Multifunctional Heart Rate Measurement",
+          "GPS Positioning Outdoor Mens Wristband",
+          "A Sporty Stylish And Energetic Unisex Bucket-style Wristwatch",
+          "Quartz Mens Business-style Alloy Luminous Luxury Wristwatch With A Leather-band Feel"
+        ]
+      },
+      "Vêtements non couverts par les mots-clés actuels (béret, ceinture, bonnet, débardeur, soutien-gorge, salopette, vêtements enfant)": {
+        "count": 22,
+        "exemples": [
+          "T-Shirt Streetwear Rétro Imprimé Lettres Manches Courtes",
+          "T-Shirt Décontracté à Carreaux Imprimé Lettres Manches Courtes",
+          "Jean Streetwear Tendance Style Américain",
+          "Débardeur Homme Col V Imprimé Sans Manches",
+          "Ceinture Longue Jacquard Souple Unie Homme"
+        ]
+      },
+      "Gadgets électroniques divers (non liés à une catégorie existante)": {
+        "count": 8,
+        "exemples": [
+          "Barre de Son Bluetooth Compacte pour Ordinateur de Bureau",
+          "Télemètre Électronique Numérique LCD Haute Précision - Mètre Ruban Digital",
+          "Masque de Sommeil Bluetooth avec Haut-Parleurs Intégrés",
+          "Alarme Anti-Intrusion Électronique pour Porte, Cale de Sécurité Intelligente",
+          "Briquet Électronique USB Rechargeable"
+        ]
+      },
+      "Ustensiles / accessoires plein air (camping, titane)": {
+        "count": 3,
+        "exemples": [
+          "Intex Ensemble de 3 Matelas Gonflables 188 x 71 cm — 3 Coloris Différents",
+          "Mousquetons en Titane",
+          "Bols Plats en Titane"
+        ]
+      },
+      "Hygiène maison / entretien": {
+        "count": 5,
+        "exemples": [
+          "Support Porte-Brosses à Dents avec Stérilisateur UV",
+          "Balai à pousser 3 en 1 - Balai, Pelle et Serpillière ménager",
+          "Horloge Électronique de Maison",
+          "Gouttes Nettoyantes Oreilles Soin — Hygiène Auriculaire",
+          "Soin Nettoyant Pores 120ml — Purification Profonde Visage"
+        ]
+      },
+      "Licences / fandom / objets déco murale": {
+        "count": 4,
+        "exemples": [
+          "Naruto Shippûden 3D LED",
+          "Mugiwara Crew Flag Emblem 3D Led",
+          "Creative Black-Tech Bestseller Magnetic Levitation J-20 Fighter Jet Desk Ornament",
+          "Maquette Architecture Scène À Assembler — Village Miniature"
+        ]
+      },
+      "Jouets/enfants non couverts (peluche, livre audio, dinosaure)": {
+        "count": 3,
+        "exemples": [
+          "Ensemble 3 Pièces Peluche Confort pour Femme",
+          "Livre Audio Illustré Anglais Apprentissage Naturel Enfant",
+          "Ours en Peluche Géant XXL Doux — Cadeau Enfant Adulte"
+        ]
+      }
+    },
+    "residuelNonClusterise": {
+      "count": 19,
+      "exemples": [
+        "Épaulière de Maintien en Néoprène",
+        "Bob Camouflage Anti-UV à Petit Bord",
+        "Bouteille Infuseur Fruits 1L Sans BPA Sport — Eau Infusée",
+        "Chaussures Casual Semelle Souple Fille Rétro — Enfant",
+        "Chaussures Casual Respirantes Homme Légères — Confort Quotidien",
+        "Vêtements Garçon Coton Automne Printemps Été — Enfant",
+        "Coffret Lumineux Collection 6 Pièces Beauté — Soin Complet",
+        "Stylo Blanchissant Dents — Sourire Éclatant Express",
+        "Patch Pieds Relaxant Sommeil Plantes — Détente Nocturne",
+        "Crème Rafraîchissante Apaisante Peau — Soin Confort"
+      ]
+    }
+  },
+  "requetesCJProposees": {
+    "videoprojecteurs": [
+      "portable projector",
+      "mini projector",
+      "1080p projector",
+      "home cinema projector",
+      "LED projector wifi"
+    ],
+    "rangement": [
+      "drawer organizer",
+      "storage box",
+      "shoe organizer",
+      "closet organizer",
+      "foldable storage cube"
+    ],
+    "vetements-mixte": [
+      "unisex hoodie",
+      "unisex sweater",
+      "unisex jacket",
+      "unisex shirt",
+      "oversized unisex t-shirt"
+    ],
+    "bien-etre-massage": [
+      "neck massager",
+      "eye massager",
+      "body massager",
+      "handheld massage gun",
+      "shiatsu massager"
+    ],
+    "telephones": [
+      "smartphone unlocked",
+      "budget smartphone",
+      "rugged phone",
+      "smartphone dual sim"
+    ],
+    "tablettes": [
+      "android tablet",
+      "kids tablet",
+      "tablet 10 inch"
+    ],
+    "ordinateurs": [
+      "mini pc",
+      "laptop accessories",
+      "mini computer stick"
+    ],
+    "tv": [
+      "mini projector screen",
+      "tv stick android",
+      "tv mount bracket"
+    ],
+    "femme-chaussures": [
+      "women sneakers",
+      "women sandals",
+      "women casual shoes",
+      "women boots"
+    ],
+    "homme-chaussures": [
+      "men sneakers",
+      "men casual shoes",
+      "men sandals",
+      "men boots"
+    ],
+    "femme-accessoires": [
+      "women scarf",
+      "women sunglasses",
+      "women belt",
+      "hair accessories women"
+    ],
+    "homme-accessoires": [
+      "men wallet",
+      "men sunglasses",
+      "men belt",
+      "men tie"
+    ],
+    "pc-portables": [
+      "laptop stand",
+      "laptop sleeve",
+      "laptop cooling pad"
+    ],
+    "pc-fixes": [
+      "mini desktop pc",
+      "computer tower accessories"
+    ],
+    "femme-sacs": [
+      "women handbag",
+      "crossbody bag women",
+      "women backpack"
+    ],
+    "running": [
+      "running belt",
+      "running armband",
+      "running accessories"
+    ],
+    "parfums": [
+      "perfume women",
+      "perfume men",
+      "cologne travel size"
+    ],
+    "ecrans": [
+      "portable monitor",
+      "computer monitor stand"
+    ],
+    "souris": [
+      "wireless mouse",
+      "gaming mouse"
+    ],
+    "outils-jardin": [
+      "garden tool set",
+      "pruning shears",
+      "watering sprinkler",
+      "garden hose"
+    ],
+    "jeux-video": [
+      "game controller",
+      "gaming headset controller",
+      "retro game console"
+    ],
+    "meubles": [
+      "folding table",
+      "storage shelf",
+      "small furniture"
+    ],
+    "mobilier-jardin": [
+      "outdoor hammock",
+      "garden furniture set",
+      "folding garden chair"
+    ],
+    "claviers": [
+      "mechanical keyboard",
+      "wireless keyboard",
+      "gaming keyboard"
+    ],
+    "soins-visage": [
+      "facial skincare device",
+      "face cream",
+      "led facial mask"
+    ],
+    "fitness": [
+      "resistance bands",
+      "yoga mat",
+      "dumbbell set",
+      "fitness tracker"
+    ],
+    "cuisine": [
+      "kitchen gadget",
+      "food storage container",
+      "electric kettle"
+    ],
+    "electromenager": [
+      "air purifier",
+      "humidifier",
+      "portable fan"
+    ],
+    "chats": [
+      "cat toy",
+      "cat scratcher",
+      "cat bed",
+      "cat feeder"
+    ],
+    "chiens": [
+      "dog toy",
+      "dog leash",
+      "dog bed",
+      "dog feeder"
+    ],
+    "quincaillerie": [
+      "hardware tool kit",
+      "screwdriver set"
+    ]
+  },
+  "strategieParPhases": [
+    {
+      "phase": "PHASE 1",
+      "volume": "300 à 500 produits",
+      "focus": "Catégories P1 uniquement (Ordinateurs [accessoires], Télévisions [exclue], Chaussures femme/homme, Téléphones, Tablettes, Vidéoprojecteurs, Rangement, Vêtements mixte)",
+      "objectif": "Combler les absences les plus visibles pour un catalogue perçu comme complet"
+    },
+    {
+      "phase": "PHASE 2",
+      "volume": "0 nouveau produit — analyse",
+      "focus": "Analyse des ventes/clics/qualité des produits Phase 1 avant d'aller plus loin",
+      "objectif": "Valider quelles catégories/produits convertissent réellement avant d'investir davantage"
+    },
+    {
+      "phase": "PHASE 3",
+      "volume": "400 à 700 produits",
+      "focus": "Catégories P2 + ajustement des catégories P1 sous-performantes selon Phase 2",
+      "objectif": "Renforcer les catégories intéressantes mais moins urgentes"
+    },
+    {
+      "phase": "PHASE 4",
+      "volume": "Complément jusqu'à ≈ 3000 ACTIVE",
+      "focus": "P3 + arbitrage final sur les catégories proposées (Bijoux notamment, si validées) selon les résultats des phases précédentes",
+      "objectif": "Atteindre l'objectif global sans avoir sur-investi dans des catégories à faible rendement"
+    }
+  ],
+  "reglesCJ": {
+    "fournisseur": "CJdropshipping (BigBuy abandonné)",
+    "prix": "Prix CJ x 2.5, livraison incluse",
+    "statutNouveauxProduits": "DRAFT par défaut",
+    "publication": "Jamais automatique — validation humaine requise"
+  },
+  "reglesDeduplication": [
+    "Vérifier le SKU avant tout import",
+    "Vérifier la référence fournisseur (cjProductId / metafield custom.cj_product_id)",
+    "Vérifier le productId CJ exact",
+    "Vérifier la similarité de titre (recherche floue)",
+    "Vérifier les variantes existantes",
+    "Vérifier les images (détection de doublons visuels si possible)",
+    "Ne jamais importer un produit déjà présent sous une autre référence"
+  ],
+  "reglesQualite": {
+    "privilegier": [
+      "disponibilité réelle en stock",
+      "expédition possible vers la France",
+      "prix cohérent",
+      "marge suffisante après x2.5",
+      "images propres",
+      "titre exploitable",
+      "description exploitable",
+      "variantes cohérentes",
+      "produit réellement adapté à la catégorie visée"
+    ],
+    "eviter": [
+      "produits dangereux",
+      "produits interdits en France/UE",
+      "contrefaçons",
+      "marques douteuses/non autorisées",
+      "livraison France impossible",
+      "produits sans stock réel",
+      "doublons"
+    ]
+  },
+  "securite": {
+    "archivedTouches": 0,
+    "draftLegacyTouches": 0,
+    "produitsActiveModifies": 0,
+    "produitsSupprimes": 0,
+    "produitsArchives": 0,
+    "produitsPublies": 0,
+    "produitsCjImportes": 0
+  }
+}

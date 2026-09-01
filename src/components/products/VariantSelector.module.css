@@ -1,0 +1,62 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.selectedValue {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Cible tactile >= 24x24px (WCAG 2.5.8) — voir l'audit d'accessibilité de
+   cette même mission sur le panier/carrousel homepage pour le même seuil. */
+.chip {
+  min-width: 44px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: #fff;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+}
+.chip:hover {
+  border-color: var(--color-primary);
+}
+.chipSelected {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.chipUnavailable {
+  color: var(--color-text-subtle);
+  background: var(--color-background);
+  text-decoration: line-through;
+}
+.chipUnavailable:hover {
+  border-color: var(--color-border-strong);
+}

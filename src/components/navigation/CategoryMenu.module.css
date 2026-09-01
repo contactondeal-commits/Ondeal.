@@ -1,0 +1,74 @@
+.root {
+  padding: 8px 0;
+}
+
+.accountBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--header-bg);
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.backRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--color-background);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-subtle);
+  padding: 14px 18px 6px;
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+}
+.row:hover {
+  background: var(--color-background);
+}
+
+.rowLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 8px 0;
+}

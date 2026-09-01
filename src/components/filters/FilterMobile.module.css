@@ -1,0 +1,27 @@
+.triggerBtn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.body {
+  padding: 12px 18px;
+}
+
+.footer {
+  padding: 12px 18px 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 991px) {
+  .triggerBtn {
+    display: flex;
+  }
+}

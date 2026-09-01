@@ -1,0 +1,17 @@
+[
+  {
+    "fromCategory": "Outillage",
+    "extraCandidatesTaken": 26,
+    "reason": "Surplus de candidats qualifiés (score élevé) au-delà de l'objectif initial de 15 — redistribué vers le quota global de 250 pour compenser le déficit des catégories suivantes : Chaussures femme, Chaussures homme, Accessoires femme, Télévisions, Jeux de société, Chats, Jeunesse, Romans, BD, Maison > Rangement."
+  },
+  {
+    "fromCategory": "Football",
+    "extraCandidatesTaken": 4,
+    "reason": "Surplus de candidats qualifiés (score élevé) au-delà de l'objectif initial de 10 — redistribué vers le quota global de 250 pour compenser le déficit des catégories suivantes : Chaussures femme, Chaussures homme, Accessoires femme, Télévisions, Jeux de société, Chats, Jeunesse, Romans, BD, Maison > Rangement."
+  },
+  {
+    "fromCategory": "Mode > Vêtements mixte / unisexe",
+    "extraCandidatesTaken": 22,
+    "reason": "Surplus de candidats qualifiés (score élevé) au-delà de l'objectif initial de 20 — redistribué vers le quota global de 250 pour compenser le déficit des catégories suivantes : Chaussures femme, Chaussures homme, Accessoires femme, Télévisions, Jeux de société, Chats, Jeunesse, Romans, BD, Maison > Rangement."
+  }
+]

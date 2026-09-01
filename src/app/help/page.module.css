@@ -1,0 +1,104 @@
+.page {
+  padding-bottom: 64px;
+}
+
+.header {
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 16px;
+  padding: 48px 40px;
+  margin: 24px 0 40px;
+  max-width: 100%;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.intro {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 8px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+  align-items: start;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.section {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+}
+
+.sectionTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--color-primary);
+}
+
+.contact {
+  position: sticky;
+  top: 96px;
+  background: var(--color-primary);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.contactTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.contactText {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 4px;
+  line-height: 1.5;
+}
+
+.contactLink {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FBBF24;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    position: static;
+  }
+}

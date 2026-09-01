@@ -1,0 +1,96 @@
+.root {
+  position: fixed;
+  z-index: 90;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 14px 14px 14px 16px;
+  animation: slideIn var(--duration-slow) var(--ease-out);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  color: var(--color-success);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 2px;
+  color: var(--color-text);
+}
+
+.message {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin: 0 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+}
+.closeBtn:hover {
+  color: var(--color-text);
+}
+
+/* Sur mobile, remonte au-dessus de la barre CTA sticky éventuelle de la
+   fiche produit (voir MobileStickyCta.module.css — hauteur ~64px) et
+   s'étale sur toute la largeur disponible. */
+@media (max-width: 640px) {
+  .root {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + var(--sticky-cta-height, 0px));
+    width: auto;
+  }
+}

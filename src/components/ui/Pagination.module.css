@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 32px 0;
+}
+
+.navBtn,
+.pageBtn {
+  min-width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navBtn:hover:not(:disabled),
+.pageBtn:hover {
+  background: var(--color-background);
+}
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.ellipsis {
+  padding: 0 4px;
+  color: var(--color-text-subtle);
+}

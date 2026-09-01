@@ -1,0 +1,23 @@
+.section {
+  padding: 28px 20px 44px;
+}
+
+.heading {
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,2154 @@
+[
+  {
+    "cjProductId": "2087058498321399810",
+    "sku": "CJFU3051502",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2087058498543697921",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 0,
+        "totalInventoryNum": 0,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 0,
+        "stock": []
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608101243141607000",
+    "sku": "CJYD3050051",
+    "variantsCountLive": 7,
+    "stockEntries": [
+      {
+        "vid": "2608101243141607600",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9734,
+        "totalInventoryNum": 9734,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9734,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9734
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608111304561609800",
+    "sku": "CJYD3053345",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2608111304571600600",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6822,
+        "totalInventoryNum": 6822,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6822,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6822
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120405291613600",
+    "sku": "CJYD3054505",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2608120405291614400",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6745,
+        "totalInventoryNum": 6745,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6745,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6745
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087359805363904514",
+    "sku": "CJSB3053772",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087359805418430465",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6412,
+        "totalInventoryNum": 6412,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6412,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6412
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110606551636600",
+    "sku": "CJYD3049925",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608110606551637500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7675,
+        "totalInventoryNum": 7675,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7675,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7675
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120405211626100",
+    "sku": "CJYD3054498",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2608120405211626700",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8198,
+        "totalInventoryNum": 8198,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8198,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8198
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120323211616500",
+    "sku": "CJYD3053982",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2608120323211617400",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8946,
+        "totalInventoryNum": 8946,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8946,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8946
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087098430335016962",
+    "sku": "CJZT3052482",
+    "variantsCountLive": 7,
+    "stockEntries": [
+      {
+        "vid": "2087098430393737217",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6474,
+        "totalInventoryNum": 6474,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6474,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6474
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087377691335999490",
+    "sku": "CJSD3054141",
+    "variantsCountLive": 11,
+    "stockEntries": [
+      {
+        "vid": "2087377692992749570",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6374,
+        "totalInventoryNum": 6374,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6374,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6374
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2086998198576996354",
+    "sku": "CJQC3050586",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2086998198652493825",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6895,
+        "totalInventoryNum": 6895,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6895,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6895
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087013457802940418",
+    "sku": "CJFA3050816",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087013458335617026",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8009,
+        "totalInventoryNum": 8009,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8009,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8009
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120542291627200",
+    "sku": "CJYD3054926",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2608120542291627800",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8646,
+        "totalInventoryNum": 8646,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8646,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8646
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120312041637000",
+    "sku": "CJYD3054195",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2608120312041637600",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9991,
+        "totalInventoryNum": 9991,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9991,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9991
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110928531607700",
+    "sku": "CJYD3052870",
+    "variantsCountLive": 8,
+    "stockEntries": [
+      {
+        "vid": "2608110928531608400",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5855,
+        "totalInventoryNum": 5855,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5855,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5855
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110710471606700",
+    "sku": "CJYD3051972",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2608110710481600100",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6721,
+        "totalInventoryNum": 6721,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6721,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6721
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120239071632000",
+    "sku": "CJYD3054049",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2608120239071633000",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5469,
+        "totalInventoryNum": 5469,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5469,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5469
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608060538491634400",
+    "sku": "CJYD3040065",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608060538491635400",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5191,
+        "totalInventoryNum": 5191,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5191,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5191
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087425728019877889",
+    "sku": "CJSB3055045",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087425728107958274",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5115,
+        "totalInventoryNum": 5115,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5115,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5115
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087095476181852162",
+    "sku": "CJNS3052469",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087095476274126849",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6848,
+        "totalInventoryNum": 6848,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6848,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6848
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087004709134913538",
+    "sku": "CJJT3050733",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087004709227188225",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9355,
+        "totalInventoryNum": 9355,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9355,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9355
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087425762848432130",
+    "sku": "CJHD3055065",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087425762961678337",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5614,
+        "totalInventoryNum": 5614,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5614,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5614
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110156041616100",
+    "sku": "CJSL3050554",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2608110156041616700",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6690,
+        "totalInventoryNum": 6690,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6690,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6690
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087114822357610497",
+    "sku": "CJMB3052992",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087114822412136449",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5438,
+        "totalInventoryNum": 5438,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5438,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5438
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087468647576924161",
+    "sku": "CJMB3055861",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087468647627255810",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8483,
+        "totalInventoryNum": 8483,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8483,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8483
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087468730087137281",
+    "sku": "CJMB3055863",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087468730183606274",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9813,
+        "totalInventoryNum": 9813,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9813,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9813
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110351321621300",
+    "sku": "CJZH3051045",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2608110351321622200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5362,
+        "totalInventoryNum": 5362,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5362,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5362
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2086719990575939585",
+    "sku": "CJBL3049145",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2086719990664019969",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8106,
+        "totalInventoryNum": 8106,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8106,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8106
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110717211610100",
+    "sku": "CJYD3052030",
+    "variantsCountLive": 14,
+    "stockEntries": [
+      {
+        "vid": "2608110717211610900",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5178,
+        "totalInventoryNum": 5178,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5178,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5178
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110829321618100",
+    "sku": "CJBQ3052525",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2608110829391611800",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6581,
+        "totalInventoryNum": 6581,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6581,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6581
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608102347121611700",
+    "sku": "CJNS3050212",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608102347121612300",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5421,
+        "totalInventoryNum": 5421,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5421,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5421
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608101113511638600",
+    "sku": "CJCF3049944",
+    "variantsCountLive": 8,
+    "stockEntries": [
+      {
+        "vid": "2608101113511639200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7450,
+        "totalInventoryNum": 7450,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7450,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7450
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110823271635900",
+    "sku": "CJYD3052507",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608110823271636500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7677,
+        "totalInventoryNum": 7677,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7677,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7677
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2086709797998264322",
+    "sku": "CJMZ3048747",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2086709798073761793",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6696,
+        "totalInventoryNum": 6696,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6696,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6696
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087018708572561410",
+    "sku": "CJNS3051008",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087018708698390530",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8604,
+        "totalInventoryNum": 8604,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8604,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8604
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087053051221688321",
+    "sku": "CJNS3051401",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2087053051326545921",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6844,
+        "totalInventoryNum": 6844,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6844,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6844
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087068129008283649",
+    "sku": "CJNS3051781",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087068129083781122",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8053,
+        "totalInventoryNum": 8053,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8053,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8053
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087017100476407810",
+    "sku": "CJNS3050992",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087017100568682497",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7921,
+        "totalInventoryNum": 7921,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7921,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7921
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087008141195464706",
+    "sku": "CJNS3050769",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2087008141317099521",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9117,
+        "totalInventoryNum": 9117,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9117,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9117
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087018010283724801",
+    "sku": "CJNS3051001",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087018010375999490",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8509,
+        "totalInventoryNum": 8509,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8509,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8509
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087063537864404993",
+    "sku": "CJNS3051633",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087063537952485378",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6963,
+        "totalInventoryNum": 6963,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6963,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6963
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087024700542672897",
+    "sku": "CJNS3051051",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087024700689473538",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5683,
+        "totalInventoryNum": 5683,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5683,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5683
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087006396969115650",
+    "sku": "CJNS3050755",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087006397057196034",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7365,
+        "totalInventoryNum": 7365,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7365,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7365
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087015633577304066",
+    "sku": "CJNS3050968",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087015633665384449",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8694,
+        "totalInventoryNum": 8694,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8694,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8694
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087021277206274050",
+    "sku": "CJNS3051026",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087021277273382914",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5026,
+        "totalInventoryNum": 5026,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5026,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5026
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087052664347475970",
+    "sku": "CJNS3051362",
+    "variantsCountLive": 10,
+    "stockEntries": [
+      {
+        "vid": "2087052664422973442",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5614,
+        "totalInventoryNum": 5614,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5614,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5614
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087025731184398338",
+    "sku": "CJNS3051059",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087025731314421762",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7952,
+        "totalInventoryNum": 7952,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7952,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7952
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087066506420809729",
+    "sku": "CJNS3051718",
+    "variantsCountLive": 15,
+    "stockEntries": [
+      {
+        "vid": "2087066506873794562",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6648,
+        "totalInventoryNum": 6648,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6648,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6648
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087013727572889602",
+    "sku": "CJNS3050876",
+    "variantsCountLive": 15,
+    "stockEntries": [
+      {
+        "vid": "2087013727648387073",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8475,
+        "totalInventoryNum": 8475,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8475,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8475
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110741421620100",
+    "sku": "CJYD3052201",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2608110741421625500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9724,
+        "totalInventoryNum": 9724,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9724,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9724
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120302421606700",
+    "sku": "CJYD3053968",
+    "variantsCountLive": 7,
+    "stockEntries": [
+      {
+        "vid": "2608120302421607500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7528,
+        "totalInventoryNum": 7528,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7528,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7528
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120819171619400",
+    "sku": "CJYD3055578",
+    "variantsCountLive": 8,
+    "stockEntries": [
+      {
+        "vid": "2608120819181610800",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9704,
+        "totalInventoryNum": 9704,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9704,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9704
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120114521633500",
+    "sku": "CJYD3053689",
+    "variantsCountLive": 13,
+    "stockEntries": [
+      {
+        "vid": "2608120114521634200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8931,
+        "totalInventoryNum": 8931,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8931,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8931
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110717421607400",
+    "sku": "CJNS3052038",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608110717421608000",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6208,
+        "totalInventoryNum": 6208,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6208,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6208
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608120149281619500",
+    "sku": "CJYD3052494",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2608120149291611100",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5664,
+        "totalInventoryNum": 5664,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5664,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5664
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087434104107880450",
+    "sku": "CJBA3055041",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2087434104523116545",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5812,
+        "totalInventoryNum": 5812,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5812,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5812
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608101214161610000",
+    "sku": "CJNS3050013",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2608101214161610500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5487,
+        "totalInventoryNum": 5487,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5487,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5487
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608090406301620000",
+    "sku": "CJNS3046679",
+    "variantsCountLive": 18,
+    "stockEntries": [
+      {
+        "vid": "2608090406301620600",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8765,
+        "totalInventoryNum": 8765,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8765,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8765
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608090358551626800",
+    "sku": "CJNS3046668",
+    "variantsCountLive": 18,
+    "stockEntries": [
+      {
+        "vid": "2608090358551627500",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8517,
+        "totalInventoryNum": 8517,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8517,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8517
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110901351601000",
+    "sku": "CJYD3052723",
+    "variantsCountLive": 54,
+    "stockEntries": [
+      {
+        "vid": "2608110901351601900",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8207,
+        "totalInventoryNum": 8207,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8207,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8207
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2086736050994925569",
+    "sku": "CJNS3049469",
+    "variantsCountLive": 10,
+    "stockEntries": [
+      {
+        "vid": "2086736051070423042",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7304,
+        "totalInventoryNum": 7304,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7304,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7304
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2086656976818712577",
+    "sku": "CJNS3047849",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2086656977103925249",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8563,
+        "totalInventoryNum": 8563,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8563,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8563
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608110532491630600",
+    "sku": "CJYD3051350",
+    "variantsCountLive": 7,
+    "stockEntries": [
+      {
+        "vid": "2608110532491631200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7122,
+        "totalInventoryNum": 7122,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7122,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7122
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608111034061614400",
+    "sku": "CJNS3053115",
+    "variantsCountLive": 91,
+    "stockEntries": [
+      {
+        "vid": "2608111034071616300",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7996,
+        "totalInventoryNum": 7996,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7996,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7996
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608101210091610500",
+    "sku": "CJNS3050011",
+    "variantsCountLive": 18,
+    "stockEntries": [
+      {
+        "vid": "2608101210091611200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8400,
+        "totalInventoryNum": 8400,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8400,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8400
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607281523301638500",
+    "sku": "CJXX3015266",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2607281523301639200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7739,
+        "totalInventoryNum": 7739,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7739,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7739
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607280944341603600",
+    "sku": "CJWY3014746",
+    "variantsCountLive": 8,
+    "stockEntries": [
+      {
+        "vid": "2607280944341604200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9390,
+        "totalInventoryNum": 9390,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9390,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9390
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607280608181621400",
+    "sku": "CJWY3013450",
+    "variantsCountLive": 48,
+    "stockEntries": [
+      {
+        "vid": "2607280608181622100",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9248,
+        "totalInventoryNum": 9248,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9248,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9248
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607230559541602400",
+    "sku": "CJWY2999959",
+    "variantsCountLive": 8,
+    "stockEntries": [
+      {
+        "vid": "2607230559541603100",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9359,
+        "totalInventoryNum": 9359,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9359,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9359
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607221156481606400",
+    "sku": "CJYE2999602",
+    "variantsCountLive": 24,
+    "stockEntries": [
+      {
+        "vid": "2607221156481607000",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8333,
+        "totalInventoryNum": 8333,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8333,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8333
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607220931531620400",
+    "sku": "CJXZ2999115",
+    "variantsCountLive": 40,
+    "stockEntries": [
+      {
+        "vid": "2607220931531621300",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 5013,
+        "totalInventoryNum": 5013,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 5013,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 5013
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608111206321639300",
+    "sku": "CJYD3053302",
+    "variantsCountLive": 6,
+    "stockEntries": [
+      {
+        "vid": "2608111206331630000",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6159,
+        "totalInventoryNum": 6159,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6159,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6159
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607300947311635500",
+    "sku": "CJYD3022001",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2607300947311636300",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 6921,
+        "totalInventoryNum": 6921,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 6921,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 6921
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087352217673793537",
+    "sku": "CJLX3053783",
+    "variantsCountLive": 4,
+    "stockEntries": [
+      {
+        "vid": "2087352217766068226",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9046,
+        "totalInventoryNum": 9046,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9046,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9046
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087353805537861633",
+    "sku": "CJLX3053795",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2087353805609164801",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9043,
+        "totalInventoryNum": 9043,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9043,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9043
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087334409834872834",
+    "sku": "CJSL3053544",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2087334409918758913",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8043,
+        "totalInventoryNum": 8043,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8043,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8043
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087456258059952129",
+    "sku": "CJST3055555",
+    "variantsCountLive": 14,
+    "stockEntries": [
+      {
+        "vid": "2087456258169004033",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8857,
+        "totalInventoryNum": 8857,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8857,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8857
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087390852221632514",
+    "sku": "CJST3054444",
+    "variantsCountLive": 13,
+    "stockEntries": [
+      {
+        "vid": "2087390852326490113",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7717,
+        "totalInventoryNum": 7717,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7717,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7717
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087449383721525250",
+    "sku": "CJSL3055510",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2087449384031903745",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 9846,
+        "totalInventoryNum": 9846,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 9846,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 9846
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087439494148419585",
+    "sku": "CJSL3055315",
+    "variantsCountLive": 1,
+    "stockEntries": [
+      {
+        "vid": "2087439494261665793",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7108,
+        "totalInventoryNum": 7108,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7108,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7108
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2087353726525784066",
+    "sku": "CJLX3053802",
+    "variantsCountLive": 2,
+    "stockEntries": [
+      {
+        "vid": "2087353726651613186",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7952,
+        "totalInventoryNum": 7952,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7952,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7952
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2607160855511601100",
+    "sku": "CJWZ2988123",
+    "variantsCountLive": 5,
+    "stockEntries": [
+      {
+        "vid": "2607160855511602200",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 8164,
+        "totalInventoryNum": 8164,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 8164,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 8164
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  },
+  {
+    "cjProductId": "2608101214101624900",
+    "sku": "CJYD3050017",
+    "variantsCountLive": 3,
+    "stockEntries": [
+      {
+        "vid": "2608101214101625600",
+        "areaId": "1",
+        "areaEn": "China Warehouse",
+        "countryCode": "CN",
+        "storageNum": 7734,
+        "totalInventoryNum": 7734,
+        "cjInventoryNum": 0,
+        "factoryInventoryNum": 7734,
+        "stock": [
+          {
+            "stockId": "{6709CCD7-0DC7-43B1-B310-17AB499E9B0A}",
+            "inventory": 0,
+            "factoryInventory": 7734
+          }
+        ]
+      }
+    ],
+    "stockError": null,
+    "fetchError": null
+  }
+]

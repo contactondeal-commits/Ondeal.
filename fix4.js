@@ -1,0 +1,1 @@
+var fs=require('fs');var f=fs.readFileSync('src/lib/shopify/storefront.ts','utf8');f=f.replace('    description\n    createdAt','    description\n    descriptionHtml\n    createdAt');f=f.replace('  description: string;','  description: string;\n  descriptionHtml: string;');fs.writeFileSync('src/lib/shopify/storefront.ts',f,'utf8');console.log('OK');  

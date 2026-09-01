@@ -1,0 +1,40 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 3px 7px;
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+}
+
+.BESTSELLER {
+  background: var(--color-badge-bestseller);
+  color: #fff;
+}
+.NOUVEAU {
+  background: var(--color-badge-new);
+  color: #fff;
+}
+.PROMOTION {
+  background: var(--color-badge-promo);
+  color: #fff;
+}
+.TOP_VENTE {
+  background: #0f766e;
+  color: #fff;
+}
+.RECOMMANDE {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.EXCLUSIVITE {
+  background: var(--color-badge-exclusive);
+  color: #fff;
+}
+.RUPTURE_STOCK {
+  background: var(--color-text-subtle);
+  color: #fff;
+}

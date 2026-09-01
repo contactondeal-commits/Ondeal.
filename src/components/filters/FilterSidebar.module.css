@@ -1,0 +1,56 @@
+.root {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.group {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.group:last-of-type {
+  border-bottom: none;
+}
+
+.groupTitle {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text);
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.checkboxRow input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.resetBtn {
+  background: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text);
+  width: 100%;
+}
+.resetBtn:hover {
+  background: var(--color-background);
+}
+
+@media (max-width: 991px) {
+  .root {
+    width: 100%;
+  }
+}

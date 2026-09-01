@@ -1,0 +1,262 @@
+{
+  "phase": "PHASE 4 - EXECUTION COMPLETE CJ -> SHOPIFY",
+  "generated_at": "2026-08-13",
+  "source": "reports/cj-phase3-final-quality-gate.json (120 FINAL_SELECTED)",
+  "analyzed_count": 120,
+  "excluded_before_revalidation": 1,
+  "revalidated_live_count": 119,
+  "revalidation_hold_count": 0,
+  "excluded_after_manual_category_reaudit": 1,
+  "imported_count": 118,
+  "updated_count": 0,
+  "published_active_count": 77,
+  "draft_count": 41,
+  "hold_count": 2,
+  "rejected_count": 0,
+  "cj_errors": 0,
+  "shopify_errors": 0,
+  "average_margin_percent": 150.0,
+  "average_margin_eur": 73.7,
+  "potential_revenue_eur": 104352.3,
+  "top_products_by_margin": [
+    {
+      "sku": "CJFU3051949",
+      "title": "Abri de jardin en acier galvanisé avec portes verrouillables",
+      "margin_eur": 1006.53,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJFU3052272",
+      "title": "Abri de jardin en résine et aluminium, portes verrouillables",
+      "margin_eur": 839.685,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJFU3051748",
+      "title": "Commode 12 tiroirs en bois blanc, grand rangement chambre",
+      "margin_eur": 372.045,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJFU3051672",
+      "title": "Commode 8 tiroirs en bois pour chambre, noire",
+      "margin_eur": 258.75,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJYD2772377",
+      "title": "Écran portable 14 pouces Full HD IPS pour laptop",
+      "margin_eur": 237.87,
+      "margin_percent": 150,
+      "category": "Écrans",
+      "status": "DRAFT"
+    },
+    {
+      "sku": "CJFU3051874",
+      "title": "Tour de rangement 9 tiroirs pour jouets, meuble modulable",
+      "margin_eur": 227.96999999999997,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJFU3051779",
+      "title": "Console d'entrée grise avec tiroir et découpe ovale ajourée",
+      "margin_eur": 215.10000000000002,
+      "margin_percent": 150,
+      "category": "Rangement",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJYD3032330",
+      "title": "Projecteur tactile avec écran orientable et haut-parleur",
+      "margin_eur": 192.78000000000003,
+      "margin_percent": 150,
+      "category": "Vidéoprojecteurs",
+      "status": "DRAFT"
+    },
+    {
+      "sku": "CJYL3038166",
+      "title": "Kit œillets 900 pièces, tailles 1/4, 5/16 et 3/8 po",
+      "margin_eur": 167.01,
+      "margin_percent": 150,
+      "category": "Outillage",
+      "status": "ACTIVE"
+    },
+    {
+      "sku": "CJYD2732623",
+      "title": "Écran portable tactile pour smartphone et laptop",
+      "margin_eur": 164.55,
+      "margin_percent": 150,
+      "category": "Écrans",
+      "status": "DRAFT"
+    }
+  ],
+  "top_categories": [
+    {
+      "category": "Rangement",
+      "count": 28
+    },
+    {
+      "category": "Outillage",
+      "count": 17
+    },
+    {
+      "category": "Vêtements Mixte",
+      "count": 9
+    },
+    {
+      "category": "Chaussures Homme",
+      "count": 9
+    },
+    {
+      "category": "Vidéoprojecteurs",
+      "count": 8
+    },
+    {
+      "category": "Jeux de Société",
+      "count": 7
+    },
+    {
+      "category": "Écrans",
+      "count": 6
+    },
+    {
+      "category": "Parfums",
+      "count": 5
+    },
+    {
+      "category": "Chaussures Femme",
+      "count": 5
+    },
+    {
+      "category": "Téléphones",
+      "count": 5
+    }
+  ],
+  "all_categories": [
+    {
+      "category": "Rangement",
+      "count": 28
+    },
+    {
+      "category": "Outillage",
+      "count": 17
+    },
+    {
+      "category": "Vêtements Mixte",
+      "count": 9
+    },
+    {
+      "category": "Chaussures Homme",
+      "count": 9
+    },
+    {
+      "category": "Vidéoprojecteurs",
+      "count": 8
+    },
+    {
+      "category": "Jeux de Société",
+      "count": 7
+    },
+    {
+      "category": "Écrans",
+      "count": 6
+    },
+    {
+      "category": "Parfums",
+      "count": 5
+    },
+    {
+      "category": "Chaussures Femme",
+      "count": 5
+    },
+    {
+      "category": "Téléphones",
+      "count": 5
+    },
+    {
+      "category": "Football",
+      "count": 5
+    },
+    {
+      "category": "Barbecue",
+      "count": 3
+    },
+    {
+      "category": "Livres Jeunesse",
+      "count": 3
+    },
+    {
+      "category": "Sacs Femme",
+      "count": 2
+    },
+    {
+      "category": "Souris",
+      "count": 2
+    },
+    {
+      "category": "Accessoires Femme",
+      "count": 1
+    },
+    {
+      "category": "Tablettes",
+      "count": 1
+    },
+    {
+      "category": "Chats",
+      "count": 1
+    },
+    {
+      "category": "Bien-être & Massage",
+      "count": 1
+    }
+  ],
+  "non_imported_products": [
+    {
+      "cj_product_id": "2608120207451624200",
+      "sku": "",
+      "title": "Women's Fashion Simplicity Square-cut Moissanite Silver Ring",
+      "reason": "Categorie Bijoux non activee en Shopify (categories.ts non modifie, instruction explicite) - produit non importe."
+    },
+    {
+      "cj_product_id": "2087099154061062146",
+      "sku": "CJDP3052651",
+      "title": "Lot de 2 écharpes de cheminée Halloween, dentelle noire",
+      "reason": "Erreur de categorisation Phase 3 confirmee lors de la revue manuelle finale pre-import : il s'agit d'une decoration de cheminee/manteau pour Halloween (\"Perfect For Fireplace, Haunted House, Party Decor\"), pas d'un accessoire de mode. Categorisee a tort en femme-accessoires (Phase 3 finalCategoryFitVerdict=PASS, score 85.2). Aucune categorie decoration/saisonniere pertinente dans ce lot d'import -> produit exclu (HOLD), non importe."
+    }
+  ],
+  "waves": {
+    "wave1": {
+      "count": 15,
+      "description": "A, score>=85"
+    },
+    "wave2": {
+      "count": 34,
+      "description": "A restants"
+    },
+    "wave3": {
+      "count": 69,
+      "description": "B valides"
+    }
+  },
+  "collections_created": 19,
+  "quality_fixes_applied": [
+    "productType corrige sur 2 produits reclassifies (homme-chaussures -> femme-chaussures)",
+    "599 libelles de variantes traduits en francais sur 32 produits (variantKey CJ -> francais, ex: Marron - 36)"
+  ],
+  "files": {
+    "import_execution": "data/cj-research-phase4/import-execution.json",
+    "execution_log": "reports/cj-phase4-execution-log.md",
+    "execution_final_json": "reports/cj-phase4-execution-final.json",
+    "execution_final_md": "reports/cj-phase4-execution-final.md"
+  }
+}

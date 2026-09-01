@@ -1,0 +1,196 @@
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  transition: background var(--duration-slow) var(--ease-out);
+}
+
+.content {
+  max-width: 520px;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 22px;
+  opacity: 0.92;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: #1a1d24;
+  font-weight: 900;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+.cta:hover {
+  background: var(--color-secondary-hover);
+  transform: translateY(-1px);
+}
+
+/*
+  Mission "RESTAURATION CAMPAGNE RENTRÉE" (20/08/2026) — badge de code promo
+  cliquable (copie presse-papiers) de la diapositive "rentree", restauré à
+  l'identique depuis le CSS réellement servi par le dernier déploiement de
+  production sain (voir Hero.tsx).
+*/
+.promoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 6px 8px 6px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+.promoBadge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+.promoBadge:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.promoLabel {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.promoCodeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px dashed rgba(5, 46, 22, 0.4);
+  border-radius: var(--radius-md);
+  color: #052e16;
+  font-family: var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.promoCodeText {
+  line-height: 1;
+}
+
+.promoHint {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+}
+.nav:hover {
+  background: #fff;
+}
+
+.navPrev {
+  left: 16px;
+}
+.navNext {
+  right: 16px;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+/*
+  Mission autonome (15/08/2026) — audit Lighthouse (accessibilité/mobile) :
+  ces boutons de pagination n'avaient que 8×8px de zone cliquable, bien en
+  dessous du minimum recommandé (24×24px, WCAG 2.5.8 — confirmé par l'audit :
+  `target-size`). Sur mobile en particulier (priorité explicite de la
+  mission), ça rend le changement de diapositive difficile à viser du doigt.
+  Le bouton (zone cliquable réelle) passe à 24×24px ; le repère visuel
+  (le petit rond/pilule blanc) reste identique en apparence via ::before —
+  aucun changement visuel, uniquement une zone de clic plus confortable.
+*/
+.dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width var(--duration-base) var(--ease-out), border-radius var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
+}
+.dotActive::before {
+  background: #fff;
+  width: 22px;
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 767px) {
+  .slide {
+    min-height: 240px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .nav {
+    display: none;
+  }
+  .promoHint {
+    display: none;
+  }
+  .promoBadge {
+    gap: 8px;
+    padding: 5px 6px 5px 10px;
+  }
+}

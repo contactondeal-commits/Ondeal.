@@ -1,0 +1,129 @@
+.footer {
+  background: var(--header-bg);
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 48px;
+}
+
+.brandRow {
+  padding: 28px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.socialIcon:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.newsletterRow {
+  padding: 24px 20px 0;
+}
+
+.logoChip {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  line-height: 0;
+}
+
+.logoImg {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+.title {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.column li a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.column li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.cookiesButton {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+.cookiesButton:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px 20px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.trustBadgeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .trustBadgeWrap {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,139 @@
+.row {
+  display: grid;
+  grid-template-columns: 88px 1fr 100px 100px;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.imageLink {
+  display: block;
+}
+
+.image {
+  width: 88px;
+  height: 88px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.title:hover {
+  color: var(--color-primary);
+}
+
+.brand {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.variantLabel {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.mobilePrice {
+  display: none;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 4px 10px;
+}
+.stepper button {
+  /* Mission autonome (15/08/2026) — audit Lighthouse (accessibilité) :
+     22×22px, sous le minimum WCAG 2.5.8 de 24×24px CSS px (violation
+     `target-size`, même classe de correctif que les puces du carrousel
+     homepage). Porté à 24×24 — changement visuel minime (+2px), icône
+     inchangée. */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.stepper button:disabled {
+  opacity: 0.4;
+}
+.stepper span {
+  min-width: 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.iconBtn {
+  /* Mission autonome (15/08/2026) — audit Lighthouse (accessibilité) :
+     hauteur réelle mesurée ~16px (aucun padding), sous le minimum WCAG
+     2.5.8 de 24×24px CSS px (violation `target-size`) — "Supprimer" et
+     "Favoris" sont des actions qui retirent/déplacent un article, un
+     minuscule décalage de clic ne doit pas les rater. `min-height: 24px`
+     pour atteindre la cible cliquable sans changer la taille du texte/
+     icône ni la mise en page. */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+.iconBtn:hover {
+  color: var(--color-primary);
+}
+
+.priceCol,
+.subtotalCol {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .row {
+    grid-template-columns: 72px 1fr;
+  }
+  .priceCol {
+    display: none;
+  }
+  .subtotalCol {
+    display: none;
+  }
+  .mobilePrice {
+    display: block;
+  }
+  .image {
+    width: 72px;
+    height: 72px;
+  }
+}

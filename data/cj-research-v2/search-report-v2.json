@@ -1,0 +1,52 @@
+[
+  {
+    "categoryId": "femme-chaussures",
+    "name": "Chaussures (femme)",
+    "target": 110,
+    "collected": 110,
+    "rejectedByAudit": 174,
+    "apiCalls": 3,
+    "exhausted": false,
+    "shortfall": 0
+  },
+  {
+    "categoryId": "homme-chaussures",
+    "name": "Chaussures (homme)",
+    "target": 100,
+    "collected": 87,
+    "rejectedByAudit": 2165,
+    "apiCalls": 30,
+    "exhausted": true,
+    "shortfall": 13
+  },
+  {
+    "categoryId": "tablettes",
+    "name": "Tablettes",
+    "target": 35,
+    "collected": 21,
+    "rejectedByAudit": 1446,
+    "apiCalls": 15,
+    "exhausted": true,
+    "shortfall": 14
+  },
+  {
+    "categoryId": "telephones",
+    "name": "Téléphones",
+    "target": 30,
+    "collected": 6,
+    "rejectedByAudit": 1130,
+    "apiCalls": 12,
+    "exhausted": true,
+    "shortfall": 24
+  },
+  {
+    "categoryId": "videoprojecteurs",
+    "name": "Vidéoprojecteurs",
+    "target": 60,
+    "collected": 14,
+    "rejectedByAudit": 1972,
+    "apiCalls": 20,
+    "exhausted": true,
+    "shortfall": 46
+  }
+]

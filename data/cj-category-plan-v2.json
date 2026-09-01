@@ -1,0 +1,662 @@
+{
+  "generatedAt": "2026-08-12",
+  "mission": "VALIDATION FINALE DU PLAN CJ ONDEAL AVANT RECHERCHE (v2)",
+  "safety": {
+    "active": 893,
+    "archived": 7175,
+    "draft": 301
+  },
+  "v2Baseline": {
+    "high": 462,
+    "medium": 24,
+    "low": 407,
+    "uncategorized": 387,
+    "total": 893
+  },
+  "prioriteP1Final": [
+    {
+      "categoryId": "femme-chaussures",
+      "name": "Chaussures (femme)",
+      "current": 0,
+      "objective": 55,
+      "toResearchCJ": 110,
+      "toSelectImport": 45,
+      "priority": "P1",
+      "justification": "Complète directement Vêtements femme (26 produits) déjà présent ; forte demande généraliste ; offre CJ large. Risque de retour lié aux pointures -> sélection stricte exigée (guide des tailles clair, plusieurs pointures, avis positifs). Objectif volontairement < 80 : catégorie neuve, à valider par les ventes avant d'aller plus loin."
+    },
+    {
+      "categoryId": "homme-chaussures",
+      "name": "Chaussures (homme)",
+      "current": 0,
+      "objective": 50,
+      "toResearchCJ": 100,
+      "toSelectImport": 40,
+      "priority": "P1",
+      "justification": "Même logique que Chaussures femme, complète Vêtements homme (22 produits). Risque de retour (pointures) identique -> sélection stricte. Objectif prudent, non maximal."
+    },
+    {
+      "categoryId": "tablettes",
+      "name": "Tablettes",
+      "current": 1,
+      "objective": 20,
+      "toResearchCJ": 35,
+      "toSelectImport": 15,
+      "priority": "P1",
+      "justification": "Électronique à attentes de garantie, mais tablettes génériques Android largement disponibles chez CJ avec un risque de contrefaçon/marque bien plus faible que les smartphones. Volume volontairement modeste : catégorie secondaire dans le positionnement actuel du catalogue (gadgets/mode/maison), pas un pilier."
+    },
+    {
+      "categoryId": "telephones",
+      "name": "Téléphones",
+      "current": 2,
+      "objective": 15,
+      "toResearchCJ": 30,
+      "toSelectImport": 13,
+      "priority": "P1",
+      "justification": "Risque élevé de contrefaçon/marque et attentes de garantie fortes pour de vrais smartphones (même logique de prudence que pour Ordinateurs/Télévisions). Objectif volontairement bas : privilégier des téléphones génériques/fonctions basiques plutôt que des flagships de marque, jamais de produit à risque de contrefaçon."
+    },
+    {
+      "categoryId": "videoprojecteurs",
+      "name": "Vidéoprojecteurs",
+      "current": 8,
+      "objective": 35,
+      "toResearchCJ": 60,
+      "toSelectImport": 27,
+      "priority": "P1",
+      "justification": "Catégorie en croissance (home cinéma), panier moyen plus élevé donc marge intéressante en valeur absolue même à faible volume. Profil logistique nettement plus favorable qu'un téléviseur (portable, moins volumineux/fragile). Bonne offre CJ sur les modèles mini/portables 1080p."
+    },
+    {
+      "categoryId": "rangement",
+      "name": "Rangement",
+      "current": 8,
+      "objective": 45,
+      "toResearchCJ": 90,
+      "toSelectImport": 37,
+      "priority": "P1",
+      "justification": "Produit léger, peu fragile, faible risque de retour, très large offre CJ, marge correcte. Complète naturellement Décoration (28 produits) déjà bien représentée. Un des meilleurs profils risque/opportunité de toute la liste."
+    },
+    {
+      "categoryId": "vetements-mixte",
+      "name": "Vêtements mixte / unisexe",
+      "current": 29,
+      "objective": 55,
+      "toResearchCJ": 70,
+      "toSelectImport": 26,
+      "priority": "P1",
+      "justification": "Catégorie déjà en forte croissance en V2 (+29 produits grâce à la nouvelle taxonomie), faible risque, bonne disponibilité CJ, alignée avec le positionnement mode généraliste du catalogue."
+    },
+    {
+      "categoryId": "bijoux",
+      "name": "Bijoux (catégorie proposée)",
+      "current": 147,
+      "objective": 180,
+      "toResearchCJ": 50,
+      "toSelectImport": 25,
+      "priority": "P1",
+      "justification": "147 produits existent déjà dans le catalogue ACTIVE (sans catégorie) -> l'essentiel de l'objectif est couvert par du RE-TAGGING, pas par du sourcing CJ. Mais 82% de ces 147 sont concentrés sur un seul sous-type (argent S925 + moissanite/pierres, profil fournisseur unique) : le sourcing CJ complémentaire doit prioriser la diversification (fantaisie, acier, prix d'entrée) plutôt qu'ajouter encore des pièces haut de gamme similaires."
+    }
+  ],
+  "prioriteP2": [
+    {
+      "categoryId": "ordinateurs",
+      "name": "Ordinateurs",
+      "current": 0,
+      "objective": 40,
+      "toResearchCJ": 30,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Se limiter aux mini-PC et accessoires informatiques, jamais des PC complets (garantie/SAV/retours). Contrairement aux Télévisions, CJ propose un vrai segment mini-PC légitime à faible risque logistique -> reste en P2 (pas NE PAS PRIORISER), mais strictement cadré."
+    },
+    {
+      "categoryId": "femme-accessoires",
+      "name": "Accessoires (femme)",
+      "current": 0,
+      "objective": 30,
+      "toResearchCJ": 40,
+      "toSelectImport": 20,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Faible risque, très large offre CJ (écharpes, ceintures, lunettes). Meilleur candidat P2 pour la phase 1 : aurait pu prétendre au P1 mais la liste P1 est volontairement limitée aux 8 catégories validées."
+    },
+    {
+      "categoryId": "homme-accessoires",
+      "name": "Accessoires (homme)",
+      "current": 0,
+      "objective": 25,
+      "toResearchCJ": 30,
+      "toSelectImport": 15,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Même logique que Accessoires femme, volume légèrement inférieur (demande généralement plus faible sur ce segment)."
+    },
+    {
+      "categoryId": "pc-portables",
+      "name": "PC portables",
+      "current": 1,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Même prudence que Ordinateurs : produit fragile, coûteux, fortes attentes de garantie. Se limiter à des accessoires PC portable (housses, supports, hubs) plutôt qu'à des ordinateurs portables complets."
+    },
+    {
+      "categoryId": "femme-sacs",
+      "name": "Sacs (femme)",
+      "current": 1,
+      "objective": 20,
+      "toResearchCJ": 30,
+      "toSelectImport": 15,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Bonne offre CJ, risque de retour modéré (pas de contrainte de taille comme les chaussures), complète le rayon mode femme."
+    },
+    {
+      "categoryId": "running",
+      "name": "Running",
+      "current": 1,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Niche sport, à combiner avec Fitness plutôt qu'à traiter isolément en phase 1."
+    },
+    {
+      "categoryId": "parfums",
+      "name": "Parfums",
+      "current": 2,
+      "objective": 15,
+      "toResearchCJ": 20,
+      "toSelectImport": 10,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Risque de contrefaçon à surveiller de près (marques de luxe) -> se limiter à des parfums génériques/inspirés clairement non contrefaits, conformément aux règles qualité."
+    },
+    {
+      "categoryId": "ecrans",
+      "name": "Écrans",
+      "current": 3,
+      "objective": 15,
+      "toResearchCJ": 20,
+      "toSelectImport": 10,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Objectif réduit par rapport à un défaut de 50 : les écrans partagent le profil fragile/volumineux des Télévisions. Se limiter à des petits écrans portables USB, jamais de grands panneaux."
+    },
+    {
+      "categoryId": "souris",
+      "name": "Souris",
+      "current": 3,
+      "objective": 20,
+      "toResearchCJ": 15,
+      "toSelectImport": 10,
+      "priority": "P2",
+      "phase1": true,
+      "justification": "Produit léger, faible risque, faible coût -> bon complément volume pour la phase 1 sans risque logistique."
+    },
+    {
+      "categoryId": "outils-jardin",
+      "name": "Outils de jardin",
+      "current": 3,
+      "objective": 25,
+      "toResearchCJ": 20,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Offre correcte, non prioritaire pour la phase 1 (volume déjà couvert par Rangement/Mobilier de jardin)."
+    },
+    {
+      "categoryId": "jeux-video",
+      "name": "Jeux vidéo",
+      "current": 3,
+      "objective": 20,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Risque de contrefaçon/licence à surveiller (jeux/consoles de marque) -> se limiter aux accessoires génériques."
+    },
+    {
+      "categoryId": "meubles",
+      "name": "Meubles",
+      "current": 4,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Produit volumineux/fragile, coûts de port élevés -> volume limité, non prioritaire phase 1."
+    },
+    {
+      "categoryId": "mobilier-jardin",
+      "name": "Mobilier de jardin",
+      "current": 5,
+      "objective": 20,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Volumineux, saisonnier -> non prioritaire phase 1, déjà correctement démarré (5 produits)."
+    },
+    {
+      "categoryId": "claviers",
+      "name": "Claviers",
+      "current": 9,
+      "objective": 25,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Déjà correctement représenté (9), complément possible en phase 2."
+    },
+    {
+      "categoryId": "soins-visage",
+      "name": "Soins visage",
+      "current": 10,
+      "objective": 25,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Une partie du déficit apparent vient probablement d'un problème de mots-clés (produits déjà au catalogue non détectés), pas d'un vrai vide -> à vérifier avant de sourcer davantage."
+    },
+    {
+      "categoryId": "fitness",
+      "name": "Fitness",
+      "current": 10,
+      "objective": 25,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Couverture correcte, non prioritaire phase 1."
+    },
+    {
+      "categoryId": "bien-etre-massage",
+      "name": "Bien-être / Massage",
+      "current": 12,
+      "objective": 25,
+      "toResearchCJ": 15,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Nouvelle catégorie déjà à 12 produits grâce à la V2, croissance naturelle suffisante pour l'instant."
+    },
+    {
+      "categoryId": "cuisine",
+      "name": "Cuisine",
+      "current": 14,
+      "objective": 25,
+      "toResearchCJ": 10,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Couverture déjà correcte."
+    },
+    {
+      "categoryId": "electromenager",
+      "name": "Électroménager",
+      "current": 19,
+      "objective": 30,
+      "toResearchCJ": 10,
+      "toSelectImport": 0,
+      "priority": "P2",
+      "phase1": false,
+      "justification": "Proche de l'objectif indicatif, non prioritaire phase 1."
+    }
+  ],
+  "prioriteP3": [
+    {
+      "categoryId": "chats",
+      "name": "Chats",
+      "current": 0,
+      "objective": 20,
+      "toResearchCJ": 20,
+      "priority": "P3",
+      "justification": "Catégorie facile (produits légers, faible risque), marché porteur. Pourrait passer en P2 lors d'une phase future si Chiens est renforcé en parallèle."
+    },
+    {
+      "categoryId": "filles",
+      "name": "Filles",
+      "current": 0,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "priority": "P3",
+      "justification": "CORRECTION V2 : classée par erreur en 'NE PAS PRIORISER' dans le plan V1 alors que l'analyse détaillée recommandait déjà P3. Chevauche partiellement Bébés (27) et Jouets (33) -> utile mais non urgent, à combiner avec la clarification des vêtements enfants."
+    },
+    {
+      "categoryId": "garcons",
+      "name": "Garçons",
+      "current": 0,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "priority": "P3",
+      "justification": "CORRECTION V2 : même erreur que Filles, corrigée pour la même raison (recommandation P3 déjà présente dans l'analyse détaillée V1, non reportée dans la table)."
+    },
+    {
+      "categoryId": "outillage",
+      "name": "Outillage",
+      "current": 0,
+      "objective": 15,
+      "toResearchCJ": 15,
+      "priority": "P3",
+      "justification": "CORRECTION V2 : même erreur (recommandation P3 déjà présente dans l'analyse détaillée V1, table mécanique l'avait classée à tort en NE PAS PRIORISER). Chevauche Quincaillerie/Outils de jardin déjà existants."
+    },
+    {
+      "categoryId": "quincaillerie",
+      "name": "Quincaillerie",
+      "current": 1,
+      "objective": 15,
+      "toResearchCJ": 10,
+      "priority": "P3",
+      "justification": "Complément mineur, faible risque."
+    },
+    {
+      "categoryId": "chiens",
+      "name": "Chiens",
+      "current": 1,
+      "objective": 15,
+      "toResearchCJ": 10,
+      "priority": "P3",
+      "justification": "Complément mineur, faible risque."
+    },
+    {
+      "categoryId": "photo",
+      "name": "Photo",
+      "current": 16,
+      "objective": 20,
+      "toResearchCJ": 5,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte."
+    },
+    {
+      "categoryId": "maquillage",
+      "name": "Maquillage",
+      "current": 20,
+      "objective": 25,
+      "toResearchCJ": 5,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte ; une partie du potentiel restant est probablement un problème de mots-clés, pas un vide réel."
+    },
+    {
+      "categoryId": "accessoires-electronique",
+      "name": "Accessoires électroniques",
+      "current": 22,
+      "objective": 25,
+      "toResearchCJ": 3,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte."
+    },
+    {
+      "categoryId": "homme-vetements",
+      "name": "Vêtements (homme)",
+      "current": 22,
+      "objective": 25,
+      "toResearchCJ": 3,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte."
+    },
+    {
+      "categoryId": "femme-vetements",
+      "name": "Vêtements (femme)",
+      "current": 26,
+      "objective": 28,
+      "toResearchCJ": 2,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte."
+    },
+    {
+      "categoryId": "decoration",
+      "name": "Décoration",
+      "current": 28,
+      "objective": 30,
+      "toResearchCJ": 2,
+      "priority": "P3",
+      "justification": "Déjà correctement couverte."
+    }
+  ],
+  "neJamaisPrioriser": [
+    {
+      "categoryId": "audio",
+      "name": "Audio",
+      "current": 54,
+      "priority": "NONE",
+      "justification": "Déjà très largement représentée."
+    },
+    {
+      "categoryId": "homme-montres",
+      "name": "Montres",
+      "current": 108,
+      "priority": "NONE",
+      "justification": "Déjà très largement représentée, catégorie la plus forte du catalogue."
+    },
+    {
+      "categoryId": "bebes",
+      "name": "Bébés",
+      "current": 27,
+      "priority": "NONE",
+      "justification": "Déjà correctement représentée."
+    },
+    {
+      "categoryId": "jouets",
+      "name": "Jouets",
+      "current": 33,
+      "priority": "NONE",
+      "justification": "Déjà correctement représentée."
+    },
+    {
+      "categoryId": "tv",
+      "name": "Télévisions",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "CORRECTION V2 (confirmée) : la table mécanique V1 affichait par erreur Télévisions en P1/objectif 80/à rechercher 80, en contradiction directe avec l'analyse détaillée qui recommandait déjà explicitement NE PAS PRIORISER (produit volumineux, fragile, marge CJ faible, quasiment aucune vraie télévision disponible chez CJ, frais de port prohibitifs, fort risque de retour transport). Corrigé et reconfirmé en V2 : 0 produit à rechercher. Un manque de 0 produit dans une catégorie ne justifie pas automatiquement un objectif de sourcing CJ."
+    },
+    {
+      "categoryId": "pc-fixes",
+      "name": "PC fixes",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "CORRECTION V2 : classée par erreur en P2/objectif 50 dans la table mécanique V1, alors que l'analyse détaillée recommandait déjà explicitement NE PAS PRIORISER (mêmes raisons que Télévisions/Ordinateurs complets : produit lourd, fragile, faible marge CJ, attentes de garantie fortes, offre CJ quasi inexistante pour des tours complètes). Corrigé pour la cohérence avec Ordinateurs (qui reste en P2 mais limité aux mini-PC/accessoires, jamais aux PC complets)."
+    },
+    {
+      "categoryId": "barbecue",
+      "name": "Barbecue",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Hors positionnement actuel (catalogue gadgets/mode/maison), produit volumineux, forte saisonnalité, concurrence spécialisée."
+    },
+    {
+      "categoryId": "football",
+      "name": "Football",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Hors positionnement actuel, marché dominé par des licences officielles -> risque de contrefaçon."
+    },
+    {
+      "categoryId": "romans",
+      "name": "Romans",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Le livre en français n'est presque jamais un produit CJ -> canal non adapté."
+    },
+    {
+      "categoryId": "bd",
+      "name": "BD",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Même raison que Romans."
+    },
+    {
+      "categoryId": "jeunesse-livres",
+      "name": "Jeunesse (livres)",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Même raison que Romans/BD."
+    },
+    {
+      "categoryId": "jeux-societe",
+      "name": "Jeux de société",
+      "current": 0,
+      "priority": "NONE",
+      "justification": "Marché dominé par des éditeurs identifiés -> risque marque/contrefaçon ; recommandation conditionnelle dans l'analyse détaillée, tranchée ici en NE PAS PRIORISER par prudence pour la phase 1."
+    }
+  ],
+  "categorieProposeeBijoux": {
+    "nomPropose": "Bijoux",
+    "emplacementRecommande": "Mode > Bijoux (nouvelle sous-catégorie, au même niveau que Vêtements mixte/unisexe)",
+    "nombreIdentifie": 147,
+    "pourcentageSansCategorie": "38%",
+    "sousTypesEstimes": {
+      "colliers_pendentifs": 45,
+      "bagues": 52,
+      "boucles_oreilles": 52,
+      "bracelets": 5,
+      "note": "Certains titres correspondent à plusieurs sous-types (ex: coffret collier+bracelet) -> la somme dépasse 147."
+    },
+    "profilFournisseur": "82% des 147 produits (121) sont des pièces 'S925 Sterling Silver' avec pierres moissanite/lab-grown et certificat GRA -> un seul profil fournisseur/style dominant, pas une diversité réelle de bijoux fantaisie.",
+    "exemples": [
+      "S925 Sterling Silver Three-Stone Drop Earrings, D-VVS1 Moissanite Bezel-Set Dangle, Platinum Plated 1.8g Women's Jewelry Gift Box",
+      "S925 Sterling Silver Teardrop Necklace, 1ct D-VVS1 Moissanite & Lab-Grown Gems, Platinum Plated 4g With GRA Certificate Gift Box",
+      "Stainless Steel Double-ring Earrings Light Luxury And High-end Autumnwinter Ear Accessories",
+      "Retro Floral Rhinestone-studded Tassel Stud Earrings",
+      "Bohemian Pendant Necklace And Bracelet Jewelry Set"
+    ],
+    "justification": "147 produits (38% des 387 sans catégorie) sont déjà des bijoux réels dans le catalogue ACTIVE existant, mais aucune catégorie 'Bijoux' n'existe dans la taxonomie actuelle -> ils resteront invisibles/mal rangés pour les clients tant que la catégorie n'est pas créée. Une seule catégorie plate suffit pour Ondeal (pas de Colliers/Bracelets/Bagues/Boucles d'oreilles séparées) : le volume par sous-type (45 à 52 produits) est notable mais pas encore suffisant pour justifier une sous-arborescence, conformément à la volonté d'une taxonomie simple.",
+    "decision": "PROPOSITION UNIQUEMENT — catégorie NON créée dans src/data/categories.ts, NON créée dans Shopify, en attente de validation explicite."
+  },
+  "corrections": [
+    "Télévisions : re-confirmée hors P1 (déjà corrigée en V1), justification détaillée reprise ici.",
+    "PC fixes : déplacée de P2 (erreur mécanique) vers NE PAS PRIORISER, cohérence avec Télévisions/Ordinateurs.",
+    "Filles : déplacée de NE PAS PRIORISER (erreur mécanique) vers P3, cohérence avec l'analyse détaillée V1.",
+    "Garçons : déplacée de NE PAS PRIORISER (erreur mécanique) vers P3, cohérence avec l'analyse détaillée V1.",
+    "Outillage : déplacée de NE PAS PRIORISER (erreur mécanique) vers P3, cohérence avec l'analyse détaillée V1.",
+    "Ordinateurs : reste en P2 (pas NE PAS PRIORISER) mais strictement cadrée (mini-PC/accessoires uniquement), distinction explicite avec Télévisions.",
+    "Écrans / PC portables : objectifs réduits par rapport au défaut de 50, même logique de prudence poids/fragilité que Télévisions."
+  ],
+  "phase1CJ": {
+    "totalARechercherCJ": 700,
+    "totalMaxASelectionnerImporter": 308,
+    "repartitionP1": [
+      {
+        "categoryId": "femme-chaussures",
+        "name": "Chaussures (femme)",
+        "toResearchCJ": 110,
+        "toSelectImport": 45
+      },
+      {
+        "categoryId": "homme-chaussures",
+        "name": "Chaussures (homme)",
+        "toResearchCJ": 100,
+        "toSelectImport": 40
+      },
+      {
+        "categoryId": "tablettes",
+        "name": "Tablettes",
+        "toResearchCJ": 35,
+        "toSelectImport": 15
+      },
+      {
+        "categoryId": "telephones",
+        "name": "Téléphones",
+        "toResearchCJ": 30,
+        "toSelectImport": 13
+      },
+      {
+        "categoryId": "videoprojecteurs",
+        "name": "Vidéoprojecteurs",
+        "toResearchCJ": 60,
+        "toSelectImport": 27
+      },
+      {
+        "categoryId": "rangement",
+        "name": "Rangement",
+        "toResearchCJ": 90,
+        "toSelectImport": 37
+      },
+      {
+        "categoryId": "vetements-mixte",
+        "name": "Vêtements mixte / unisexe",
+        "toResearchCJ": 70,
+        "toSelectImport": 26
+      },
+      {
+        "categoryId": "bijoux",
+        "name": "Bijoux (catégorie proposée)",
+        "toResearchCJ": 50,
+        "toSelectImport": 25
+      }
+    ],
+    "repartitionP2Selectionnee": [
+      {
+        "categoryId": "femme-accessoires",
+        "name": "Accessoires (femme)",
+        "toResearchCJ": 40,
+        "toSelectImport": 20
+      },
+      {
+        "categoryId": "homme-accessoires",
+        "name": "Accessoires (homme)",
+        "toResearchCJ": 30,
+        "toSelectImport": 15
+      },
+      {
+        "categoryId": "femme-sacs",
+        "name": "Sacs (femme)",
+        "toResearchCJ": 30,
+        "toSelectImport": 15
+      },
+      {
+        "categoryId": "parfums",
+        "name": "Parfums",
+        "toResearchCJ": 20,
+        "toSelectImport": 10
+      },
+      {
+        "categoryId": "ecrans",
+        "name": "Écrans",
+        "toResearchCJ": 20,
+        "toSelectImport": 10
+      },
+      {
+        "categoryId": "souris",
+        "name": "Souris",
+        "toResearchCJ": 15,
+        "toSelectImport": 10
+      }
+    ]
+  },
+  "reglesSelectionCJ": [
+    "Stock réel disponible chez le fournisseur CJ",
+    "Expédition vers la France possible",
+    "Délai de livraison raisonnable (idéalement < 15 jours)",
+    "Prix CJ compétitif ET marge réelle viable après x2,5 (vérifier le prix de vente final face à la concurrence, pas seulement le multiplicateur)",
+    "Qualité des images et du titre (exploitable sans réécriture complète)",
+    "Variantes/tailles disponibles et cohérentes",
+    "Faible risque de retour (produit simple, description claire, pas d'ambiguïté de taille pour les catégories sensibles)",
+    "Absence de marque/licence problématique ou de contrefaçon",
+    "Produit réellement adapté au positionnement Ondeal (généraliste gadgets/mode/maison), pas un produit hors sujet",
+    "Éviter : produits très lourds/fragiles/volumineux, produits à fort risque de retour, marques douteuses, absence de stock réel, expédition France impossible"
+  ],
+  "reglesDeduplicationEtendues": [
+    "SKU exact",
+    "productId CJ exact",
+    "Référence fournisseur",
+    "Titre identique ou quasi identique",
+    "Variantes (ne pas dupliquer un produit qui existe déjà avec d'autres couleurs/tailles comme fiche séparée)",
+    "Images identiques ou très similaires",
+    "Similarité produit / quasi-doublons : détecter les variations mineures du même produit (ex : 10 bracelets quasi identiques en couleurs différentes) et les regrouper en UNE fiche à variantes plutôt qu'en fiches séparées"
+  ],
+  "regleRechercheVsSelectionVsImport": "RECHERCHÉ = nombre de produits CJ à examiner/comparer. SÉLECTIONNÉ = sous-ensemble retenu après filtrage qualité (le meilleur, pas tout). IMPORTÉ = le sélectionné, éventuellement encore réduit, importé en DRAFT (jamais publié automatiquement). Exemple : rechercher 150 bijoux -> sélectionner les 50 meilleurs -> importer éventuellement ces 50 en DRAFT.",
+  "securite": {
+    "ARCHIVED_touches": 0,
+    "DRAFT_legacy_touches": 0,
+    "ACTIVE_modifies": 0,
+    "Tags_modifies": 0,
+    "Prix_modifies": 0,
+    "Stocks_modifies": 0,
+    "Produits_CJ_importes": 0,
+    "Produits_publies": 0
+  },
+  "regleFinale": "STOP après génération du plan V2. AUCUNE recherche CJ lancée. AUCUN import CJ. AUCUNE modification Shopify. En attente de validation explicite du plan V2 avant de commencer la recherche CJ."
+}

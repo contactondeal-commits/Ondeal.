@@ -1,0 +1,83 @@
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  z-index: 90;
+  animation: fadeIn var(--duration-slow) var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding: 28px 20px;
+}
+
+.column ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.column li a {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.column li a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.columnTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.columnTitle:hover {
+  color: var(--color-primary);
+}
+
+.mobileColumns {
+  padding: 8px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobileColumn ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobileColumn li a {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

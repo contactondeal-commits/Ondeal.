@@ -1,0 +1,155 @@
+{
+  "note": "Config Phase 1 recherche CJ réelle — Plan V2 validé par l'utilisateur le 12/08/2026. 14 catégories (8 P1 + 6 P2 taguées 'Oui — Phase 1'), total à rechercher = 700 (voir data/cj-category-plan-v2.json -> phase1CJ). Requêtes conçues en tenant compte des enseignements de l'audit Phase 2.5 (éviter les mots-clés trop génériques type 'desktop accessories' qui génèrent des faux positifs massifs).",
+  "categories": [
+    {
+      "id": "femme-chaussures",
+      "name": "Chaussures (femme)",
+      "toResearchCJ": 110,
+      "queries": [
+        "women's sneakers shoes",
+        "women's sandals shoes",
+        "women's boots shoes",
+        "women's flat shoes",
+        "women's slippers shoes",
+        "women's loafers shoes"
+      ]
+    },
+    {
+      "id": "homme-chaussures",
+      "name": "Chaussures (homme)",
+      "toResearchCJ": 100,
+      "queries": [
+        "men's sneakers shoes",
+        "men's sandals shoes",
+        "men's boots shoes",
+        "men's casual shoes",
+        "men's slippers shoes",
+        "men's loafers shoes"
+      ]
+    },
+    {
+      "id": "tablettes",
+      "name": "Tablettes",
+      "toResearchCJ": 35,
+      "queries": [
+        "android tablet",
+        "tablet pc",
+        "kids tablet"
+      ]
+    },
+    {
+      "id": "telephones",
+      "name": "Téléphones",
+      "toResearchCJ": 30,
+      "queries": [
+        "smartphone unlocked",
+        "mobile phone unlocked",
+        "rugged phone"
+      ]
+    },
+    {
+      "id": "videoprojecteurs",
+      "name": "Vidéoprojecteurs",
+      "toResearchCJ": 60,
+      "queries": [
+        "mini projector 1080p",
+        "portable home theater projector",
+        "led video projector",
+        "smart wifi projector"
+      ]
+    },
+    {
+      "id": "rangement",
+      "name": "Rangement",
+      "toResearchCJ": 90,
+      "queries": [
+        "closet storage organizer box",
+        "drawer organizer storage",
+        "wardrobe storage box",
+        "storage rack shelf",
+        "underbed storage bag"
+      ]
+    },
+    {
+      "id": "vetements-mixte",
+      "name": "Vêtements mixte / unisexe",
+      "toResearchCJ": 70,
+      "queries": [
+        "unisex hoodie",
+        "unisex sweatshirt",
+        "unisex t-shirt",
+        "unisex jacket"
+      ]
+    },
+    {
+      "id": "bijoux",
+      "name": "Bijoux (catégorie proposée)",
+      "toResearchCJ": 50,
+      "queries": [
+        "stainless steel fashion jewelry",
+        "fashion costume jewelry set",
+        "minimalist jewelry set"
+      ]
+    },
+    {
+      "id": "femme-accessoires",
+      "name": "Accessoires (femme)",
+      "toResearchCJ": 40,
+      "queries": [
+        "women belt fashion",
+        "women scarf fashion",
+        "women sunglasses fashion",
+        "women wallet fashion"
+      ]
+    },
+    {
+      "id": "homme-accessoires",
+      "name": "Accessoires (homme)",
+      "toResearchCJ": 30,
+      "queries": [
+        "men belt fashion",
+        "men wallet fashion",
+        "men sunglasses fashion",
+        "men baseball cap"
+      ]
+    },
+    {
+      "id": "femme-sacs",
+      "name": "Sacs (femme)",
+      "toResearchCJ": 30,
+      "queries": [
+        "women handbag",
+        "women tote bag",
+        "women crossbody bag"
+      ]
+    },
+    {
+      "id": "parfums",
+      "name": "Parfums",
+      "toResearchCJ": 20,
+      "queries": [
+        "unisex eau de parfum",
+        "fragrance perfume spray generic"
+      ]
+    },
+    {
+      "id": "ecrans",
+      "name": "Écrans",
+      "toResearchCJ": 20,
+      "queries": [
+        "monitor",
+        "portable monitor",
+        "usb c monitor"
+      ]
+    },
+    {
+      "id": "souris",
+      "name": "Souris",
+      "toResearchCJ": 15,
+      "queries": [
+        "wireless mouse",
+        "ergonomic gaming mouse"
+      ]
+    }
+  ]
+}

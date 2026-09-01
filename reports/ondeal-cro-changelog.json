@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-08-13",
+  "mission": "OPTIMISATION CRO ONDEAL.FR — PHASE 1",
+  "shopifyModifiedThisMission": false,
+  "entries": [
+    {
+      "id": "P0-1",
+      "priority": "P0",
+      "area": "reviews",
+      "problem": "ProductRating affichait 'Aucun avis' sur la quasi-totalité des ProductCard (969/970 produits sans avis réel), nuisant à la crédibilité perçue en vue liste.",
+      "rootCause": "ProductRating n'avait pas de mode masqué; ProductCard l'appelait systématiquement en clair même quand reviewsCount === 0.",
+      "change": "Ajout d'une prop hideWhenEmpty à ProductRating (retourne null si reviewsCount === 0 et prop active); activée dans ProductCard. La PDP conserve l'état honnête 'Aucun avis pour le moment' via ReviewsList (inchangé).",
+      "files": [
+        "src/components/products/ProductRating.tsx",
+        "src/components/products/ProductCard.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P0-2",
+      "priority": "P0",
+      "area": "pricing",
+      "problem": "Section homepage 'Offres du moment' affichée pour un seul produit tagué promotion sur 970, donnant une impression de site peu actif ou de promo trompeuse.",
+      "rootCause": "src/app/page.tsx rendait la section dès que deals.length > 0, sans seuil minimal de crédibilité. Le calcul du prix barré (oldPrice/discount) lui-même, vérifié dans mapStorefrontProduct, était déjà correct et basé uniquement sur compareAtPrice réel — aucune correction nécessaire sur ce point.",
+      "change": "Ajout de MIN_DEALS_TO_SHOW_SECTION = 4; la section 'Offres du moment' ne s'affiche que si au moins 4 produits réels qualifient.",
+      "files": [
+        "src/app/page.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P0-3",
+      "priority": "P0",
+      "area": "trust",
+      "problem": "Numéro de téléphone factice (tel:+33100000000) affiché sur /help; footer renvoyait toutes les pages légales/service client vers une page générique sans contenu dédié.",
+      "rootCause": "help/page.tsx contenait un numéro codé en dur sans source réelle; Footer.tsx ne liait aucune page légale dédiée; les données légales (raison sociale, SIRET, adresse, hébergeur) sont absentes du projet.",
+      "change": "Suppression du numéro factice (conservation du mailto réel). Création de 9 pages /legal/*: livraison et retours avec contenu réel réutilisé depuis help-data.ts; cgv, confidentialite, cookies, mentions-legales, garantie avec état honnête 'NOT AVAILABLE / en cours de finalisation' (noindex) faute de données réelles. Footer mis à jour pour pointer vers ces pages.",
+      "files": [
+        "src/app/help/page.tsx",
+        "src/components/layout/Footer.tsx",
+        "src/app/legal/legal.module.css",
+        "src/app/legal/LegalPendingPage.tsx",
+        "src/app/legal/cgv/page.tsx",
+        "src/app/legal/confidentialite/page.tsx",
+        "src/app/legal/cookies/page.tsx",
+        "src/app/legal/mentions-legales/page.tsx",
+        "src/app/legal/garantie/page.tsx",
+        "src/app/legal/livraison/page.tsx",
+        "src/app/legal/retours/page.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P0-4",
+      "priority": "P0",
+      "area": "filters",
+      "problem": "Filtres 'Note' et 'Livraison rapide' visibles dans FilterSidebar mais retournant systématiquement 0 résultat, trompant l'utilisateur sur la disponibilité réelle.",
+      "rootCause": "Absence de donnée réelle exploitable et cohérente sur l'ensemble du catalogue pour ces deux critères, confirmée par re-vérification du code actuel.",
+      "change": "Suppression complète des groupes de filtres UI 'Note' et 'Livraison rapide' dans FilterSidebar.tsx. Les types FilterState et filterProducts() sont conservés intacts (pas de régression sur le reste du filtrage), seule l'UI trompeuse a été retirée.",
+      "files": [
+        "src/components/filters/FilterSidebar.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P1-1",
+      "priority": "P1",
+      "area": "cart",
+      "problem": "Aucune confirmation visuelle après ajout au panier — l'utilisateur n'a aucun retour que l'action a fonctionné.",
+      "rootCause": "addToCart (useCart.ts) appelait directement le store Zustand sans aucun retour visuel.",
+      "change": "Création d'un système de toast éphémère (toastStore + ToastContainer, monté globalement dans SiteLayout). useCart.addToCart déclenche un toast (titre, quantité, prix réel, CTA 'Voir le panier') en plus de l'appel existant au store, sans modifier la logique Shopify Cart API sous-jacente.",
+      "files": [
+        "src/store/toastStore.ts",
+        "src/components/ui/ToastContainer.tsx",
+        "src/components/ui/ToastContainer.module.css",
+        "src/components/layout/SiteLayout.tsx",
+        "src/hooks/useCart.ts"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P1-2",
+      "priority": "P1",
+      "area": "mobile",
+      "problem": "Absence de CTA sticky mobile sur la page produit.",
+      "rootCause": "Aucune barre d'action persistante mobile n'existait dans le projet.",
+      "change": "Création de MobileStickyCta: barre fixe bas d'écran, mobile uniquement (matchMedia max-width 640px), visible via IntersectionObserver une fois le bloc d'achat initial sorti du viewport, respecte product.inStock réel, réutilise useCart().addToCart (déclenche le toast P1-1).",
+      "files": [
+        "src/components/products/MobileStickyCta.tsx",
+        "src/components/products/MobileStickyCta.module.css",
+        "src/app/product/[slug]/page.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P1-3",
+      "priority": "P1",
+      "area": "availability",
+      "problem": "Affichage du stock brut ('En stock (X disponibles)') basé sur totalInventory Shopify, dont 858/970 produits ont une valeur manifestement anormale (jusqu'à 3 440 217).",
+      "rootCause": "Affichage direct du champ numérique product.stock sans garde-fou dans product/[slug]/page.tsx.",
+      "change": "Remplacement par un signal strictement binaire 'En stock' / 'Rupture de stock' dérivé de product.inStock (availableForSale en priorité). Aucun chiffre, compteur ou fausse urgence affiché.",
+      "files": [
+        "src/app/product/[slug]/page.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P1-4",
+      "priority": "P1",
+      "area": "trust",
+      "problem": "Aucun badge de confiance près du CTA d'achat, ni sur la PDP ni au panier/checkout.",
+      "rootCause": "Aucun composant de ce type n'existait dans le projet.",
+      "change": "Création de TrustBadges (3 badges: paiement sécurisé Shopify, livraison offerte dès 39 €, retours sous 14 jours — chacun sourcé sur une donnée réelle citée en commentaire). Intégré sur la PDP, dans CartSummary (compact) et dans la vue checkout Shopify réel (compact).",
+      "files": [
+        "src/components/products/TrustBadges.tsx",
+        "src/components/products/TrustBadges.module.css",
+        "src/app/product/[slug]/page.tsx",
+        "src/components/cart/CartSummary.tsx",
+        "src/app/checkout/page.tsx"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    },
+    {
+      "id": "P2-1",
+      "priority": "P2",
+      "area": "cart",
+      "problem": "Le message de progression vers la livraison gratuite était uniquement textuel, sans repère visuel de progression.",
+      "rootCause": "CartSummary affichait déjà un message texte basé sur le seuil réel FREE_SHIPPING_THRESHOLD = 39 (pré-existant), mais sans barre de progression visuelle.",
+      "change": "Ajout d'une barre de progression visuelle (role=progressbar, pourcentage = sous-total réel / seuil réel) et d'un état 'Livraison offerte débloquée' une fois le seuil atteint. Seuil réutilisé, aucun seuil inventé.",
+      "files": [
+        "src/components/cart/CartSummary.tsx",
+        "src/components/cart/CartSummary.module.css"
+      ],
+      "shopifyModified": false,
+      "tested": true
+    }
+  ],
+  "p2NotImplementedThisPhase": [
+    {
+      "area": "hero",
+      "reason": "Hero homepage statique — le rendre data-driven nécessite une source de vérité produit/catégorie sans invention de promesse commerciale; reporté en Phase 2 conformément à la priorisation P2 après validation P0/P1."
+    },
+    {
+      "area": "category-availability",
+      "reason": "CategoryBlocks n'affiche pas de signal de disponibilité par catégorie; nécessiterait le même garde-fou anti-donnée-brute que P1-3; reporté en Phase 2."
+    },
+    {
+      "area": "search-double-query",
+      "reason": "Optimisation de performance de la double requête de recherche (search/page.tsx); reportée pour ne pas mélanger un changement de performance non trivial avec cette phase orientée conversion."
+    }
+  ]
+}

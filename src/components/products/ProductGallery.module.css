@@ -1,0 +1,154 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  /* Bug corrigé (15/08/2026) : sans min-width:0, un enfant flex non-wrappable
+     (voir .thumbs ci-dessous) pouvait forcer ce conteneur — et donc toute la
+     page produit — à déborder horizontalement sur les produits ayant
+     beaucoup de photos (constaté en direct par l'utilisateur sur mobile :
+     galerie ET bouton quantité coupés sur le bord droit de l'écran, sur
+     plusieurs catégories — Téléphones, Cuisine, Décoration — corrélé au
+     nombre de photos du produit, pas à la catégorie elle-même). */
+  min-width: 0;
+}
+
+.mainImage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  width: 100%;
+}
+
+/* Correction ciblée (mission "REFONTE CIBLÉE — carrousel + cadrage image
+   produit mobile", 14/08/2026) : sur mobile, l'image principale produit
+   (via PlaceholderImage, `object-fit: cover` en style inline) pouvait être
+   rognée/trop zoomée quand la photo réelle n'est pas carrée — signalé par
+   l'utilisateur : image coupée avant le bouton "Acheter maintenant".
+   Bascule sur `object-fit: contain` UNIQUEMENT ici (galerie principale PDP,
+   uniquement ≤767px) pour garantir la photo entièrement visible, avec un
+   fond neutre pour combler l'espace résiduel. `!important` nécessaire pour
+   surclasser le style inline posé par PlaceholderImage (comportement par
+   défaut `cover` volontairement inchangé partout ailleurs : miniatures,
+   cartes produit, plein écran, et desktop de cette même galerie). */
+@media (max-width: 767px) {
+  .mainImage :global(img) {
+    object-fit: contain !important;
+    background: var(--color-surface);
+  }
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+}
+.navBtn:hover {
+  background: #fff;
+}
+.navPrev {
+  left: 10px;
+}
+.navNext {
+  right: 10px;
+}
+
+.zoomBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: var(--radius-sm);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.zoomBtn:hover {
+  background: #fff;
+}
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+  /* Bug corrigé (15/08/2026) : les miniatures (.thumb, largeur fixe 64px,
+     flex-shrink:0) ne passaient jamais à la ligne et n'avaient pas de défilement
+     propre — sur un produit avec beaucoup de photos, leur largeur totale
+     dépassait celle de l'écran et poussait TOUTE la galerie (et la page) en
+     débordement horizontal. Cette rangée défile maintenant elle-même
+     horizontalement, indépendamment du reste de la page — même logique que le
+     carrousel de la homepage (CategoryBlocks), jamais de débordement de page. */
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.thumbActive {
+  border-color: var(--color-primary);
+}
+
+.fullscreenOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 24, 0.92);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreenImage {
+  width: min(80vw, 700px);
+  height: min(80vw, 700px);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

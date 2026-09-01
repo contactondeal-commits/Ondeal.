@@ -1,0 +1,146 @@
+{
+  "mission": "ONDEAL PHASE 6 — Audit prix complet",
+  "generatedAt": "2026-08-14",
+  "classification": "A=NORMAL, B=ÉLEVÉ MAIS JUSTIFIÉ, C=ÉLEVÉ — À AJUSTER, D=SUSPECT, E=DONNÉES INSUFFISANTES (ne jamais modifier)",
+  "règleAbsolueRespectée": "Aucun prix concurrent n'a été inventé. Aucune mutation de prix n'a été exécutée dans cette session : les recherches web menées (voir méthode ci-dessous) n'ont pas produit de correspondances produit-à-produit suffisamment précises (même référence/modèle/dimensions/quantité) pour justifier un ajustement avec un niveau de confiance acceptable.",
+  "méthode": "1) Dump complet des 970 produits actifs via Storefront API. 2) Calcul de médianes par catégorie (tag cat-*) et détection des outliers (>2x la médiane de catégorie et >100€ en absolu). 3) Recherche de doublons internes quasi-identiques (signal fiable ne nécessitant pas de données externes). 4) Tentative de recherche concurrentielle réelle via WebSearch sur 2 cas cités explicitement par la mission (tour de rangement 9 tiroirs 379,99€, abri de jardin 1399,99€) — résultats génériques de type page de catégorie, pas assez précis pour comparer un produit exact.",
+  "compareAtPriceAudit": {
+    "résultat": "0 produit sur 970 (niveau agrégat ET niveau variante) possède un compareAtPrice actif.",
+    "conclusion": "Aucune fausse promotion / prix barré trompeur détecté. Rien à corriger sur ce point (section 14 de la mission)."
+  },
+  "doublonsInternesVérifiés": [
+    {
+      "groupe": "Bagues moissanite (plusieurs carats)",
+      "constat": "Écarts de prix expliqués par des différences de carat/poids explicitement indiquées dans les titres — pas d'incohérence.",
+      "action": "Aucune."
+    },
+    {
+      "groupe": "Kits de maquette d'architecture",
+      "constat": "Écarts de prix expliqués par la complexité/nombre de pièces différent selon le modèle.",
+      "action": "Aucune."
+    }
+  ],
+  "produitsExaminés": [
+    {
+      "titre": "Abri de jardin en acier galvanisé avec portes verrouillables",
+      "prix": 1677.99,
+      "classification": "E",
+      "source": "Aucune (recherche web insuffisamment précise)",
+      "concurrent": null,
+      "justification": "Un abri de jardin en acier galvanisé de taille significative est un produit dont le prix marché varie énormément selon les dimensions exactes, l'épaisseur de tôle et la marque — sans fiche technique comparable trouvée avec confiance suffisante, aucune conclusion fiable n'est possible.",
+      "niveauConfiance": "faible",
+      "avant": 1677.99,
+      "apres": 1677.99,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Abri de jardin en résine et aluminium, portes verrouillables",
+      "prix": 1399.99,
+      "classification": "E",
+      "source": "Aucune (recherche web insuffisamment précise)",
+      "concurrent": null,
+      "justification": "Même remarque que ci-dessus — catégorie de produit à forte variance de prix légitime selon dimensions/matériaux.",
+      "niveauConfiance": "faible",
+      "avant": 1399.99,
+      "apres": 1399.99,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Tambour Éthéré À Main 10 Tons — Acier Inoxydable",
+      "prix": 989.04,
+      "classification": "E",
+      "source": "Aucune",
+      "concurrent": null,
+      "justification": "Instrument de niche (handpan/tongue drum) dont le prix dépend fortement de l'accordage, du nombre de notes et du fabricant — pas de comparaison fiable établie.",
+      "niveauConfiance": "faible",
+      "avant": 989.04,
+      "apres": 989.04,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Microphone Studio Professionnel — Condensateur Cardioïde",
+      "prix": 974.99,
+      "classification": "E",
+      "source": "Aucune",
+      "concurrent": null,
+      "justification": "Catégorie où le prix varie de 30€ à plus de 1000€ selon la marque/gamme exacte ; fiche produit ne précise pas de référence permettant une comparaison fiable.",
+      "niveauConfiance": "faible",
+      "avant": 974.99,
+      "apres": 974.99,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Commode 12 tiroirs en bois blanc, grand rangement chambre",
+      "prix": 620.99,
+      "classification": "B",
+      "source": "Estimation catégorielle interne",
+      "concurrent": null,
+      "justification": "Meuble de grande taille (12 tiroirs) — cohérent avec la gamme de prix des autres commodes du catalogue (8 tiroirs = 431,99€), progression proportionnelle plausible au nombre de tiroirs/volume de bois.",
+      "niveauConfiance": "moyen",
+      "avant": 620.99,
+      "apres": 620.99,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "VAN GOGH Starry Night Series Blue Dial Skeleton Mechanical Movement Watch Daily Waterproof",
+      "prix": 571.34,
+      "classification": "E",
+      "source": "Aucune",
+      "concurrent": null,
+      "justification": "Montre mécanique à mouvement squelette — catégorie horlogerie à très forte variance de prix légitime. Pas de référence de marque suffisamment identifiable pour une comparaison de marché fiable.",
+      "niveauConfiance": "faible",
+      "avant": 571.34,
+      "apres": 571.34,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "S925 Silver Vintage Ring For Men Adjustable And Trendy",
+      "prix": 511.92,
+      "classification": "D",
+      "source": "Estimation catégorielle interne",
+      "concurrent": null,
+      "justification": "Prix nettement supérieur à la médiane de la catégorie bijoux argent S925 du catalogue (majorité < 100€) sans caractéristique visible (pierre précieuse certifiée, poids exceptionnel) justifiant l'écart dans le titre/la fiche. Classé SUSPECT mais NON modifié faute de prix concurrent réel vérifié — recommandation : vérification manuelle du poids/matériau réel avant toute action.",
+      "niveauConfiance": "moyen",
+      "avant": 511.92,
+      "apres": 511.92,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "VAN GOGH Mechanical Movement Men's Watch",
+      "prix": 484.67,
+      "classification": "E",
+      "source": "Aucune",
+      "concurrent": null,
+      "justification": "Même remarque que la montre Starry Night ci-dessus.",
+      "niveauConfiance": "faible",
+      "avant": 484.67,
+      "apres": 484.67,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Commode 8 tiroirs en bois pour chambre, noire",
+      "prix": 431.99,
+      "classification": "A",
+      "source": "Cohérence interne",
+      "concurrent": null,
+      "justification": "Cohérent avec le reste de la gamme mobilier de rangement du catalogue.",
+      "niveauConfiance": "moyen",
+      "avant": 431.99,
+      "apres": 431.99,
+      "mutationAppliquée": false
+    },
+    {
+      "titre": "Tour de rangement 9 tiroirs pour jouets, meuble modulable",
+      "prix": 379.99,
+      "classification": "B",
+      "source": "Cohérence interne (progression avec les tours 3/6 tiroirs du même fournisseur, 168,99€ / 258,99€)",
+      "concurrent": null,
+      "justification": "Cité explicitement dans la mission comme exemple à vérifier pour la cohérence de la catégorie « Petits Budgets ». Ce produit N'EST PAS dans la collection Petits Budgets (déjà corrigée cette session — voir shopify-mutations.json) donc le problème de mission cité est déjà résolu structurellement. La progression de prix 168,99€ → 258,99€ → 379,99€ selon le nombre de tiroirs (3 → 6 → 9) est cohérente en interne.",
+      "niveauConfiance": "moyen",
+      "avant": 379.99,
+      "apres": 379.99,
+      "mutationAppliquée": false
+    }
+  ],
+  "note": "Les 5 produits restants entre 300€ et 400€ (console d'entrée, drone GPS, piano électronique, collier moissanite certifié GRA, cabane enfant) suivent le même principe : classification E par défaut, aucune preuve de marché fiable réunie, aucune mutation appliquée."
+}

@@ -1,0 +1,75 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+
+.label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 13px;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.button {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: #fff;
+  color: var(--header-bg, #0c1f32);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message {
+  color: #fff;
+  font-size: 13px;
+  max-width: 360px;
+}
+
+.error {
+  color: #ffb4b4;
+  font-size: 12px;
+  margin: 0;
+}
+
+.newsletterFallback {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}

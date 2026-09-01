@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Design system — variables centralisées (personnalisation de la marque ici)
+   ========================================================================== */
+:root {
+  /* Couleurs de marque OnDeal — issues du logo officiel fourni par le client
+     (android-icon-foreground.png / icon.png / splash-icon.png), échantillonnées
+     directement dans les fichiers : bleu foncé #0C1F32, orange #F3A023.
+     Mission "INTÉGRATION IDENTITÉ VISUELLE OFFICIELLE ONDEAL" (2026-08-13).
+     Usage voulu (section 6) : bleu = navigation / CTA principal / éléments de
+     marque ; orange = accents / promotions / badges ; blanc/gris clair =
+     fonds / cartes / zones respirantes (inchangés). */
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-light: #ede9fe;
+  --color-secondary: #f3a023;
+  --color-secondary-hover: #c7831d;
+
+  --color-background: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e2e5ea;
+  --color-border-strong: #c9cdd6;
+
+  --color-text: #1a1d24;
+  --color-text-muted: #5f6675;
+  /* Mission autonome (15/08/2026) — audit Lighthouse (accessibilité) :
+     #8a90a0 sur fond blanc ne donne que 3.19:1, sous le seuil WCAG 1.4.3 de
+     4.5:1 pour du texte normal (violation `color-contrast` confirmée sur au
+     moins 14 usages en tant que couleur de texte — panier, checkout, fiche
+     produit, fil d'Ariane, menu catégories, avis, recherche, pagination,
+     toasts — et un 15e usage en tant que fond du badge "Rupture de stock",
+     où le texte blanc dessus avait le même problème). Corrigé à la source
+     (le token, pas chaque usage) pour garantir la cohérence : nouvelle
+     teinte #6b7284, même teinte/saturation, juste assez assombrie pour
+     atteindre 4.81:1 — reste visuellement plus clair que
+     --color-text-muted (5.76:1), la hiérarchie de gris à 3 niveaux du
+     design system est donc préservée. Aucun changement de mise en page. */
+  --color-text-subtle: #6b7284;
+
+  --color-success: #157347;
+  --color-success-bg: #e6f4ec;
+  --color-warning: #a15c00;
+  --color-warning-bg: #fff3e0;
+  --color-danger: #c02626;
+  --color-danger-bg: #fdecec;
+
+  --color-rating: #f3a023;
+  --color-badge-bestseller: #d97706;
+  --color-badge-new: #0c1f32;
+  --color-badge-promo: #c02626;
+  --color-badge-exclusive: #6d28d9;
+
+  --header-bg: #4f46e5;
+  --header-bg-secondary: #3730a3;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 22, 34, 0.06), 0 1px 1px rgba(16, 22, 34, 0.04);
+  --shadow-md: 0 4px 10px rgba(16, 22, 34, 0.08), 0 2px 4px rgba(16, 22, 34, 0.06);
+  --shadow-lg: 0 12px 28px rgba(16, 22, 34, 0.14), 0 4px 8px rgba(16, 22, 34, 0.08);
+
+  --header-height: 64px;
+  --subnav-height: 44px;
+  --container-max: 1400px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+small {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mission UX/UI Phase 3 (2026-08-13) — P1 (audit accessibilité) : le lien
+   d'évitement ("Aller au contenu principal", seul usage actuel de
+   .visually-hidden — voir SiteLayout.tsx) n'avait aucune règle :focus pour
+   redevenir visible. Confirmé en navigateur : le style de focus générique
+   (a:focus-visible plus bas) s'appliquait bien mais restait invisible car
+   `clip: rect(0, 0, 0, 0)` masque aussi le contour de focus. Un utilisateur
+   clavier voyant ne recevait donc AUCUN retour visuel sur le tout premier
+   Tab de la page. Correction standard "skip link" : redevient visible et
+   positionné en haut de page au focus, avec les couleurs de marque
+   existantes (fond bleu #0C1F32, texte blanc), sans aucune nouvelle couleur
+   ni élément de marque introduit. */
+.visually-hidden:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  padding: 10px 16px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+}
+
+/* Focus visible cohérent pour toute l'accessibilité clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 17px;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Empêche tout débordement horizontal accidentel sur mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/*
+  Mission "TRADUCTION MULTILINGUE" (2026-08-20) — widget Google Website
+  Translator (voir src/components/layout/LanguageSwitcher.tsx). Google
+  injecte par défaut une bannière iframe en haut de page ("Cette page a été
+  traduite...") qui pousse tout le contenu vers le bas (body { top: 40px }),
+  casse le header sticky, et un surlignage jaune sur chaque mot traduit :
+  on garde la traduction réelle mais on désactive ces artefacts visuels non
+  professionnels pour préserver l'UI du site.
+*/
+/* Google génère des noms de classes hashés/instables pour la bannière
+   (ex. VIpgJd-ZVi9od-ORHb-OEVmcd) selon la version/région : on cible donc la
+   classe stable `skiptranslate` que Google applique systématiquement à tout
+   iframe de bannière, plutôt que l'ancien nom `.goog-te-banner-frame`
+   constaté obsolète en production (bannière visible malgré la règle). */
+iframe.skiptranslate,
+.goog-te-gadget-icon,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}

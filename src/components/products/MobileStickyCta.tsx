@@ -134,12 +134,21 @@ export default function MobileStickyCta({ product }: { product: Product }) {
 
   function handleAdd() {
     if (justAdded || !isSelectionComplete) return; // anti double-tap + jamais sans sélection complète
+    // BUG FIX (02/09/2026) — garde de sécurité en profondeur : n'ajoute
+    // jamais une variante résolue mais elle-même non disponible (voir
+    // `selectedAvailable` plus bas, même logique).
+    if (selectedVariant ? !selectedVariant.availableForSale : !product.inStock) return;
     addToCart(product, 1, selectedVariant);
     setJustAdded(true);
     guardTimeoutRef.current = setTimeout(() => setJustAdded(false), DOUBLE_TAP_GUARD_MS);
   }
 
   const needsSelection = requiresSelection && !isSelectionComplete;
+  // BUG FIX (02/09/2026) — même correctif que AddToCartPanel.tsx : une fois
+  // une variante précise résolue, c'est SA disponibilité réelle qui compte,
+  // jamais l'agrégat `product.inStock` seul (voir mapStorefrontProduct dans
+  // storefront.ts pour la cause racine côté `inStock`).
+  const selectedAvailable = selectedVariant ? selectedVariant.availableForSale : product.inStock;
 
   return (
     <div className={styles.root} role="region" aria-label="Ajout rapide au panier">
@@ -151,10 +160,10 @@ export default function MobileStickyCta({ product }: { product: Product }) {
         type="button"
         className={styles.cta}
         onClick={handleAdd}
-        disabled={!product.inStock || justAdded || needsSelection}
+        disabled={!selectedAvailable || justAdded || needsSelection}
       >
         <ShoppingCart size={17} />
-        {!product.inStock
+        {!selectedAvailable
           ? "Rupture de stock"
           : needsSelection
             ? "Choisir une option ↑"

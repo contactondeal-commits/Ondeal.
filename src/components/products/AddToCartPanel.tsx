@@ -21,10 +21,24 @@ export default function AddToCartPanel({ product }: { product: Product }) {
   // tant qu'un produit à variantes (taille, couleur…) n'a pas de sélection
   // complète, on n'ajoute JAMAIS une variante arbitraire au panier.
   const { requiresSelection, isSelectionComplete, selectedVariant } = useProductSelection();
-  const canAddToCart = product.inStock && isSelectionComplete;
+  // BUG FIX (02/09/2026) — voir mapStorefrontProduct (storefront.ts) pour la
+  // cause racine corrigée côté `product.inStock` (n'utilisait que la 1ère
+  // variante). Correctif complémentaire ici : une fois une variante précise
+  // résolue (`selectedVariant`, via ProductSelectionProvider), c'est SA
+  // propre disponibilité qui doit décider — jamais l'agrégat produit. Sans
+  // ce correctif, un produit avec au moins une variante en stock aurait
+  // `product.inStock === true`, ce qui aurait permis d'ajouter au panier
+  // une variante précisément sélectionnée mais elle-même épuisée. Ne se
+  // rabat sur `product.inStock` que si aucune variante n'est encore
+  // résolue (ex. produit sans variante réelle du tout).
+  const canAddToCart = isSelectionComplete && (selectedVariant ? selectedVariant.availableForSale : product.inStock);
 
   function handleBuyNow() {
     if (!isSelectionComplete) return;
+    // BUG FIX (02/09/2026) — garde de sécurité en profondeur, même logique
+    // que `canAddToCart` ci-dessus : n'achète jamais une variante résolue
+    // mais elle-même non disponible.
+    if (selectedVariant ? !selectedVariant.availableForSale : !product.inStock) return;
     addToCart(product, quantity, selectedVariant);
     router.push("/cart");
   }

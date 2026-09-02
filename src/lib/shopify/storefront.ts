@@ -128,6 +128,14 @@ const PRODUCT_FIELDS_BASE = `
     priceRange { minVariantPrice { amount } }
     compareAtPriceRange { minVariantPrice { amount } }
     totalInventory
+    // BUG FIX (02/09/2026, cause racine "rupture de stock" fausse) — voir
+    // mapStorefrontProduct ci-dessous : `availableForSale` au niveau PRODUIT
+    // (pas variante) est un champ natif Shopify Storefront API signifiant
+    // explicitement "au moins une variante de ce produit est disponible à la
+    // vente". C'est le SEUL signal fiable pour `inStock`, quel que soit le
+    // nombre de variantes chargées (1 sur les grilles, 250 sur la fiche
+    // produit) — voir le commentaire détaillé dans mapStorefrontProduct.
+    availableForSale
     options { name values }
     ratingValue: metafield(namespace: "reviews", key: "rating") { value }
     ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }
@@ -183,6 +191,7 @@ interface StorefrontProductNode {
   priceRange: { minVariantPrice: { amount: string } };
   compareAtPriceRange: { minVariantPrice: { amount: string } };
   totalInventory: number | null;
+  availableForSale: boolean;
   options: { name: string; values: string[] }[];
   variants: {
     nodes: {
@@ -282,7 +291,28 @@ function mapStorefrontProduct(node: StorefrontProductNode): Product {
   const price = Number(node.priceRange.minVariantPrice.amount);
   const compareAt = Number(node.compareAtPriceRange.minVariantPrice.amount || 0);
   const hasDiscount = compareAt > price;
-  const inStock = node.variants.nodes[0]?.availableForSale ?? (node.totalInventory ?? 0) > 0;
+  // BUG FIX (02/09/2026, cause racine réelle) — signalé par le client :
+  // "un produit actif avec du stock ne doit pas être exclu, un client doit
+  // pouvoir acheter un produit en stock affiché". Avant ce correctif,
+  // `inStock` ne regardait QUE `node.variants.nodes[0]` — la PREMIÈRE
+  // variante renvoyée par Shopify, quel que soit son rang dans la liste
+  // (couleur/taille), sans aucune garantie qu'elle soit la variante en
+  // stock. Un produit avec par ex. 5 couleurs dont seule la 1ère (renvoyée
+  // en position 0) est épuisée se retrouvait marqué `inStock: false` —
+  // badge "Rupture de stock" affiché, bouton "Ajouter au panier" désactivé
+  // PARTOUT (grilles ET fiche produit, voir AddToCartPanel.tsx et
+  // MobileStickyCta.tsx) — alors que les 4 autres couleurs étaient
+  // parfaitement disponibles et achetables. Corrigé en utilisant
+  // `node.availableForSale`, le champ Shopify Storefront API au niveau
+  // PRODUIT (pas variante) dont la définition officielle est exactement
+  // "vrai si AU MOINS UNE variante de ce produit est disponible à la
+  // vente" — fiable quel que soit le nombre de variantes chargées (1 sur
+  // les grilles via PRODUCT_FRAGMENT, 250 sur la fiche produit via
+  // PRODUCT_FRAGMENT_DETAILED). Voir aussi AddToCartPanel.tsx/
+  // MobileStickyCta.tsx pour le correctif complémentaire côté variante
+  // sélectionnée (ne jamais autoriser l'ajout au panier d'une variante
+  // précise si CETTE variante précise n'est, elle, pas disponible).
+  const inStock = node.availableForSale ?? node.variants.nodes.some((v) => v.availableForSale) ?? (node.totalInventory ?? 0) > 0;
 
   const badges = node.tags
     .map((tag) => TAG_TO_BADGE[tag.toLowerCase()])

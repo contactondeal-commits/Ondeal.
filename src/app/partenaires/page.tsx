@@ -2,9 +2,9 @@
 import { useState } from "react";
 
 export default function PartenairesPage() {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
     const fd = new FormData(e.currentTarget);

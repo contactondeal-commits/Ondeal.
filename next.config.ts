@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Audit sécurité 2026-09-02 — masque l'en-tête "X-Powered-By: Next.js"
+  // (réduction mineure de la surface d'information exposée aux scans
+  // automatisés ; n'a aucun effet sur le comportement du site).
+  poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,

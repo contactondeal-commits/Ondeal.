@@ -13,6 +13,7 @@ export default function QuestionForm({ productTitle, productSlug }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState(""); // honeypot anti-spam
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -21,7 +22,7 @@ export default function QuestionForm({ productTitle, productSlug }: Props) {
     const res = await fetch("/api/ask-question", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, question, productTitle, productSlug }),
+      body: JSON.stringify({ name, email, question, productTitle, productSlug, company_website: companyWebsite }),
     });
     setStatus(res.ok ? "success" : "error");
   }
@@ -39,6 +40,17 @@ export default function QuestionForm({ productTitle, productSlug }: Props) {
       ) : (
         <form className={styles.form} onSubmit={handleSubmit}>
           <h3 className={styles.formTitle}>Posez votre question</h3>
+          {/* Honeypot anti-spam : invisible pour un humain, souvent rempli par les bots. */}
+          <input
+            type="text"
+            name="company_website"
+            value={companyWebsite}
+            onChange={e => setCompanyWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+          />
           <input
             className={styles.input}
             type="text"

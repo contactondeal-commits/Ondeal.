@@ -17,6 +17,9 @@ export async function generateStaticParams() {
   return getAllCategoriesFlat(categories).map((c) => ({ slug: c.slug }));
 }
 
+// Audit performance 2026-09-02 — même correctif ISR que product/[slug].
+export const revalidate = 3600;
+
 export async function generateMetadata(props: PageProps<"/category/[slug]">): Promise<Metadata> {
   const { slug } = await props.params;
   const category = findCategoryBySlug(slug);

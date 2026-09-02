@@ -272,7 +272,30 @@ export default function CategoryBlocks({ heroProducts = {} }: CategoryBlocksProp
   // le <Link> réagir normalement. `didDragRef` empêche en plus qu'un vrai
   // glissé ne déclenche accidentellement une navigation au relâchement (voir
   // le gestionnaire onClickCapture posé sur le track).
-  const DRAG_THRESHOLD_PX = 6;
+  //
+  // BUG FIX (02/09/2026) — le correctif du 15/08/2026 ci-dessus n'a
+  // supprimé qu'UNE cause de clics cassés (capture systématique du
+  // pointeur). Il en restait une seconde, plus insidieuse : signalé à
+  // nouveau par le client le 02/09/2026 ("si un client clique sur une
+  // catégorie, ça revient sur la première image, il ne peut pas cliquer"),
+  // reproduit en conditions réelles sur ondeal.fr (simulation d'un clic
+  // souris avec ~8px de tremblement entre mousedown et mouseup, tout à fait
+  // normal pour un vrai visiteur — trackpad, léger mouvement de la main).
+  // Avec l'ancien seuil (6px), ce tremblement dépassait DRAG_THRESHOLD_PX :
+  // le clic était donc classé comme un glissé, `handleTrackClickCapture`
+  // annulait alors la navigation (preventDefault/stopPropagation), ET
+  // `handlePointerMove` déplaçait quand même `track.scrollLeft` du delta
+  // mesuré — décalant le carrousel vers l'arrière à chaque tentative de clic
+  // ratée. Répété plusieurs fois par un visiteur qui essaie de cliquer sans
+  // succès, ce petit décalage cumulé donne l'impression que le carrousel
+  // "revient sur la première image" au lieu de s'ouvrir. 6px est en dessous
+  // du tremblement normal de la main lors d'un clic (constaté même avec une
+  // souris standard, a fortiori au trackpad) : remonté à 20px, une valeur
+  // usuelle pour ce genre de distinction clic/glissé (ex. Swiper.js), très
+  // largement sous la distance d'un vrai geste de glissement intentionnel
+  // (plusieurs dizaines de pixels) mais confortablement au-dessus du
+  // tremblement accidentel d'un simple clic.
+  const DRAG_THRESHOLD_PX = 20;
 
   const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse") return;

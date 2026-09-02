@@ -14,29 +14,37 @@ export interface LocationData {
   delivery_days: string;
 }
 
+/**
+ * Corrigé (audit 2026-09-02) — toutes les entrées zone euro utilisaient le
+ * texte "EUR" au lieu du symbole "€" (ex: "12.34 EUR" au lieu de "12,34 €"),
+ * en désaccord avec le reste du code qui utilise déjà "€" partout ailleurs
+ * (DeliveryLocation.tsx, ProductCard.tsx avant hydratation) : les prix
+ * affichaient "€" au premier rendu puis basculaient sur "EUR" après
+ * hydratation. Coquille "gratuit des 80EUR" corrigée en "gratuit dès 80 €".
+ */
 export const LOCATION_CONFIG: Record<string, Omit<LocationData, "country_code" | "country_name" | "city" | "postal_code" | "rate">> = {
-  FR: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,90EUR (gratuit des 80EUR)", delivery_days: "2-5 jours ouvrés" },
-  BE: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  LU: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  DE: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  ES: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  IT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  CH: { currency: "CHF", currency_symbol: "CHF", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  NL: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  PT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  PL: { currency: "PLN", currency_symbol: "PLN", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "5-8 jours ouvrés" },
-  AT: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "4-7 jours ouvrés" },
-  SE: { currency: "SEK", currency_symbol: "SEK", ships_to: true, shipping_rate: "9,99EUR", delivery_days: "5-8 jours ouvrés" },
-  DK: { currency: "DKK", currency_symbol: "DKK", ships_to: true, shipping_rate: "9,99EUR", delivery_days: "5-8 jours ouvrés" },
-  IE: { currency: "EUR", currency_symbol: "EUR", ships_to: true, shipping_rate: "4,99EUR", delivery_days: "5-8 jours ouvrés" },
-  GB: { currency: "GBP", currency_symbol: "GBP", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "7-14 jours ouvrés" },
-  US: { currency: "USD", currency_symbol: "USD", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "10-20 jours ouvrés" },
-  CA: { currency: "CAD", currency_symbol: "CAD", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "10-20 jours ouvrés" },
-  MA: { currency: "MAD", currency_symbol: "MAD", ships_to: true, shipping_rate: "19,90EUR", delivery_days: "A confirmer avec le transporteur" },
-  DZ: { currency: "DZD", currency_symbol: "DZD", ships_to: true, shipping_rate: "19,90EUR", delivery_days: "A confirmer avec le transporteur" },
-  TN: { currency: "TND", currency_symbol: "TND", ships_to: true, shipping_rate: "19,90EUR", delivery_days: "A confirmer avec le transporteur" },
-  SN: { currency: "XOF", currency_symbol: "FCFA", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "A confirmer avec le transporteur" },
-  CI: { currency: "XOF", currency_symbol: "FCFA", ships_to: true, shipping_rate: "29,90EUR", delivery_days: "A confirmer avec le transporteur" },
+  FR: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,90 € (gratuit dès 80 €)", delivery_days: "2-5 jours ouvrés" },
+  BE: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  LU: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  DE: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  ES: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  IT: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  CH: { currency: "CHF", currency_symbol: "CHF", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  NL: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  PT: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  PL: { currency: "PLN", currency_symbol: "PLN", ships_to: true, shipping_rate: "4,99 €", delivery_days: "5-8 jours ouvrés" },
+  AT: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "4-7 jours ouvrés" },
+  SE: { currency: "SEK", currency_symbol: "SEK", ships_to: true, shipping_rate: "9,99 €", delivery_days: "5-8 jours ouvrés" },
+  DK: { currency: "DKK", currency_symbol: "DKK", ships_to: true, shipping_rate: "9,99 €", delivery_days: "5-8 jours ouvrés" },
+  IE: { currency: "EUR", currency_symbol: "€", ships_to: true, shipping_rate: "4,99 €", delivery_days: "5-8 jours ouvrés" },
+  GB: { currency: "GBP", currency_symbol: "£", ships_to: true, shipping_rate: "29,90 €", delivery_days: "7-14 jours ouvrés" },
+  US: { currency: "USD", currency_symbol: "USD", ships_to: true, shipping_rate: "29,90 €", delivery_days: "10-20 jours ouvrés" },
+  CA: { currency: "CAD", currency_symbol: "CAD", ships_to: true, shipping_rate: "29,90 €", delivery_days: "10-20 jours ouvrés" },
+  MA: { currency: "MAD", currency_symbol: "MAD", ships_to: true, shipping_rate: "19,90 €", delivery_days: "À confirmer avec le transporteur" },
+  DZ: { currency: "DZD", currency_symbol: "DZD", ships_to: true, shipping_rate: "19,90 €", delivery_days: "À confirmer avec le transporteur" },
+  TN: { currency: "TND", currency_symbol: "TND", ships_to: true, shipping_rate: "19,90 €", delivery_days: "À confirmer avec le transporteur" },
+  SN: { currency: "XOF", currency_symbol: "FCFA", ships_to: true, shipping_rate: "29,90 €", delivery_days: "À confirmer avec le transporteur" },
+  CI: { currency: "XOF", currency_symbol: "FCFA", ships_to: true, shipping_rate: "29,90 €", delivery_days: "À confirmer avec le transporteur" },
 };
 
 const FALLBACK_RATES: Record<string, number> = {
@@ -46,8 +54,8 @@ const FALLBACK_RATES: Record<string, number> = {
 
 const DEFAULT: LocationData = {
   country_code: "FR", country_name: "France", city: "",
-  currency: "EUR", currency_symbol: "EUR", rate: 1, ships_to: true,
-  shipping_rate: "4,90EUR", delivery_days: "2-5 jours ouvrés",
+  currency: "EUR", currency_symbol: "€", rate: 1, ships_to: true,
+  shipping_rate: "4,90 €", delivery_days: "2-5 jours ouvrés",
 };
 
 const RATES_KEY = "ondeal_rates";
@@ -79,7 +87,7 @@ interface LocationContextType {
 const LocationContext = createContext<LocationContextType>({
   location: DEFAULT,
   setLocation: () => {},
-  formatPrice: (p) => `${p.toFixed(2)} EUR`,
+  formatPrice: (p) => `${p.toFixed(2)} €`,
 });
 
 const STORAGE_KEY = "ondeal_location";
@@ -106,8 +114,8 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
         const d = await fetch("https://ipapi.co/json/").then(r => r.json());
         const code = d.country_code as string;
         const config = LOCATION_CONFIG[code] ?? {
-          currency: "EUR", currency_symbol: "EUR", ships_to: true,
-          shipping_rate: "19,90EUR", delivery_days: "A confirmer",
+          currency: "EUR", currency_symbol: "€", ships_to: true,
+          shipping_rate: "19,90 €", delivery_days: "À confirmer",
         };
         const rate = rates[config.currency] ?? FALLBACK_RATES[config.currency] ?? 1;
         const loc: LocationData = {

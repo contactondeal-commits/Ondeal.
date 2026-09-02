@@ -335,6 +335,35 @@ export default function CategoryBlocks({ heroProducts = {} }: CategoryBlocksProp
     (e: React.PointerEvent<HTMLDivElement>) => {
       const track = trackRef.current;
       if (!track) return;
+
+      // BUG FIX (02/09/2026, cause racine réelle) — signalé par le client
+      // en des termes très clairs et enfin décisifs : "si je bouge à peine
+      // la souris ça me remet au début". Reproduit : le carrousel repartait
+      // à la toute première carte au moindre survol de la souris, MÊME SANS
+      // AUCUN clic — ce que les deux correctifs précédents (seuil de glissé,
+      // pause au mousedown) ne pouvaient pas expliquer ni corriger, puisque
+      // tous deux supposaient qu'un vrai mousedown avait eu lieu avant.
+      //
+      // Cause : `onPointerMove` de React se déclenche pour TOUT mouvement du
+      // pointeur au-dessus du track, QUE LE BOUTON DE LA SOURIS SOIT ENFONCÉ
+      // OU NON (contrairement à ce que le code ci-dessous supposait
+      // implicitement). Or `dragStartXRef`/`dragStartScrollRef` ne sont
+      // renseignés QUE dans `handlePointerDown` (un vrai clic pressé) — tant
+      // qu'aucun mousedown n'a encore eu lieu depuis le chargement de la
+      // page (ou depuis le dernier relâchement), ces refs restent à leur
+      // valeur initiale (0). Un simple survol (sans bouton enfoncé)
+      // déclenchait donc `delta = e.clientX - 0`, une valeur énorme (des
+      // centaines de pixels) qui dépassait toujours largement
+      // DRAG_THRESHOLD_PX : le code classait alors ce simple survol comme un
+      // glissé, ET forçait `track.scrollLeft = dragStartScrollRef.current
+      // (0) - delta`, une valeur négative que le navigateur ramène à 0 — le
+      // carrousel était donc violemment repositionné sur sa toute première
+      // carte à chaque survol sans clic préalable. Corrigé en ignorant tout
+      // mouvement où aucun bouton de souris n'est réellement enfoncé
+      // (`e.buttons === 0`) : seul un vrai glissé bouton-maintenu peut
+      // désormais déplacer le carrousel ou être classé comme tel.
+      if (e.buttons === 0) return;
+
       const delta = e.clientX - dragStartXRef.current;
 
       if (!isPointerDraggingRef.current) {

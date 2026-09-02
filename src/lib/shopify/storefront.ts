@@ -51,7 +51,23 @@ export async function shopifyStorefrontGraphQL<T>(
       headers: {
         "Content-Type": "application/json",
         "X-Shopify-Storefront-Access-Token": token,
-  "Accept-Language": "fr",
+        // BUG FIX (02/09/2026) — Audit conversion : le français est déjà la
+        // langue PAR DÉFAUT de la boutique (confirmé côté Admin : le champ
+        // `title` brut, sans locale précisée, est déjà en français sur les
+        // produits corrigés). Cet en-tête "Accept-Language: fr" faisait
+        // pourtant appliquer par l'API Storefront une traduction "fr"
+        // enregistrée séparément sur certains produits — traductions
+        // parasites, restées en ANGLAIS depuis un ancien import/traduction
+        // jamais nettoyé, qui écrasaient donc le contenu principal
+        // (correctement français) par ce vieux texte anglais. Vérifié
+        // directement le 02/09/2026 sur un produit concret (id
+        // 16293943935311, "Sac à Dos Enfant Polyvalent...") : `title` par
+        // défaut = français correct, mais `translations(locale:"fr")` =
+        // ancien titre anglais. Sans cet en-tête, l'API Storefront renvoie
+        // directement le contenu par défaut (déjà français), sans passer par
+        // cette couche de traduction parasite. Explique la persistance de
+        // contenu anglais malgré plusieurs purges de cache + rebuilds
+        // complets (ce n'était pas un problème de cache Vercel).
       },
       body: JSON.stringify({ query, variables }),
       // Le catalogue public est raisonnablement stable : revalidation toutes

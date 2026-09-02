@@ -301,13 +301,35 @@ export default function CategoryBlocks({ heroProducts = {} }: CategoryBlocksProp
     if (e.pointerType !== "mouse") return;
     const track = trackRef.current;
     if (!track) return;
-    // Pas de capture ni de pause ici : on attend une vraie intention de
-    // glisser (voir handlePointerMove) pour ne jamais interférer avec un
-    // simple clic sur une carte.
+    // Pas de CAPTURE ici : on attend une vraie intention de glisser (voir
+    // handlePointerMove) pour ne jamais interférer avec un simple clic sur
+    // une carte — inchangé (voir commentaire du 15/08/2026 plus haut).
+    //
+    // BUG FIX (02/09/2026, suite) — cas signalé par le client : certaines
+    // catégories plus loin dans le carrousel (ex. "Livres", 9e position)
+    // restaient parfois impossibles à ouvrir même après le correctif du
+    // seuil de glissé ci-dessus. Cause supplémentaire identifiée : le seul
+    // déclencheur de pause() jusqu'ici était `onMouseEnter` sur le track
+    // (survol) ; hors survol continu, `scheduleResume` (1400ms) pouvait
+    // relancer le défilement automatique entre le moment où l'utilisateur
+    // amène sa souris vers une carte éloignée (ex. après plusieurs clics sur
+    // la flèche "suivant", en dehors du track) et le clic effectif — un
+    // visiteur qui hésite quelques instants avant de cliquer pouvait donc
+    // voir le carrousel reprendre son défilement juste avant que son clic
+    // n'arrive, décalant la carte visée sous le curseur. Le vrai lien de
+    // chaque carte n'a jamais été cassé (vérifié directement : navigation
+    // fonctionnelle quand déclenchée sans ce décalage) — seul le calage
+    // visuel au moment du clic pouvait être en cause. Cette pause() au
+    // mousedown est un filet de sécurité redondant et sans risque (déjà
+    // limitée aux événements souris par le `return` ci-dessus) : elle
+    // garantit que le carrousel est figé dès l'instant où le bouton de la
+    // souris est pressé sur une carte, même dans les cas où le survol seul
+    // n'aurait pas suffi à geler le défilement à temps.
+    pause();
     dragStartXRef.current = e.clientX;
     dragStartScrollRef.current = track.scrollLeft;
     didDragRef.current = false;
-  }, []);
+  }, [pause]);
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {

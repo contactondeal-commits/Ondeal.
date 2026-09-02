@@ -54,7 +54,11 @@ export default function CartSummary({ subtotal, itemCount }: CartSummaryProps) {
           ) : (
             <p className={styles.freeShippingNoteDone}>✓ Livraison offerte débloquée !</p>
           )}
-          <div className={styles.progressBar}>
+          {/* Fix 02-09-2026 : la classe utilisée ici (`progressBar`) n'existe
+              pas dans CartSummary.module.css, qui définit `.progressTrack` —
+              la barre de progression visuelle était donc invisible (className
+              undefined), seul le texte au-dessus s'affichait correctement. */}
+          <div className={styles.progressTrack}>
             <div className={styles.progressFill} style={{ width: `${progressPercent}%` }} />
           </div>
         </div>

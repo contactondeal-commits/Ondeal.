@@ -114,6 +114,22 @@ export async function shopifyStorefrontGraphQL<T>(
 // `inStock`) et co����teux c����t���� quota API Shopify. `options` reste ici (l����ger :
 // juste noms/valeurs, pas les variantes elles-m����mes) pour rester disponible
 // partout sans co����t significatif.
+// BUG FIX (02/09/2026, cause racine "rupture de stock" fausse) — voir
+// mapStorefrontProduct ci-dessous : `availableForSale` au niveau PRODUIT
+// (pas variante) est un champ natif Shopify Storefront API signifiant
+// explicitement "au moins une variante de ce produit est disponible à la
+// vente". C'est le SEUL signal fiable pour `inStock`, quel que soit le
+// nombre de variantes chargées (1 sur les grilles, 250 sur la fiche
+// produit) — voir le commentaire détaillé dans mapStorefrontProduct.
+//
+// CORRECTIF BUILD (02/09/2026) — ce commentaire vivait auparavant À
+// L'INTÉRIEUR du template literal GraphQL ci-dessous (entre `totalInventory`
+// et `availableForSale`). Un backtick présent dans le texte du commentaire
+// fermait prématurément la chaîne, cassant la compilation ("Expected a
+// semicolon", storefront.ts:132:43) et bloquant TOUS les déploiements
+// Vercel depuis ce commit. Un commentaire `//` n'a de toute façon aucun sens
+// à l'intérieur d'une chaîne GraphQL — il est donc déplacé ici, en dehors du
+// template literal.
 const PRODUCT_FIELDS_BASE = `
   fragment ProductFieldsBase on Product {
     id
@@ -128,13 +144,6 @@ const PRODUCT_FIELDS_BASE = `
     priceRange { minVariantPrice { amount } }
     compareAtPriceRange { minVariantPrice { amount } }
     totalInventory
-    // BUG FIX (02/09/2026, cause racine "rupture de stock" fausse) — voir
-    // mapStorefrontProduct ci-dessous : `availableForSale` au niveau PRODUIT
-    // (pas variante) est un champ natif Shopify Storefront API signifiant
-    // explicitement "au moins une variante de ce produit est disponible à la
-    // vente". C'est le SEUL signal fiable pour `inStock`, quel que soit le
-    // nombre de variantes chargées (1 sur les grilles, 250 sur la fiche
-    // produit) — voir le commentaire détaillé dans mapStorefrontProduct.
     availableForSale
     options { name values }
     ratingValue: metafield(namespace: "reviews", key: "rating") { value }

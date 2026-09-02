@@ -28,29 +28,57 @@ export async function generateStaticParams() {
   return allProducts.map((p) => ({ slug: p.slug }));
 }
 
+// Audit performance 2026-09-02 — pages générées en SSG (generateStaticParams)
+// mais sans revalidation : sans redéploiement, un changement de stock/prix
+// côté Shopify ne se reflétait jamais. ISR toutes les heures, cohérent avec
+// la fréquence déjà utilisée pour le flux Google Shopping (voir
+// src/app/feed/google-shopping.xml/route.ts).
+export const revalidate = 3600;
+
 export async function generateMetadata(props: PageProps<"/product/[slug]">): Promise<Metadata> {
-  try {
-    const { slug } = await props.params;
-    const product = await fetchProductBySlug(slug);
-    if (!product) return { title: "Produit introuvable" };
-    return {
+  // BUG FIX (02/09/2026) — voir commentaire détaillé sur ProductPage
+  // ci-dessous : ce try/catch avalait aussi les erreurs réseau/Shopify
+  // (timeout, throttling, erreur GraphQL transitoire) et les transformait en
+  // "Produit introuvable", identique à un vrai produit absent. Seul le cas
+  // "produit réellement introuvable" (product === null) doit produire ce
+  // titre ; toute autre erreur doit remonter à error.tsx (voir storefront.ts).
+  const { slug } = await props.params;
+  const product = await fetchProductBySlug(slug);
+  if (!product) return { title: "Produit introuvable" };
+  return {
+    title: product.title,
+    description: product.description.slice(0, 160),
+    alternates: { canonical: `/product/${product.slug}` },
+    openGraph: {
       title: product.title,
       description: product.description.slice(0, 160),
-      alternates: { canonical: `/product/${product.slug}` },
-      openGraph: {
-        title: product.title,
-        description: product.description.slice(0, 160),
-        type: "website",
-      },
-    };
-  } catch { return { title: "Produit introuvable" }; }
+      type: "website",
+    },
+  };
 }
 
 export default async function ProductPage(props: PageProps<"/product/[slug]">) {
-  try {
-    const { slug } = await props.params;
-    const product = await fetchProductBySlug(slug);
-    if (!product) notFound();
+  // BUG FIX (02/09/2026) — Audit conversion : cette page enveloppait TOUT
+  // (fetch Shopify + rendu) dans un try/catch qui appelait notFound() sur
+  // n'importe quelle exception — pas seulement "produit absent". Un timeout
+  // réseau Shopify, une erreur GraphQL transitoire (throttling, incident
+  // Storefront API) ou tout bug de rendu produisaient donc TOUS la même page
+  // "Produit introuvable" (HTTP 200, indiscernable d'un vrai 404). Pire :
+  // cette page factice était ensuite mise en cache ISR pour `revalidate`
+  // (3600s, voir plus bas) — une panne réseau de quelques secondes pouvait
+  // ainsi rendre un produit parfaitement valide invisible pendant 1h, sans
+  // laisser aucune trace exploitable. `src/lib/shopify/storefront.ts`
+  // documente pourtant explicitement que ces erreurs doivent remonter à
+  // src/app/error.tsx — jamais être avalées ici. Correctif : `notFound()`
+  // n'est plus appelé que si `product` est réellement `null` (produit
+  // confirmé absent du catalogue Shopify) ; toute exception se propage
+  // normalement vers error.tsx, et n'écrase jamais un rendu ISR déjà valide
+  // en cache (comportement standard de revalidation Next.js : en cas
+  // d'erreur pendant la régénération, l'ancienne version en cache continue
+  // d'être servie).
+  const { slug } = await props.params;
+  const product = await fetchProductBySlug(slug);
+  if (!product) notFound();
 
     const category = getAllCategoriesFlat().find((c) => c.id === (product.subcategoryId ?? product.categoryId));
     const [related, boughtTogether] = await Promise.all([
@@ -229,5 +257,4 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
         <RecentlyViewed excludeId={product.id} />
       </div>
     );
-  } catch { notFound(); }
 }

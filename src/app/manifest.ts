@@ -9,7 +9,7 @@ import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-config";
 // section 8.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SITE_NAME} — Votre marketplace au meilleur prix`,
+    name: `${SITE_NAME} — Votre boutique en ligne au meilleur prix`,
     short_name: SITE_NAME,
     description: SITE_DESCRIPTION,
     start_url: "/",

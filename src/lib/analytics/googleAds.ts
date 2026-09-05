@@ -1,17 +1,27 @@
 /**
- * Mission "GOOGLE ADS — REPARTIR PROPREMENT" (21/08/2026) — le compte
- * Google Ads avait 8 actions de conversion configurées côté Google Ads
- * (catégories Purchase, Begin Checkout, Add To Cart, Page View, View Item,
- * Search, Add Payment Info), toutes rattachées au tag `AW-18367168377`.
- * Vérification faite ce jour-là : ce tag n'apparaissait NULLE PART dans le
- * code du site (aucun fichier ne le référence, aucune variable d'env
- * NEXT_PUBLIC_GOOGLE_ADS_* n'existait). Les anciennes campagnes tournaient
- * donc sans aucun signal de conversion réel — ce qui explique la valeur de
- * conversion à 0,00 vue côté client, indépendamment des ventes réelles.
+ * Mission "GOOGLE ADS — REPARTIR PROPREMENT #2" (02/09/2026) — le tag Google
+ * Ads AW-18367168377 (et ses libellés) a été intégralement remplacé par un
+ * nouveau tag AW-18380483895 côté Google Ads. Les 4 libellés ci-dessous
+ * étaient encore ceux de l'ANCIEN tag : ils ne correspondaient plus à aucune
+ * action de conversion existante, donc `fireGoogleAdsConversion()` envoyait
+ * des événements vers des libellés morts. De plus, `NEXT_PUBLIC_GOOGLE_ADS_ID`
+ * n'était défini nulle part (ni .env.local, ni Vercel) : la fonction faisait
+ * un no-op silencieux à chaque appel, quel que soit le libellé.
  *
- * L'ID de tag et les libellés de conversion ci-dessous sont recopiés tels
- * quels depuis Google Ads (lus via le connecteur Supermetrics,
- * resource_type=conversions, le 21/08/2026) — aucun n'est inventé.
+ * Correction du 02/09/2026 : nouveaux libellés lus directement dans Google
+ * Ads (Objectifs → Actions de conversion → Sources de données → Gérer →
+ * Configurer avec une balise Google → Afficher l'extrait d'événement), tous
+ * rattachés au tag AW-18380483895 :
+ *   - addToCart / beginCheckout : réutilisent les actions de conversion
+ *     créées par l'app Shopify "Google & YouTube" ("Google Shopping App Add
+ *     To Cart" / "Google Shopping App Begin Checkout") — mêmes événements,
+ *     pas de doublon créé.
+ *   - viewItem / search : aucune action Shopify ne correspondait précisément
+ *     à ces deux signaux (uniquement "Page vue" générique), donc deux
+ *     actions dédiées ont été créées dans Google Ads ("Site — Vue produit",
+ *     "Site — Recherche"), catégorie "Page vue", réglées en action
+ *     SECONDAIRE (observation) pour ne pas diluer le signal d'enchère
+ *     principal — seul "Achat" doit rester l'objectif d'optimisation.
  *
  * Couverture actuelle : uniquement les étapes qui se produisent réellement
  * sur ce site Next.js (recherche, ajout panier, vue fiche produit, clic
@@ -23,10 +33,10 @@
 export const GOOGLE_ADS_CONVERSION_ID_ENV_KEY = "NEXT_PUBLIC_GOOGLE_ADS_ID";
 
 export const GOOGLE_ADS_CONVERSION_LABELS = {
-  addToCart: "IuvtCKWo29ocEPn-krZE",
-  search: "SRh-CK6o29ocEPn-krZE",
-  viewItem: "2eD0CKuo29ocEPn-krZE",
-  beginCheckout: "cJVdCKKo29ocEPn-krZE",
+  addToCart: "BhI5CI7q-OwcELfav7xE",
+  search: "pKPbCPnE-uwcELfav7xE",
+  viewItem: "IeeHCKuCh-0cELfav7xE",
+  beginCheckout: "51CsCIvq-OwcELfav7xE",
 } as const;
 
 export type GoogleAdsConversionKey = keyof typeof GOOGLE_ADS_CONVERSION_LABELS;

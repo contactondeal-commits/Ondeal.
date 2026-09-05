@@ -1,0 +1,1008 @@
+From a9b25fd4200ef0989df088e7e31bb75d41c6f09a Mon Sep 17 00:00:00 2001
+From: OnDeal Intelligence Agent <agent@ondeal.fr>
+Date: Fri, 4 Sep 2026 07:48:44 +0000
+Subject: [PATCH] =?UTF-8?q?Commercialisation=20Shopify=20App=20Store=20:?=
+ =?UTF-8?q?=20OAuth,=20webhooks=20conformit=C3=A9,=20facturation?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Installation en un clic (OAuth 2.0) :
+- GET /api/shopify/install — redirige vers Shopify avec state JWT signé (CSRF)
+- GET /api/shopify/callback — vérifie HMAC + state, échange le code, crée/relie
+  Organization/Store/Integration/User/Membership, enregistre les webhooks
+
+Webhooks obligatoires (HMAC-SHA256 vérifié sur le corps brut) :
+- customers/data_request, customers/redact, shop/redact (conformité GDPR,
+  requis par Shopify pour toute app publique)
+- app/uninstalled, app_subscriptions/update (opérationnels)
+
+Facturation Shopify Billing API (seule méthode autorisée par l'App Store) :
+- POST /api/billing/subscribe — crée une demande d'abonnement
+  (appSubscriptionCreate), jamais de charge sans confirmation marchand
+- Le plan n'est activé QUE par le webhook app_subscriptions/update avec le
+  statut ACTIVE confirmé par Shopify — jamais anticipé côté app
+- Tarifs réels : PRO 14,90€, BUSINESS 49,90€, AGENCY 99€ / mois (STARTER
+  gratuit, hors Billing API)
+- test:true par défaut hors production (aucun débit réel possible)
+
+Schéma : Organization.billingProvider/shopifySubscriptionId/Status/UpdatedAt,
+Store.shopifyGrantedScope (scopes réellement accordés, jamais supposés).
+
+Additif uniquement — Phase 3 (décision/snapshot) non touchée. Aucune
+mutation Shopify réelle déclenchée par ce commit. Aucun secret en dur
+(.env.example documente les nouvelles variables SHOPIFY_API_KEY/SECRET,
+valeurs "changeme").
+
+Vérifié : lint, typecheck, test (126/126), build, smoke test manuel des
+routes install/callback/webhooks/billing (redirection OAuth correcte,
+rejet HMAC/state invalides, rejet accès non authentifié).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01UTf3BW7sqxC8ba5vHnJ5aJ
+---
+ .env.example                                  |  18 ++
+ prisma/schema.prisma                          |  17 ++
+ src/app/api/billing/subscribe/route.ts        |  73 ++++++
+ src/app/api/shopify/callback/route.ts         | 132 +++++++++++
+ src/app/api/shopify/install/route.ts          |  31 +++
+ .../shopify/app-subscription-update/route.ts  |  68 ++++++
+ .../webhooks/shopify/app-uninstalled/route.ts |  34 +++
+ .../shopify/customers-data-request/route.ts   |  43 ++++
+ .../shopify/customers-redact/route.ts         |  46 ++++
+ .../api/webhooks/shopify/shop-redact/route.ts |  43 ++++
+ src/lib/integrations/shopify-billing.ts       | 112 +++++++++
+ src/lib/integrations/shopify-domain.ts        |  11 +
+ src/lib/integrations/shopify-oauth.ts         | 213 ++++++++++++++++++
+ 13 files changed, 841 insertions(+)
+ create mode 100644 src/app/api/billing/subscribe/route.ts
+ create mode 100644 src/app/api/shopify/callback/route.ts
+ create mode 100644 src/app/api/shopify/install/route.ts
+ create mode 100644 src/app/api/webhooks/shopify/app-subscription-update/route.ts
+ create mode 100644 src/app/api/webhooks/shopify/app-uninstalled/route.ts
+ create mode 100644 src/app/api/webhooks/shopify/customers-data-request/route.ts
+ create mode 100644 src/app/api/webhooks/shopify/customers-redact/route.ts
+ create mode 100644 src/app/api/webhooks/shopify/shop-redact/route.ts
+ create mode 100644 src/lib/integrations/shopify-billing.ts
+ create mode 100644 src/lib/integrations/shopify-domain.ts
+ create mode 100644 src/lib/integrations/shopify-oauth.ts
+
+diff --git a/.env.example b/.env.example
+index a826429..f372ba4 100644
+--- a/.env.example
++++ b/.env.example
+@@ -31,6 +31,24 @@ CREDENTIALS_ENCRYPTION_KEY="changeme-generate-a-real-32-byte-key"
+ #   JUDGEME_API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ #   JUDGEME_SHOP_DOMAIN=my-store.myshopify.com
+ 
++# --- Installation Shopify en un clic (OAuth) — commercialisation ----------
++# Requis UNIQUEMENT pour /api/shopify/install et /api/shopify/callback (le
++# parcours "jeton manuel" ci-dessus reste disponible sans ces variables,
++# pour vos boutiques pilotes). Valeurs à récupérer dans le Partner Dashboard
++# Shopify (dev.shopify.com) > votre app > Client credentials.
++# SHOPIFY_API_KEY n'est PAS secret (identifiant public de l'app). Seul
++# SHOPIFY_API_SECRET doit être traité comme un secret (jamais exposé côté
++# client, jamais dans les logs — utilisé pour vérifier les signatures HMAC
++# des callbacks OAuth et des webhooks).
++SHOPIFY_API_KEY="changeme"
++SHOPIFY_API_SECRET="changeme"
++# URLs à déclarer dans le Partner Dashboard (Configuration > URLs) :
++#   App URL              = ${APP_URL}
++#   Allowed redirection   = ${APP_URL}/api/shopify/callback
++# Webhooks obligatoires enregistrés automatiquement à l'installation (voir
++# src/lib/integrations/shopify-oauth.ts) : aucune configuration manuelle de
++# webhook nécessaire dans le Partner Dashboard.
++
+ # --- Assistant IA (optionnel) ---------------------------------------------
+ # Si absent, l'Assistant IA fonctionne en mode déterministe (moteur de
+ # requêtes basé sur des règles, sans appel à un modèle externe) : il répond
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index f07df7f..e9b2ce4 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -50,6 +50,18 @@ model Organization {
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+ 
++  // FACTURATION SHOPIFY (commercialisation) — null tant qu'aucun abonnement
++  // Shopify Billing n'a été créé. billingProvider distingue une organisation
++  // facturée via Shopify d'une organisation gérée manuellement (compte
++  // interne/pilote), pour ne jamais confondre les deux. Le statut brut
++  // Shopify (ACTIVE/PENDING/CANCELLED/EXPIRED/FROZEN/DECLINED) est conservé
++  // tel quel — Organization.plan n'est mis à jour QUE quand le webhook
++  // app_subscriptions/update confirme un statut ACTIVE.
++  billingProvider              String?   // "shopify" | null
++  shopifySubscriptionId        String?   // GID AppSubscription Shopify
++  shopifySubscriptionStatus    String?   // statut brut renvoyé par Shopify
++  shopifySubscriptionUpdatedAt DateTime?
++
+   memberships Membership[]
+   stores      Store[]
+ 
+@@ -108,6 +120,11 @@ model Store {
+   // CostAssumption produit n'existe. Explicitement étiquetées "estimées".
+   defaultShippingCost    Float?
+   defaultPaymentFeesRate Float?   // ex. 0.029 pour 2.9%
++  // Scopes Admin API réellement accordés lors de l'installation OAuth
++  // (ex. "read_products,read_inventory,read_orders"), tels que renvoyés par
++  // Shopify — jamais supposés. null = boutique connectée par jeton manuel
++  // (parcours pré-OAuth) ou non connectée.
++  shopifyGrantedScope    String?
+   createdAt      DateTime @default(now())
+   updatedAt      DateTime @updatedAt
+ 
+diff --git a/src/app/api/billing/subscribe/route.ts b/src/app/api/billing/subscribe/route.ts
+new file mode 100644
+index 0000000..3715929
+--- /dev/null
++++ b/src/app/api/billing/subscribe/route.ts
+@@ -0,0 +1,73 @@
++import { NextRequest, NextResponse } from "next/server";
++import { z } from "zod";
++import { prisma } from "@/lib/db";
++import { requireStoreAccess, requireRole, ADMIN_ROLES, AuthError } from "@/lib/auth";
++import { decryptJson } from "@/lib/crypto";
++import type { ShopifyCredentials } from "@/lib/integrations/shopify";
++import { createAppSubscription, PLAN_PRICING, type PaidPlan } from "@/lib/integrations/shopify-billing";
++import { logAudit } from "@/lib/audit";
++
++const bodySchema = z
++  .object({
++    storeId: z.string().min(1).max(64),
++    plan: z.enum(["PRO", "BUSINESS", "AGENCY"]),
++  })
++  .strict();
++
++// COMMERCIALISATION — initie un changement de plan payant. Ne modifie
++// JAMAIS Organization.plan directement : renvoie seulement l'URL de
++// confirmation Shopify. Le plan n'est réellement activé qu'à réception du
++// webhook app_subscriptions/update confirmant le statut ACTIVE — jamais
++// anticipé côté app (voir /api/webhooks/shopify/app-subscription-update).
++export async function POST(req: NextRequest) {
++  const parsed = bodySchema.safeParse(await req.json().catch(() => null));
++  if (!parsed.success) return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
++  const { storeId, plan } = parsed.data;
++
++  try {
++    const { userId, role } = await requireStoreAccess(storeId);
++    requireRole(role, ADMIN_ROLES);
++
++    const integration = await prisma.integration.findUnique({
++      where: { storeId_provider: { storeId, provider: "SHOPIFY" } },
++    });
++    if (!integration || integration.status !== "CONNECTED" || !integration.encryptedCredentials) {
++      return NextResponse.json(
++        { error: "Connectez d'abord Shopify (Paramètres > Intégrations) : la facturation passe par l'API Shopify de votre boutique." },
++        { status: 400 },
++      );
++    }
++
++    const creds = decryptJson<ShopifyCredentials>(integration.encryptedCredentials);
++    const appUrl = process.env.APP_URL?.replace(/\/$/, "") ?? "";
++    const returnUrl = `${appUrl}/settings?store=${storeId}&billing=return`;
++
++    const { confirmationUrl, subscriptionId } = await createAppSubscription(creds, plan as PaidPlan, returnUrl);
++
++    const store = await prisma.store.findUnique({ where: { id: storeId }, select: { organizationId: true } });
++    if (store) {
++      await prisma.organization.update({
++        where: { id: store.organizationId },
++        data: {
++          billingProvider: "shopify",
++          shopifySubscriptionId: subscriptionId,
++          shopifySubscriptionStatus: "PENDING",
++          shopifySubscriptionUpdatedAt: new Date(),
++        },
++      });
++      await logAudit({
++        storeId,
++        userId,
++        actorType: "user",
++        event: "billing.subscription_requested",
++        message: `Demande d'abonnement au plan ${plan} (${PLAN_PRICING[plan as PaidPlan]} EUR/mois) envoyée à Shopify — en attente d'approbation du marchand.`,
++      });
++    }
++
++    return NextResponse.json({ ok: true, confirmationUrl });
++  } catch (err) {
++    if (err instanceof AuthError) return NextResponse.json({ error: err.message }, { status: 403 });
++    console.error("[billing/subscribe] échec", { storeId, plan, error: err instanceof Error ? err.message : String(err) });
++    return NextResponse.json({ error: "Impossible de créer la demande d'abonnement auprès de Shopify pour le moment." }, { status: 502 });
++  }
++}
+diff --git a/src/app/api/shopify/callback/route.ts b/src/app/api/shopify/callback/route.ts
+new file mode 100644
+index 0000000..796a9d6
+--- /dev/null
++++ b/src/app/api/shopify/callback/route.ts
+@@ -0,0 +1,132 @@
++import { NextRequest, NextResponse } from "next/server";
++import crypto from "node:crypto";
++import { prisma } from "@/lib/db";
++import { hashPassword, createSession, setSessionCookie } from "@/lib/auth";
++import { encryptJson } from "@/lib/crypto";
++import { logAudit } from "@/lib/audit";
++import { normalizeMyshopifyDomain } from "@/lib/integrations/shopify-domain";
++import type { ShopifyCredentials } from "@/lib/integrations/shopify";
++import {
++  verifyOAuthCallbackHmac,
++  verifyOAuthState,
++  exchangeCodeForAccessToken,
++  fetchShopInfo,
++  registerMandatoryWebhooks,
++} from "@/lib/integrations/shopify-oauth";
++
++// COMMERCIALISATION — retour d'autorisation Shopify. Crée ou retrouve
++// l'Organization/Store correspondant à la boutique, connecte l'intégration
++// Shopify, enregistre les webhooks obligatoires, puis ouvre une session pour
++// le marchand. AUCUNE valeur n'est inventée : en cas d'échec à n'importe
++// quelle étape, l'installation est refusée avec un message clair plutôt que
++// de créer un état partiel silencieux.
++export async function GET(req: NextRequest) {
++  const params = req.nextUrl.searchParams;
++  const shop = normalizeMyshopifyDomain(params.get("shop"));
++  const code = params.get("code");
++  const state = params.get("state");
++
++  if (!shop || !code || !state) {
++    return NextResponse.json({ error: "Paramètres OAuth manquants." }, { status: 400 });
++  }
++
++  // 1. HMAC de la requête (paramètres signés par Shopify) — anti-falsification.
++  if (!verifyOAuthCallbackHmac(params)) {
++    console.error("[shopify/callback] HMAC invalide", { shop });
++    return NextResponse.json({ error: "Signature de la requête invalide." }, { status: 401 });
++  }
++
++  // 2. État anti-CSRF (émis par /api/shopify/install, à courte durée de vie).
++  if (!(await verifyOAuthState(state, shop))) {
++    console.error("[shopify/callback] state invalide ou expiré", { shop });
++    return NextResponse.json({ error: "Session d'installation invalide ou expirée. Relancez l'installation." }, { status: 401 });
++  }
++
++  try {
++    // 3. Échange du code contre un jeton d'accès (une seule fois — Shopify
++    // invalide un code déjà utilisé).
++    const { accessToken, scope } = await exchangeCodeForAccessToken(shop, code);
++    const creds: ShopifyCredentials = { domain: shop, accessToken };
++
++    // 4. Informations réelles de la boutique (jamais devinées).
++    const shopInfo = await fetchShopInfo(creds);
++
++    // 5. Organization + Store : retrouvés par domaine si déjà connus
++    // (réinstallation), sinon créés. Un Store existant conserve son
++    // historique (produits, décisions, audit) — jamais recréé de zéro.
++    let store = await prisma.store.findFirst({ where: { domain: shop } });
++    let organizationId: string;
++
++    if (store) {
++      organizationId = store.organizationId;
++    } else {
++      const organization = await prisma.organization.create({
++        data: { name: shopInfo.name || shop, plan: "STARTER" },
++      });
++      organizationId = organization.id;
++      store = await prisma.store.create({
++        data: { organizationId, name: shopInfo.name || shop, domain: shop },
++      });
++    }
++
++    await prisma.store.update({ where: { id: store.id }, data: { shopifyGrantedScope: scope } });
++
++    // 6. Intégration Shopify — jeton chiffré (AES-256-GCM), jamais en clair.
++    await prisma.integration.upsert({
++      where: { storeId_provider: { storeId: store.id, provider: "SHOPIFY" } },
++      create: { storeId: store.id, provider: "SHOPIFY", status: "CONNECTED", encryptedCredentials: encryptJson(creds) },
++      update: { status: "CONNECTED", encryptedCredentials: encryptJson(creds), lastError: null },
++    });
++
++    // 7. Utilisateur lié à l'installation. Un marchand qui installe via
++    // OAuth n'a jamais saisi de mot de passe OnDeal — un hash aléatoire
++    // inutilisable est stocké (le champ est requis en base) ; ce compte ne
++    // se connecte que via ce flux OAuth ou, plus tard, via l'app embarquée
++    // (jetons de session Shopify).
++    let user = shopInfo.email ? await prisma.user.findUnique({ where: { email: shopInfo.email } }) : null;
++    if (!user) {
++      const unusablePassword = await hashPassword(crypto.randomBytes(32).toString("hex"));
++      user = await prisma.user.create({
++        data: {
++          email: shopInfo.email ?? `${shop}@shopify-install.ondeal.internal`,
++          passwordHash: unusablePassword,
++          name: shopInfo.name || shop,
++        },
++      });
++    }
++
++    await prisma.membership.upsert({
++      where: { userId_organizationId: { userId: user.id, organizationId } },
++      create: { userId: user.id, organizationId, role: "OWNER" },
++      update: {},
++    });
++
++    // 8. Webhooks obligatoires (conformité) + opérationnels — best-effort,
++    // erreurs loggées sans bloquer l'installation (voir registerMandatoryWebhooks).
++    await registerMandatoryWebhooks(creds, store.id);
++
++    await logAudit({
++      storeId: store.id,
++      userId: user.id,
++      actorType: "system",
++      event: "integration.oauth_installed",
++      message: `Boutique Shopify ${shop} installée via OAuth (scope: ${scope}).`,
++    });
++
++    // 9. Session ouverte pour le marchand, redirection vers l'app.
++    // NOTE — cette redirection va vers l'app en accès direct (hors iframe
++    // admin Shopify) : l'embedding complet (App Bridge + jetons de session)
++    // est une étape distincte, pas encore construite à ce stade.
++    const token = await createSession({ userId: user.id, email: user.email });
++    await setSessionCookie(token);
++
++    const appUrl = process.env.APP_URL?.replace(/\/$/, "") ?? "";
++    return NextResponse.redirect(`${appUrl}/dashboard?store=${store.id}`, { status: 302 });
++  } catch (err) {
++    console.error("[shopify/callback] échec de l'installation", { shop, error: err instanceof Error ? err.message : String(err) });
++    return NextResponse.json(
++      { error: "L'installation a échoué. Aucune donnée n'a été enregistrée pour cette étape. Réessayez depuis Shopify." },
++      { status: 502 },
++    );
++  }
++}
+diff --git a/src/app/api/shopify/install/route.ts b/src/app/api/shopify/install/route.ts
+new file mode 100644
+index 0000000..28e9ec0
+--- /dev/null
++++ b/src/app/api/shopify/install/route.ts
+@@ -0,0 +1,31 @@
++import { NextRequest, NextResponse } from "next/server";
++import { normalizeMyshopifyDomain } from "@/lib/integrations/shopify-domain";
++import { buildInstallUrl, signOAuthState } from "@/lib/integrations/shopify-oauth";
++
++// COMMERCIALISATION — point d'entrée "Installer sur Shopify". Un marchand
++// arrive ici avec ?shop=ma-boutique.myshopify.com (depuis le lien d'install
++// du site public, ou depuis le Shopify App Store une fois listée) et est
++// redirigé vers l'écran d'autorisation Shopify. Route GET conforme au
++// standard OAuth Shopify (pas d'action destructrice, sans état modifié en base).
++export async function GET(req: NextRequest) {
++  const shopParam = req.nextUrl.searchParams.get("shop");
++  const shop = normalizeMyshopifyDomain(shopParam);
++  if (!shop) {
++    return NextResponse.json(
++      { error: "Paramètre 'shop' manquant ou invalide (attendu : ma-boutique.myshopify.com)." },
++      { status: 400 },
++    );
++  }
++
++  try {
++    const state = await signOAuthState(shop);
++    const installUrl = buildInstallUrl(shop, state);
++    return NextResponse.redirect(installUrl, { status: 302 });
++  } catch (err) {
++    console.error("[shopify/install] configuration manquante", { error: err instanceof Error ? err.message : String(err) });
++    return NextResponse.json(
++      { error: "Installation Shopify indisponible pour le moment (configuration serveur incomplète)." },
++      { status: 503 },
++    );
++  }
++}
+diff --git a/src/app/api/webhooks/shopify/app-subscription-update/route.ts b/src/app/api/webhooks/shopify/app-subscription-update/route.ts
+new file mode 100644
+index 0000000..bb8defa
+--- /dev/null
++++ b/src/app/api/webhooks/shopify/app-subscription-update/route.ts
+@@ -0,0 +1,68 @@
++import { NextRequest, NextResponse } from "next/server";
++import { prisma } from "@/lib/db";
++import { verifyShopifyWebhookHmac } from "@/lib/integrations/shopify-oauth";
++import { planFromSubscriptionName } from "@/lib/integrations/shopify-billing";
++import { logAudit } from "@/lib/audit";
++
++// COMMERCIALISATION — webhook app_subscriptions/update. SEUL point d'entrée
++// qui active réellement un plan payant : le statut ACTIVE confirmé par
++// Shopify ici, jamais anticipé côté app au moment de la demande (voir
++// /api/billing/subscribe). Un statut CANCELLED/EXPIRED/FROZEN/DECLINED
++// repasse l'organisation en plan STARTER (dégradation immédiate, jamais de
++// plan payant maintenu sans abonnement actif confirmé par Shopify).
++export async function POST(req: NextRequest) {
++  const rawBody = await req.text();
++  const hmac = req.headers.get("x-shopify-hmac-sha256");
++  if (!verifyShopifyWebhookHmac(rawBody, hmac)) {
++    return NextResponse.json({ error: "Signature invalide." }, { status: 401 });
++  }
++
++  let payload: { app_subscription?: { admin_graphql_api_id?: string; name?: string; status?: string } } = {};
++  try {
++    payload = JSON.parse(rawBody);
++  } catch {
++    return NextResponse.json({ error: "Corps de requête invalide." }, { status: 400 });
++  }
++
++  const sub = payload.app_subscription;
++  const shopDomain = req.headers.get("x-shopify-shop-domain");
++  if (!sub?.admin_graphql_api_id || !sub.status || !shopDomain) {
++    return NextResponse.json({ ok: true }, { status: 200 });
++  }
++
++  const store = await prisma.store.findFirst({ where: { domain: shopDomain }, select: { id: true, organizationId: true } });
++  if (!store) return NextResponse.json({ ok: true }, { status: 200 });
++
++  const organization = await prisma.organization.findUnique({ where: { id: store.organizationId } });
++  // Ignore les mises à jour d'un abonnement qui n'est plus celui en cours
++  // pour cette organisation (ex. ancienne demande annulée puis relancée).
++  if (!organization || organization.shopifySubscriptionId !== sub.admin_graphql_api_id) {
++    return NextResponse.json({ ok: true }, { status: 200 });
++  }
++
++  const status = sub.status.toUpperCase();
++  const matchedPlan = sub.name ? planFromSubscriptionName(sub.name) : null;
++  const newPlan = status === "ACTIVE" && matchedPlan ? matchedPlan : "STARTER";
++
++  await prisma.organization.update({
++    where: { id: organization.id },
++    data: {
++      plan: newPlan,
++      shopifySubscriptionStatus: status,
++      shopifySubscriptionUpdatedAt: new Date(),
++    },
++  });
++
++  await logAudit({
++    storeId: store.id,
++    actorType: "system",
++    event: "billing.subscription_updated",
++    message:
++      status === "ACTIVE"
++        ? `Abonnement Shopify confirmé actif — plan ${newPlan} activé.`
++        : `Abonnement Shopify au statut ${status} — organisation repassée au plan STARTER.`,
++    meta: { subscriptionId: sub.admin_graphql_api_id, status },
++  });
++
++  return NextResponse.json({ ok: true }, { status: 200 });
++}
+diff --git a/src/app/api/webhooks/shopify/app-uninstalled/route.ts b/src/app/api/webhooks/shopify/app-uninstalled/route.ts
+new file mode 100644
+index 0000000..dfb2168
+--- /dev/null
++++ b/src/app/api/webhooks/shopify/app-uninstalled/route.ts
+@@ -0,0 +1,34 @@
++import { NextRequest, NextResponse } from "next/server";
++import { prisma } from "@/lib/db";
++import { verifyShopifyWebhookHmac } from "@/lib/integrations/shopify-oauth";
++import { logAudit } from "@/lib/audit";
++
++// Webhook opérationnel (non obligatoire pour la conformité, mais bonne
++// pratique standard) — app/uninstalled. Reflète immédiatement la
++// désinstallation (statut de l'intégration) sans attendre le shop/redact
++// (48h plus tard, qui lui efface réellement les données — voir shop-redact/route.ts).
++// Ne supprime AUCUNE donnée ici : seulement le statut.
++export async function POST(req: NextRequest) {
++  const rawBody = await req.text();
++  const hmac = req.headers.get("x-shopify-hmac-sha256");
++  if (!verifyShopifyWebhookHmac(rawBody, hmac)) {
++    return NextResponse.json({ error: "Signature invalide." }, { status: 401 });
++  }
++
++  const shopDomain = req.headers.get("x-shopify-shop-domain");
++  const store = shopDomain ? await prisma.store.findFirst({ where: { domain: shopDomain } }) : null;
++  if (store) {
++    await prisma.integration.updateMany({
++      where: { storeId: store.id, provider: "SHOPIFY" },
++      data: { status: "NOT_CONNECTED", lastError: "Application désinstallée depuis Shopify." },
++    });
++    await logAudit({
++      storeId: store.id,
++      actorType: "system",
++      event: "integration.uninstalled",
++      message: "Application désinstallée depuis l'admin Shopify. Les données restent conservées 48h avant effacement (shop/redact).",
++    });
++  }
++
++  return NextResponse.json({ ok: true }, { status: 200 });
++}
+diff --git a/src/app/api/webhooks/shopify/customers-data-request/route.ts b/src/app/api/webhooks/shopify/customers-data-request/route.ts
+new file mode 100644
+index 0000000..b1e142f
+--- /dev/null
++++ b/src/app/api/webhooks/shopify/customers-data-request/route.ts
+@@ -0,0 +1,43 @@
++import { NextRequest, NextResponse } from "next/server";
++import { prisma } from "@/lib/db";
++import { verifyShopifyWebhookHmac } from "@/lib/integrations/shopify-oauth";
++import { logAudit } from "@/lib/audit";
++
++// WEBHOOK OBLIGATOIRE (conformité Shopify App Store) — customers/data_request.
++// Reçu quand un client demande à voir les données que l'app détient sur lui.
++// IMPORTANT : le modèle de données OnDeal ne stocke AUCUNE donnée client
++// nominative (Order/OrderLine ne contiennent ni email ni nom de client — voir
++// prisma/schema.prisma). Ce webhook est donc, pour l'état actuel du produit,
++// un accusé de réception honnête : aucune donnée personnelle n'est détenue,
++// donc aucune n'est retournée. Consigné en audit pour traçabilité, avec le
++// détail de la demande, à disposition du marchand s'il doit répondre au client.
++export async function POST(req: NextRequest) {
++  const rawBody = await req.text();
++  const hmac = req.headers.get("x-shopify-hmac-sha256");
++  if (!verifyShopifyWebhookHmac(rawBody, hmac)) {
++    return NextResponse.json({ error: "Signature invalide." }, { status: 401 });
++  }
++
++  const shopDomain = req.headers.get("x-shopify-shop-domain");
++  let payload: { customer?: { id?: number; email?: string }; orders_requested?: number[] } = {};
++  try {
++    payload = JSON.parse(rawBody);
++  } catch {
++    return NextResponse.json({ error: "Corps de requête invalide." }, { status: 400 });
++  }
++
++  const store = shopDomain ? await prisma.store.findFirst({ where: { domain: shopDomain } }) : null;
++  if (store) {
++    await logAudit({
++      storeId: store.id,
++      actorType: "system",
++      event: "compliance.customers_data_request",
++      message:
++        "Demande d'accès aux données client reçue (Shopify). OnDeal ne stocke aucune donnée client " +
++        "nominative (email/nom) — aucune donnée personnelle à transmettre.",
++      meta: { customerId: payload.customer?.id, ordersRequested: payload.orders_requested ?? [] },
++    });
++  }
++
++  return NextResponse.json({ ok: true }, { status: 200 });
++}
+diff --git a/src/app/api/webhooks/shopify/customers-redact/route.ts b/src/app/api/webhooks/shopify/customers-redact/route.ts
+new file mode 100644
+index 0000000..93fbb25
+--- /dev/null
++++ b/src/app/api/webhooks/shopify/customers-redact/route.ts
+@@ -0,0 +1,46 @@
++import { NextRequest, NextResponse } from "next/server";
++import { prisma } from "@/lib/db";
++import { verifyShopifyWebhookHmac } from "@/lib/integrations/shopify-oauth";
++import { logAudit } from "@/lib/audit";
++
++// WEBHOOK OBLIGATOIRE (conformité) — customers/redact. Reçu quand le
++// marchand doit effacer les données d'un client (RGPD/CCPA). OrderLine ne
++// porte aucune donnée nominative, donc rien à effacer à ce niveau. Les
++// commandes explicitement visées (orders_to_redact) sont malgré tout
++// supprimées par prudence — c'est la seule donnée réellement rattachable à
++// ce client dans le modèle actuel. Effacement réel (pas une simulation) :
++// exigence légale, exécuté uniquement après vérification HMAC.
++export async function POST(req: NextRequest) {
++  const rawBody = await req.text();
++  const hmac = req.headers.get("x-shopify-hmac-sha256");
++  if (!verifyShopifyWebhookHmac(rawBody, hmac)) {
++    return NextResponse.json({ error: "Signature invalide." }, { status: 401 });
++  }
++
++  const shopDomain = req.headers.get("x-shopify-shop-domain");
++  let payload: { customer?: { id?: number }; orders_to_redact?: number[] } = {};
++  try {
++    payload = JSON.parse(rawBody);
++  } catch {
++    return NextResponse.json({ error: "Corps de requête invalide." }, { status: 400 });
++  }
++
++  const store = shopDomain ? await prisma.store.findFirst({ where: { domain: shopDomain } }) : null;
++  if (store) {
++    const orderIds = (payload.orders_to_redact ?? []).map(String);
++    const deleted = orderIds.length
++      ? await prisma.order.deleteMany({ where: { storeId: store.id, shopifyOrderId: { in: orderIds } } })
++      : { count: 0 };
++
++    await logAudit({
++      storeId: store.id,
++      actorType: "system",
++      event: "compliance.customers_redact",
++      message: `Demande de suppression de données client traitée : ${deleted.count} commande(s) supprimée(s). ` +
++        "OnDeal ne stocke pas de données client nominatives (email/nom) en dehors des commandes visées.",
++      meta: { customerId: payload.customer?.id, ordersRedacted: deleted.count },
++    });
++  }
++
++  return NextResponse.json({ ok: true }, { status: 200 });
++}
+diff --git a/src/app/api/webhooks/shopify/shop-redact/route.ts b/src/app/api/webhooks/shopify/shop-redact/route.ts
+new file mode 100644
+index 0000000..ccf33f3
+--- /dev/null
++++ b/src/app/api/webhooks/shopify/shop-redact/route.ts
+@@ -0,0 +1,43 @@
++import { NextRequest, NextResponse } from "next/server";
++import { prisma } from "@/lib/db";
++import { verifyShopifyWebhookHmac } from "@/lib/integrations/shopify-oauth";
++import { logAudit } from "@/lib/audit";
++
++// WEBHOOK OBLIGATOIRE (conformité) — shop/redact. Envoyé par Shopify 48h
++// après la désinstallation : toutes les données de la boutique doivent être
++// effacées. Suppression RÉELLE (exigence légale) de l'enregistrement Store —
++// la cascade Prisma (onDelete: Cascade, voir schema.prisma) supprime alors
++// produits, variantes, commandes, avis, scores, recommandations, actions,
++// synchronisations et intégrations liés. L'Organization et le compte
++// utilisateur (pouvant couvrir d'autres boutiques) ne sont PAS supprimés ici.
++export async function POST(req: NextRequest) {
++  const rawBody = await req.text();
++  const hmac = req.headers.get("x-shopify-hmac-sha256");
++  if (!verifyShopifyWebhookHmac(rawBody, hmac)) {
++    return NextResponse.json({ error: "Signature invalide." }, { status: 401 });
++  }
++
++  let payload: { shop_domain?: string } = {};
++  try {
++    payload = JSON.parse(rawBody);
++  } catch {
++    return NextResponse.json({ error: "Corps de requête invalide." }, { status: 400 });
++  }
++
++  const shopDomain = payload.shop_domain ?? req.headers.get("x-shopify-shop-domain");
++  if (shopDomain) {
++    const store = await prisma.store.findFirst({ where: { domain: shopDomain } });
++    if (store) {
++      // Trace l'effacement AVANT suppression (l'AuditLog du store disparaît
++      // avec lui — la trace définitive de cette action légale doit rester
++      // consultable indépendamment ; consignée ici dans les logs serveur).
++      console.warn("[compliance] shop/redact — suppression définitive des données", {
++        storeId: store.id,
++        shopDomain,
++      });
++      await prisma.store.delete({ where: { id: store.id } });
++    }
++  }
++
++  return NextResponse.json({ ok: true }, { status: 200 });
++}
+diff --git a/src/lib/integrations/shopify-billing.ts b/src/lib/integrations/shopify-billing.ts
+new file mode 100644
+index 0000000..bcfa245
+--- /dev/null
++++ b/src/lib/integrations/shopify-billing.ts
+@@ -0,0 +1,112 @@
++import type { ShopifyCredentials } from "@/lib/integrations/shopify";
++import { ShopifyApiError } from "@/lib/integrations/shopify";
++
++// COMMERCIALISATION — Shopify Billing API (appSubscriptionCreate). Seule
++// méthode de facturation autorisée par les règles du Shopify App Store pour
++// un abonnement récurrent : aucune intégration Stripe/paiement externe ici.
++// AUCUNE charge n'est jamais créée sans un appel explicite du marchand
++// depuis l'app (bouton "Passer au plan X") : ce module ne fait qu'émettre la
++// demande à Shopify, qui affiche ensuite SA PROPRE page de confirmation —
++// c'est le marchand, jamais OnDeal, qui approuve la charge.
++const API_VERSION = "2025-01";
++
++export type PaidPlan = "PRO" | "BUSINESS" | "AGENCY";
++
++// Prix mensuels EUR décidés par l'exploitant du produit (04/09/2026) — à
++// ajuster ici uniquement si les tarifs changent réellement, jamais à
++// deviner. STARTER reste gratuit, donc hors Billing API.
++export const PLAN_PRICING: Record<PaidPlan, number> = {
++  PRO: 14.9,
++  BUSINESS: 49.9,
++  AGENCY: 99,
++};
++
++function isTestMode(): boolean {
++  // En développement/preview, toute charge créée est marquée test:true
++  // (aucun débit réel possible chez Shopify). Seul un déploiement avec
++  // NODE_ENV=production crée une charge réelle — jamais par défaut.
++  return process.env.NODE_ENV !== "production";
++}
++
++async function billingGraphqlRequest<T>(creds: ShopifyCredentials, query: string, variables: Record<string, unknown>): Promise<T> {
++  const res = await fetch(`https://${creds.domain}/admin/api/${API_VERSION}/graphql.json`, {
++    method: "POST",
++    headers: { "content-type": "application/json", "X-Shopify-Access-Token": creds.accessToken },
++    body: JSON.stringify({ query, variables }),
++  });
++  if (!res.ok) throw new ShopifyApiError(`Shopify Billing API a répondu ${res.status}`, res.status);
++  const json = (await res.json()) as { data?: T; errors?: Array<{ message: string }> };
++  if (json.errors?.length) throw new ShopifyApiError(json.errors.map((e) => e.message).join("; "));
++  if (!json.data) throw new ShopifyApiError("Réponse Shopify Billing vide.");
++  return json.data;
++}
++
++const SUBSCRIPTION_CREATE_MUTATION = `
++  mutation appSubscriptionCreate(
++    $name: String!, $returnUrl: URL!, $test: Boolean!, $lineItems: [AppSubscriptionLineItemInput!]!
++  ) {
++    appSubscriptionCreate(name: $name, returnUrl: $returnUrl, test: $test, lineItems: $lineItems) {
++      appSubscription { id status }
++      confirmationUrl
++      userErrors { field message }
++    }
++  }
++`;
++
++export interface CreateSubscriptionResult {
++  confirmationUrl: string;
++  subscriptionId: string;
++}
++
++/**
++ * Crée une demande d'abonnement Shopify Billing pour le plan choisi.
++ * Retourne l'URL de confirmation Shopify — c'est le marchand qui approuve
++ * la charge sur cette page, jamais l'app. Le passage réel au plan payant
++ * n'intervient qu'à réception du webhook app_subscriptions/update avec le
++ * statut ACTIVE (voir /api/webhooks/shopify/app-subscription-update).
++ */
++export async function createAppSubscription(
++  creds: ShopifyCredentials,
++  plan: PaidPlan,
++  returnUrl: string,
++): Promise<CreateSubscriptionResult> {
++  const price = PLAN_PRICING[plan];
++  const data = await billingGraphqlRequest<{
++    appSubscriptionCreate: {
++      appSubscription: { id: string; status: string } | null;
++      confirmationUrl: string | null;
++      userErrors: Array<{ field: string[] | null; message: string }>;
++    };
++  }>(creds, SUBSCRIPTION_CREATE_MUTATION, {
++    name: `OnDeal Intelligence — Plan ${plan}`,
++    returnUrl,
++    test: isTestMode(),
++    lineItems: [
++      {
++        plan: {
++          appRecurringPricingDetails: {
++            price: { amount: price, currencyCode: "EUR" },
++            interval: "EVERY_30_DAYS",
++          },
++        },
++      },
++    ],
++  });
++
++  const result = data.appSubscriptionCreate;
++  if (result.userErrors.length) {
++    throw new ShopifyApiError(result.userErrors.map((e) => e.message).join("; "));
++  }
++  if (!result.confirmationUrl || !result.appSubscription) {
++    throw new ShopifyApiError("Shopify n'a pas renvoyé d'URL de confirmation pour cet abonnement.");
++  }
++  return { confirmationUrl: result.confirmationUrl, subscriptionId: result.appSubscription.id };
++}
++
++/** Fait correspondre le nom d'abonnement Shopify à un plan OnDeal — jamais deviné, uniquement les libellés que createAppSubscription émet. */
++export function planFromSubscriptionName(name: string): PaidPlan | null {
++  for (const plan of Object.keys(PLAN_PRICING) as PaidPlan[]) {
++    if (name.includes(`Plan ${plan}`)) return plan;
++  }
++  return null;
++}
+diff --git a/src/lib/integrations/shopify-domain.ts b/src/lib/integrations/shopify-domain.ts
+new file mode 100644
+index 0000000..b4afe4f
+--- /dev/null
++++ b/src/lib/integrations/shopify-domain.ts
+@@ -0,0 +1,11 @@
++// Normalisation/validation stricte d'un domaine *.myshopify.com — partagée
++// entre la connexion manuelle (Paramètres > Intégrations) et le flux OAuth
++// (commercialisation). Anti-SSRF : l'app n'effectue jamais de requête
++// sortante vers un hôte arbitraire fourni par un utilisateur.
++const MYSHOPIFY_DOMAIN = /^[a-z0-9][a-z0-9-]{0,62}\.myshopify\.com$/i;
++
++export function normalizeMyshopifyDomain(raw: string | undefined | null): string | null {
++  if (!raw) return null;
++  const host = raw.replace(/^https?:\/\//i, "").replace(/\/.*$/, "").toLowerCase();
++  return MYSHOPIFY_DOMAIN.test(host) ? host : null;
++}
+diff --git a/src/lib/integrations/shopify-oauth.ts b/src/lib/integrations/shopify-oauth.ts
+new file mode 100644
+index 0000000..c2a5f90
+--- /dev/null
++++ b/src/lib/integrations/shopify-oauth.ts
+@@ -0,0 +1,213 @@
++import crypto from "node:crypto";
++import { SignJWT, jwtVerify } from "jose";
++import { ShopifyApiError, type ShopifyCredentials } from "@/lib/integrations/shopify";
++
++// ============================================================================
++// COMMERCIALISATION — installation Shopify en un clic (OAuth), distincte du
++// parcours "jeton manuel" existant (Paramètres > Intégrations, toujours
++// disponible pour les boutiques pilotes). Toute valeur secrète provient
++// exclusivement des variables d'environnement serveur — jamais saisie,
++// jamais vue en clair par un tiers.
++// ============================================================================
++
++// Scopes strictement alignés sur ce que src/lib/integrations/shopify.ts lit
++// réellement (produits, stock, commandes) — jamais un scope large "au cas où".
++export const SHOPIFY_OAUTH_SCOPES = "read_products,read_inventory,read_orders";
++const OAUTH_STATE_TTL_SECONDS = 600; // 10 minutes
++const API_VERSION = "2025-01";
++
++function getAppCredentials(): { apiKey: string; apiSecret: string } {
++  const apiKey = process.env.SHOPIFY_API_KEY;
++  const apiSecret = process.env.SHOPIFY_API_SECRET;
++  if (!apiKey || !apiSecret || apiSecret === "changeme") {
++    throw new Error(
++      "SHOPIFY_API_KEY / SHOPIFY_API_SECRET manquants ou non configurés. " +
++        "Créez l'app dans le Partner Dashboard Shopify puis renseignez ces variables.",
++    );
++  }
++  return { apiKey, apiSecret };
++}
++
++function getAppUrl(): string {
++  const url = process.env.APP_URL;
++  if (!url) throw new Error("APP_URL manquant : requis pour construire les URLs de redirection OAuth.");
++  return url.replace(/\/$/, "");
++}
++
++function getStateSecret(): Uint8Array {
++  // Réutilise AUTH_SECRET (déjà exigé, déjà un secret fort) plutôt que
++  // d'introduire une variable d'environnement supplémentaire pour un jeton
++  // à durée de vie très courte (anti-CSRF de la poignée de main OAuth).
++  const secret = process.env.AUTH_SECRET;
++  if (!secret) throw new Error("AUTH_SECRET manquant.");
++  return new TextEncoder().encode(secret);
++}
++
++/** Jeton d'état signé, à courte durée de vie — protection CSRF du callback OAuth. */
++export async function signOAuthState(shop: string): Promise<string> {
++  return new SignJWT({ shop, nonce: crypto.randomBytes(16).toString("hex") })
++    .setProtectedHeader({ alg: "HS256" })
++    .setIssuedAt()
++    .setExpirationTime(`${OAUTH_STATE_TTL_SECONDS}s`)
++    .sign(getStateSecret());
++}
++
++export async function verifyOAuthState(token: string, expectedShop: string): Promise<boolean> {
++  try {
++    const { payload } = await jwtVerify(token, getStateSecret(), { algorithms: ["HS256"] });
++    return payload.shop === expectedShop;
++  } catch {
++    return false;
++  }
++}
++
++export function buildInstallUrl(shop: string, state: string): string {
++  const { apiKey } = getAppCredentials();
++  const redirectUri = `${getAppUrl()}/api/shopify/callback`;
++  const params = new URLSearchParams({
++    client_id: apiKey,
++    scope: SHOPIFY_OAUTH_SCOPES,
++    redirect_uri: redirectUri,
++    state,
++  });
++  return `https://${shop}/admin/oauth/authorize?${params.toString()}`;
++}
++
++/**
++ * Vérifie la signature HMAC des paramètres de requête OAuth (callback
++ * d'installation) — distincte de la vérification HMAC des webhooks
++ * (verifyShopifyWebhookHmac, sur le corps brut, pas la query string).
++ * Référence Shopify : tri alphabétique des clés, jointes par "&", hex HMAC-SHA256.
++ */
++export function verifyOAuthCallbackHmac(searchParams: URLSearchParams): boolean {
++  const { apiSecret } = getAppCredentials();
++  const received = searchParams.get("hmac");
++  if (!received) return false;
++  const pairs: string[] = [];
++  for (const [key, value] of searchParams.entries()) {
++    if (key === "hmac" || key === "signature") continue;
++    pairs.push(`${key}=${value}`);
++  }
++  pairs.sort();
++  const message = pairs.join("&");
++  const computed = crypto.createHmac("sha256", apiSecret).update(message).digest("hex");
++  try {
++    return crypto.timingSafeEqual(Buffer.from(computed, "hex"), Buffer.from(received, "hex"));
++  } catch {
++    return false;
++  }
++}
++
++/** Vérifie la signature HMAC d'un webhook Shopify (corps BRUT, header base64). */
++export function verifyShopifyWebhookHmac(rawBody: string, hmacHeader: string | null): boolean {
++  if (!hmacHeader) return false;
++  const { apiSecret } = getAppCredentials();
++  const computed = crypto.createHmac("sha256", apiSecret).update(rawBody, "utf8").digest("base64");
++  try {
++    return crypto.timingSafeEqual(Buffer.from(computed), Buffer.from(hmacHeader));
++  } catch {
++    return false;
++  }
++}
++
++export interface OAuthTokenResult {
++  accessToken: string;
++  scope: string;
++}
++
++/** Échange le code d'autorisation contre un jeton d'accès (une seule fois, côté serveur). */
++export async function exchangeCodeForAccessToken(shop: string, code: string): Promise<OAuthTokenResult> {
++  const { apiKey, apiSecret } = getAppCredentials();
++  const res = await fetch(`https://${shop}/admin/oauth/access_token`, {
++    method: "POST",
++    headers: { "content-type": "application/json" },
++    body: JSON.stringify({ client_id: apiKey, client_secret: apiSecret, code }),
++  });
++  if (!res.ok) {
++    throw new ShopifyApiError(`Échange du code OAuth refusé par Shopify (${res.status}).`, res.status);
++  }
++  const json = (await res.json()) as { access_token?: string; scope?: string };
++  if (!json.access_token) throw new ShopifyApiError("Réponse OAuth Shopify sans access_token.");
++  return { accessToken: json.access_token, scope: json.scope ?? "" };
++}
++
++export interface ShopInfo {
++  name: string;
++  email: string | null;
++  myshopifyDomain: string;
++}
++
++/** Récupère les informations de la boutique juste après l'installation (jamais inventées). */
++export async function fetchShopInfo(creds: ShopifyCredentials): Promise<ShopInfo> {
++  const res = await fetch(`https://${creds.domain}/admin/api/${API_VERSION}/graphql.json`, {
++    method: "POST",
++    headers: { "content-type": "application/json", "X-Shopify-Access-Token": creds.accessToken },
++    body: JSON.stringify({ query: `query { shop { name email myshopifyDomain } }` }),
++  });
++  if (!res.ok) throw new ShopifyApiError(`Shopify Admin API a répondu ${res.status}`, res.status);
++  const json = (await res.json()) as {
++    data?: { shop: { name: string; email: string | null; myshopifyDomain: string } };
++    errors?: Array<{ message: string }>;
++  };
++  if (json.errors?.length) throw new ShopifyApiError(json.errors.map((e) => e.message).join("; "));
++  if (!json.data) throw new ShopifyApiError("Réponse Shopify vide (shop info).");
++  return json.data.shop;
++}
++
++// Topics des webhooks obligatoires (conformité App Store) + un webhook
++// opérationnel (désinstallation) pour refléter immédiatement le statut côté
++// app plutôt que d'attendre le shop/redact 48h plus tard.
++const MANDATORY_WEBHOOK_TOPICS: Array<{ topic: string; path: string }> = [
++  { topic: "CUSTOMERS_DATA_REQUEST", path: "/api/webhooks/shopify/customers-data-request" },
++  { topic: "CUSTOMERS_REDACT", path: "/api/webhooks/shopify/customers-redact" },
++  { topic: "SHOP_REDACT", path: "/api/webhooks/shopify/shop-redact" },
++  { topic: "APP_UNINSTALLED", path: "/api/webhooks/shopify/app-uninstalled" },
++  { topic: "APP_SUBSCRIPTIONS_UPDATE", path: "/api/webhooks/shopify/app-subscription-update" },
++];
++
++const WEBHOOK_SUBSCRIPTION_MUTATION = `
++  mutation webhookSubscriptionCreate($topic: WebhookSubscriptionTopic!, $webhookSubscription: WebhookSubscriptionInput!) {
++    webhookSubscriptionCreate(topic: $topic, webhookSubscription: $webhookSubscription) {
++      webhookSubscription { id }
++      userErrors { field message }
++    }
++  }
++`;
++
++/**
++ * Enregistre les webhooks obligatoires auprès de Shopify après installation.
++ * Best-effort par webhook : un échec isolé est loggé (console.error) et
++ * n'interrompt pas l'installation — mais reste visible pour être corrigé,
++ * jamais silencieusement ignoré.
++ */
++export async function registerMandatoryWebhooks(creds: ShopifyCredentials, storeId: string): Promise<void> {
++  const appUrl = getAppUrl();
++  for (const { topic, path } of MANDATORY_WEBHOOK_TOPICS) {
++    try {
++      const res = await fetch(`https://${creds.domain}/admin/api/${API_VERSION}/graphql.json`, {
++        method: "POST",
++        headers: { "content-type": "application/json", "X-Shopify-Access-Token": creds.accessToken },
++        body: JSON.stringify({
++          query: WEBHOOK_SUBSCRIPTION_MUTATION,
++          variables: {
++            topic,
++            webhookSubscription: { callbackUrl: `${appUrl}${path}`, format: "JSON" },
++          },
++        }),
++      });
++      const json = (await res.json()) as {
++        data?: { webhookSubscriptionCreate?: { userErrors?: Array<{ message: string }> } };
++      };
++      const userErrors = json.data?.webhookSubscriptionCreate?.userErrors;
++      if (userErrors?.length) {
++        console.error("[shopify-oauth] échec enregistrement webhook", { storeId, topic, userErrors });
++      }
++    } catch (err) {
++      console.error("[shopify-oauth] erreur réseau enregistrement webhook", {
++        storeId,
++        topic,
++        error: err instanceof Error ? err.message : String(err),
++      });
++    }
++  }
++}
+-- 
+2.43.0
+

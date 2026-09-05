@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} — ${SITE_TAGLINE}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: ["marketplace", "acheter en ligne", "électronique", "mode", "maison", "france"],
+  keywords: ["boutique en ligne", "acheter en ligne", "électronique", "mode", "maison", "france"],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,

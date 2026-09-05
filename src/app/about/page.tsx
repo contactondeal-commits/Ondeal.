@@ -28,9 +28,8 @@ export default function AboutPage() {
         <h2>Notre histoire</h2>
         <p>
           OnDeal est né d&apos;une conviction simple : acheter en ligne doit être rapide, fiable et accessible
-          à tous. Fondée par Alex Brou, entrepreneur parisien, la boutique a ouvert ses portes le 1er août 2026
-          avec l&apos;ambition de proposer une alternative française sérieuse aux grandes plateformes
-          internationales.
+          à tous. La boutique a ouvert ses portes le 1er août 2026 à Paris, avec l&apos;ambition de proposer
+          une alternative française sérieuse aux grandes plateformes internationales.
         </p>
         <p>
           Encore jeune, mais déjà déterminée — OnDeal grandit chaque jour avec une sélection de produits

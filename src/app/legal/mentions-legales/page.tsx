@@ -13,9 +13,21 @@ import {
 } from "@/lib/company-info";
 import styles from "../legal.module.css";
 
+// Mission "POSITIONNEMENT PUBLIC" (03/09/2026) — demande explicite du client
+// de ne pas voir son nom personnel exposé publiquement. Le nom du
+// représentant (COMPANY_REPRESENTATIVE) reste affiché ci-dessous : pour une
+// entreprise individuelle française, l'identité du représentant est une
+// obligation légale (LCEN art. 6-III, Code de la consommation) — la
+// supprimer exposerait le client à un risque juridique réel, donc ce n'est
+// PAS fait ici. Le compromis appliqué : la page reste accessible (l'info
+// reste disponible, ce que la loi exige) mais n'est plus indexée par les
+// moteurs de recherche (`robots: noindex`), donc n'apparaîtra plus dans les
+// résultats Google — c'est ce mécanisme, pas le contenu de la page, qui
+// causait l'exposition publique constatée par le client.
 export const metadata: Metadata = {
   title: "Mentions légales",
   alternates: { canonical: "/legal/mentions-legales" },
+  robots: { index: false, follow: true },
 };
 
 export default function MentionsLegalesPage() {

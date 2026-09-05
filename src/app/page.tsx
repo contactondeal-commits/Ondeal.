@@ -17,8 +17,7 @@ import { fetchAllProducts, fetchBestsellers, fetchDeals, fetchNewArrivals, fetch
 // template qui ne se comporte pas comme attendu sur la page la plus
 // importante du site, on retire `title` ici : la page hérite alors
 // directement du `default` du layout racine
-// ("Ondeal — Votre boutique en ligne au meilleur prix", src/app/layout.tsx,
-// texte mis à jour le 03/09/2026, voir SITE_TAGLINE) —
+// ("Ondeal — Votre marketplace au meilleur prix", src/app/layout.tsx) —
 // déjà rédigé avec la marque et la proposition de valeur, déjà réutilisé
 // pour Open Graph/Twitter, donc cohérent partout.
 export const metadata: Metadata = {

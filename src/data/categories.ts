@@ -185,20 +185,15 @@ export const categories: Category[] = [
     ],
   },
   {
-    // Retiré "Romans" et "BD" de la navigation le 03/09/2026 (demande
-    // explicite du client) : ces deux rayons étaient à 0 produit, CJdropshipping
-    // n'ayant pas de fournisseur livre viable — décision confirmée : retirer
-    // du menu plutôt que laisser des rayons vides, réversible si un
-    // fournisseur livre/POD dédié est trouvé plus tard. "Jeunesse" est
-    // conservée : catégorie réellement approvisionnée (coloriages, livres
-    // audio enfant, etc. sous le tag cat-jeunesse-livres).
     id: "livres",
     name: "Livres",
     slug: "livres",
     icon: "BookOpen",
     image: "/categories/livres.jpg",
-    description: "Jeunesse et loisirs créatifs.",
+    description: "Romans, bandes dessinées et jeunesse.",
     children: [
+      { id: "romans", name: "Romans", slug: "romans", icon: "BookOpen", children: [] },
+      { id: "bd", name: "BD", slug: "bd", icon: "BookOpen", children: [] },
       { id: "jeunesse-livres", name: "Jeunesse", slug: "jeunesse", icon: "BookOpen", children: [] },
     ],
   },

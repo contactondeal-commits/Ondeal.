@@ -25,19 +25,10 @@ const resolveSiteUrl = () => {
 
 export const SITE_URL = resolveSiteUrl();
 
-// Mission "POSITIONNEMENT PUBLIC" (03/09/2026) — demande explicite du client :
-// ne plus mettre en avant le mot "marketplace" dans les textes publics
-// (title, meta description, OG/Twitter, manifest PWA). Le client garde
-// l'idée de partenariats fournisseurs possibles à l'avenir (voir /sell et
-// /partenaires, jamais modifiés dans cette mission — ils décrivaient déjà
-// OnDeal comme "boutique unique" sans marketplace ouverte), mais ne veut pas
-// que le site se présente publiquement comme une marketplace dès le
-// lancement, pour ne pas se contraindre sur plusieurs points (réglementaire,
-// perception) avant d'y être prêt.
 export const SITE_DESCRIPTION =
-  "Ondeal, la boutique en ligne qui réunit des milliers de produits high-tech, maison, mode, sport et plus encore, au meilleur prix.";
+  "Ondeal, la marketplace qui réunit des milliers de produits high-tech, maison, mode, sport et plus encore, au meilleur prix.";
 
-export const SITE_TAGLINE = "Votre boutique en ligne au meilleur prix";
+export const SITE_TAGLINE = "Votre marketplace au meilleur prix";
 
 /**
  * Compte client — portail natif Shopify ("Comptes clients" nouvelle
@@ -90,18 +81,17 @@ export const FREE_SHIPPING_THRESHOLD = 80;
 export const STANDARD_SHIPPING_COST = 4.99;
 
 /**
- * Mission "PLAN MARKETING" (15/08/2026, mis à jour 03/09/2026) — liens
- * réseaux sociaux réels, fournis directement par le client (comptes actifs
- * qu'il gère lui-même) — jamais de lien inventé ou de bouton mort.
- * Le lien Instagram reçu contenait une redirection OAuth Facebook Business
- * (paramètre `next=...`) collée par erreur lors du copier-coller depuis la
- * barre d'adresse ; nettoyé ici vers l'URL de profil publique standard,
- * qui pointe vers le même compte.
+ * Mission "PLAN MARKETING" (15/08/2026) — liens réseaux sociaux réels,
+ * vérifiés un par un en navigant directement sur chaque page (pas une
+ * supposition à partir du nom de la marque) : les anciens liens documentés
+ * dans le guide marchand (`ondeal_shop`, `ondealshop`) menaient tous les
+ * deux vers des pages inexistantes. Les vrais comptes actifs sont sous le
+ * handle `ondeal.fr` sur Instagram et TikTok ; aucune page Facebook trouvée
+ * à ce jour sous ce nom (`SOCIAL_LINKS.facebook` reste `null` tant qu'aucun
+ * lien réel n'est confirmé — jamais de lien inventé ou de bouton mort).
  */
 export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/ondeal.fr/",
   tiktok: "https://www.tiktok.com/@ondeal.fr",
-  facebook: "https://www.facebook.com/profile.php?id=61593161590671" as string | null,
-  youtube: "https://www.youtube.com/@ondealFYP" as string | null,
-  pinterest: "https://fr.pinterest.com/OnDealfr/" as string | null,
+  facebook: null as string | null,
 };

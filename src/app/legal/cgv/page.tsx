@@ -89,7 +89,7 @@ export default function CGVPage() {
       </section>
 
       <section className={styles.section}>
-        <h2>Article 9 — Vendeurs et partenaires</h2>
+        <h2>Article 9 — Marketplace et vendeurs</h2>
         <p>
           À ce jour, l&apos;intégralité des produits proposés sur ondeal.fr est sélectionnée et vendue directement
           par {COMPANY_LEGAL_NAME} : il n&apos;existe pas de vendeurs tiers indépendants opérant leur propre boutique

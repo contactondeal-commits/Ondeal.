@@ -1,0 +1,68 @@
+.wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+  padding: 12px 0;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: max-content;
+  animation: promo-scroll 30s linear infinite;
+}
+
+.trackReverse {
+  animation-direction: reverse;
+}
+
+.wrap:hover .track {
+  animation-play-state: paused;
+}
+
+.badge {
+  height: 60px;
+  width: auto;
+  flex: 0 0 auto;
+  display: block;
+}
+
+@keyframes promo-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* la piste contient la liste dupliquée : -50% ramène exactement au
+       début de la deuxième copie, la boucle ne se voit donc jamais */
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    padding: 10px 0;
+  }
+  .track {
+    gap: 18px;
+    animation-duration: 20s;
+  }
+  .badge {
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* Les 5 premiers badges (index 0 à 4) suffisent : on masque la copie
+     dupliquée qui n'a d'utilité que pour l'animation. */
+  .badge:nth-child(n + 6) {
+    display: none;
+  }
+}

@@ -1,4 +1,3 @@
-import ReassuranceBar from "@/components/home/ReassuranceBar";
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import CategoryBlocks from "@/components/home/CategoryBlocks";
@@ -140,8 +139,14 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* Owner (10/09/2026) — "on retire la bande du bas" : ReassuranceBar
+          (livraison/paiement/retours/SAV/expédition/avis) faisait doublon
+          avec la bande identique déjà incrustée en bas des bannières Hero
+          (GRANDE PROMO / TOUT CE QU'IL VOUS FAUT) — les deux s'affichaient
+          l'une sous l'autre, redondantes. Composant retiré uniquement de
+          cette page ; le fichier reste disponible si une page sans bannière
+          "trust bar" intégrée en a besoin plus tard. */}
       <Hero />
-      <ReassuranceBar />
       <CategoryBlocks heroProducts={categoryHeroProducts} />
       {featuredCategoryTop.length > 0 && (
         <ProductSection title={FEATURED_CATEGORY_TITLE} products={featuredCategoryTop} seeAllHref={FEATURED_CATEGORY_HREF} />

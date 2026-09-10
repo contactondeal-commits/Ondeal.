@@ -34,6 +34,13 @@ export interface HeroSlide {
 // retirées ici à la demande explicite du client, au profit d'une diapo
 // unique, plus impactante, cohérente avec le carrousel de badges
 // (PromoMarquee, voir SiteLayout.tsx) ajouté au même moment.
+//
+// Owner (10/09/2026, suite) — 2e bannière "TOUT CE QU'IL VOUS FAUT AU
+// MEILLEUR PRIX" fournie par le client, ajoutée à la suite de la première :
+// "si on peut mettre lui aussi a la suite" + "si il peu defiler comme
+// lautre faisais sa serai l'ideal" — avec 2 diapositives, le défilement
+// automatique et les flèches/pastilles reviennent tout seuls (voir plus
+// bas : `slides.length > 1`), sans rien à changer côté logique.
 const DEFAULT_SLIDES: HeroSlide[] = [
   {
     id: "grande-promo",
@@ -46,6 +53,15 @@ const DEFAULT_SLIDES: HeroSlide[] = [
     // marque que l'ancienne diapo "s1".
     bg: "linear-gradient(120deg, #0c1f32, #1e1b4b)",
     image: "/promo/hero-grande-promo.jpg",
+  },
+  {
+    id: "tout-ce-quil-vous-faut",
+    title: "Tout ce qu'il vous faut au meilleur prix",
+    subtitle: "Des produits sélectionnés, des prix imbattables, pour toute la famille.",
+    cta: "Découvrir toutes les catégories",
+    href: "/catalogue",
+    bg: "linear-gradient(120deg, #0c1f32, #1e1b4b)",
+    image: "/promo/hero-toutcequilvousfaut.jpg",
   },
 ];
 
@@ -103,52 +119,71 @@ export default function Hero({ slides = DEFAULT_SLIDES, autoplayMs = 6000 }: Her
     }
   }, []);
 
-  const slide = slides[index];
-
-  const hasImage = Boolean(slide.image);
-  const background = hasImage
-    ? `url(${slide.image}) center / cover no-repeat, ${slide.bg}`
-    : slide.bg;
-
+  // Owner (10/09/2026, suite) — "j'aime quand sa vie pas trop figer et
+  // fluide" : un simple `setIndex` qui remplace le contenu d'un seul bloc
+  // donnait un changement de diapo instantané/sec (le `background` d'un
+  // élément ne se crossfade pas avec une transition CSS classique quand
+  // l'image change). Toutes les diapositives sont maintenant montées en
+  // continu, empilées, et c'est l'opacité de chacune qui s'anime — un vrai
+  // fondu enchaîné entre les deux bannières plutôt qu'une coupure nette.
   return (
     <section className={styles.root} aria-roledescription="carousel" aria-label="Mises en avant">
-      <div className={styles.slide} style={{ background }}>
-        {hasImage ? (
-          // Owner (10/09/2026) : le visuel intègre déjà tout le texte/CTA
-          // ("GRANDE PROMO -60%", bouton "J'EN PROFITE MAINTENANT") — pas
-          // de doublon par-dessus. Toute la diapositive devient un seul
-          // lien cliquable ; titre/sous-titre restent dans le DOM pour les
-          // lecteurs d'écran (image purement décorative visuellement).
-          <Link
-            href={slide.href}
-            className={styles.imageLink}
-            aria-label={`${slide.title} — ${slide.subtitle}`}
-            onClick={(e) => handleCtaClick(e, slide.href)}
-          />
-        ) : (
-          <div className={`${styles.content} container`}>
-            {slide.promoCode && (
-              <button
-                type="button"
-                className={styles.promoBadge}
-                onClick={() => handleCopyPromoCode(slide.promoCode!)}
-                aria-label={`Copier le code promo ${slide.promoCode}${slide.promoLabel ? `, ${slide.promoLabel}` : ""}`}
-              >
-                {slide.promoLabel && <span className={styles.promoLabel}>{slide.promoLabel}</span>}
-                <span className={styles.promoCodeChip}>
-                  <span className={styles.promoCodeText}>{slide.promoCode}</span>
-                  {copiedCode === slide.promoCode ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
-                </span>
-                <span className={styles.promoHint}>{copiedCode === slide.promoCode ? "Copié !" : "Cliquer pour copier"}</span>
-              </button>
-            )}
-            <h1 className={styles.title}>{slide.title}</h1>
-            <p className={styles.subtitle}>{slide.subtitle}</p>
-            <Link href={slide.href} className={styles.cta} onClick={(e) => handleCtaClick(e, slide.href)}>
-              {slide.cta}
-            </Link>
-          </div>
-        )}
+      <div className={styles.stage}>
+        {slides.map((slide, i) => {
+          const hasImage = Boolean(slide.image);
+          const background = hasImage
+            ? `url(${slide.image}) center / cover no-repeat, ${slide.bg}`
+            : slide.bg;
+          const active = i === index;
+
+          return (
+            <div
+              key={slide.id}
+              className={`${styles.slideLayer} ${active ? styles.slideLayerActive : ""}`}
+              style={{ background }}
+              aria-hidden={!active}
+            >
+              {hasImage ? (
+                // Owner (10/09/2026) : le visuel intègre déjà tout le texte/CTA
+                // ("GRANDE PROMO -60%", bouton "J'EN PROFITE MAINTENANT") — pas
+                // de doublon par-dessus. Toute la diapositive devient un seul
+                // lien cliquable ; titre/sous-titre restent dans le DOM pour les
+                // lecteurs d'écran (image purement décorative visuellement).
+                <Link
+                  href={slide.href}
+                  className={styles.imageLink}
+                  aria-label={`${slide.title} — ${slide.subtitle}`}
+                  onClick={(e) => handleCtaClick(e, slide.href)}
+                  tabIndex={active ? 0 : -1}
+                />
+              ) : (
+                <div className={`${styles.content} container`}>
+                  {slide.promoCode && (
+                    <button
+                      type="button"
+                      className={styles.promoBadge}
+                      onClick={() => handleCopyPromoCode(slide.promoCode!)}
+                      aria-label={`Copier le code promo ${slide.promoCode}${slide.promoLabel ? `, ${slide.promoLabel}` : ""}`}
+                      tabIndex={active ? 0 : -1}
+                    >
+                      {slide.promoLabel && <span className={styles.promoLabel}>{slide.promoLabel}</span>}
+                      <span className={styles.promoCodeChip}>
+                        <span className={styles.promoCodeText}>{slide.promoCode}</span>
+                        {copiedCode === slide.promoCode ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+                      </span>
+                      <span className={styles.promoHint}>{copiedCode === slide.promoCode ? "Copié !" : "Cliquer pour copier"}</span>
+                    </button>
+                  )}
+                  <h1 className={styles.title}>{slide.title}</h1>
+                  <p className={styles.subtitle}>{slide.subtitle}</p>
+                  <Link href={slide.href} className={styles.cta} onClick={(e) => handleCtaClick(e, slide.href)} tabIndex={active ? 0 : -1}>
+                    {slide.cta}
+                  </Link>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {slides.length > 1 && (

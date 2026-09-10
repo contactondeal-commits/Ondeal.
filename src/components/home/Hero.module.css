@@ -3,11 +3,34 @@
   overflow: hidden;
 }
 
-.slide {
-  min-height: 320px;
+/*
+  Owner (10/09/2026, suite) — "j'aime quand sa vie pas trop figer et
+  fluide" : toutes les diapositives sont montées en même temps, empilées
+  dans `.stage` (qui porte le ratio/la hauteur, 2048×768 = le format des
+  bannières fournies), et c'est `.slideLayer`/`.slideLayerActive` qui les
+  fait apparaître/disparaître en fondu — un vrai crossfade plutôt qu'un
+  changement de `background` instantané.
+*/
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2048 / 768;
+  overflow: hidden;
+}
+
+.slideLayer {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  transition: background var(--duration-slow) var(--ease-out);
+  opacity: 0;
+  transition: opacity 900ms var(--ease-out);
+  pointer-events: none;
+}
+
+.slideLayerActive {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .content {
@@ -16,17 +39,10 @@
   padding: 40px 20px;
 }
 
-/*
-  Owner (10/09/2026) — diapositive "image" (bannière GRANDE PROMO fournie
-  par le client, tout le texte/CTA déjà intégrés au visuel) : le visuel
-  fait 2048×768 (ratio ~2.67:1), on adapte la hauteur du slide à ce ratio
-  plutôt que de rogner l'image avec le min-height générique (320px, pensé
-  pour les anciennes diapos texte-sur-dégradé).
-*/
 .imageLink {
   display: block;
   width: 100%;
-  aspect-ratio: 2048 / 768;
+  height: 100%;
 }
 .imageLink:focus-visible {
   outline: 3px solid var(--color-secondary);
@@ -34,8 +50,14 @@
 }
 
 @media (max-width: 767px) {
-  .imageLink {
+  .stage {
     aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideLayer {
+    transition: none;
   }
 }
 
@@ -200,9 +222,6 @@
 }
 
 @media (max-width: 767px) {
-  .slide {
-    min-height: 240px;
-  }
   .title {
     font-size: 30px;
   }

@@ -16,6 +16,29 @@
   padding: 40px 20px;
 }
 
+/*
+  Owner (10/09/2026) — diapositive "image" (bannière GRANDE PROMO fournie
+  par le client, tout le texte/CTA déjà intégrés au visuel) : le visuel
+  fait 2048×768 (ratio ~2.67:1), on adapte la hauteur du slide à ce ratio
+  plutôt que de rogner l'image avec le min-height générique (320px, pensé
+  pour les anciennes diapos texte-sur-dégradé).
+*/
+.imageLink {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2048 / 768;
+}
+.imageLink:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: -3px;
+}
+
+@media (max-width: 767px) {
+  .imageLink {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .title {
   font-size: 48px;
   margin-bottom: 12px;

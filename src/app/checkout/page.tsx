@@ -7,6 +7,7 @@ import TrustBadges from "@/components/products/TrustBadges";
 import { useCart } from "@/hooks/useCart";
 import { createShopifyCheckout, isShopifyCheckoutEnabled } from "@/app/actions/shopify-checkout";
 import { fireGoogleAdsConversion } from "@/lib/analytics/googleAds";
+import { trackBeginCheckout } from "@/lib/analytics/ecommerceEvents";
 import { formatPrice } from "@/lib/format";
 import { FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING_COST } from "@/lib/site-config";
 import styles from "./page.module.css";
@@ -33,6 +34,10 @@ export default function CheckoutPage() {
     const result = await createShopifyCheckout(lines);
     if (result.ok && result.checkoutUrl) {
       fireGoogleAdsConversion("beginCheckout", { value: total });
+      trackBeginCheckout(
+        items.map((i) => ({ id: i.productId, name: i.title, price: i.price, quantity: i.quantity })),
+        total,
+      );
       window.location.href = result.checkoutUrl;
       return;
     }

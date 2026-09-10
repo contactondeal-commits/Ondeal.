@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { fireGoogleAdsConversion } from "@/lib/analytics/googleAds";
+import { trackViewItem } from "@/lib/analytics/ecommerceEvents";
 import type { Product, ProductVariant } from "@/types";
 
 /**
@@ -55,6 +56,7 @@ export function ProductSelectionProvider({ product, children }: { product: Produ
 
   useEffect(() => {
     fireGoogleAdsConversion("viewItem", { value: product.price });
+    trackViewItem({ id: product.id, name: product.title, price: product.price });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product.id]);
 

@@ -9,6 +9,7 @@ import { categories } from "@/data/categories";
 import { searchSuggestions } from "@/services/searchService";
 import { useSearchHistoryStore } from "@/store/searchHistoryStore";
 import { fireGoogleAdsConversion } from "@/lib/analytics/googleAds";
+import { trackSearch } from "@/lib/analytics/ecommerceEvents";
 import type { SearchSuggestion } from "@/types";
 import styles from "./SearchBar.module.css";
 
@@ -64,6 +65,7 @@ export default function SearchBar({ className }: { className?: string }) {
     addSearch(trimmed);
     setOpen(false);
     fireGoogleAdsConversion("search");
+    trackSearch(trimmed);
     const params = new URLSearchParams({ q: trimmed });
     if (category !== "all") params.set("category", category);
     router.push(`/search?${params.toString()}`);

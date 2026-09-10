@@ -5,6 +5,7 @@ import { useToastStore } from "@/store/toastStore";
 import type { Product, ProductVariant } from "@/types";
 import { formatPrice } from "@/lib/format";
 import { fireGoogleAdsConversion } from "@/lib/analytics/googleAds";
+import { trackAddToCart } from "@/lib/analytics/ecommerceEvents";
 
 export interface CartLineDetail {
   lineId: string;
@@ -43,6 +44,7 @@ export function useCart() {
       hrefLabel: "Voir le panier",
     });
     fireGoogleAdsConversion("addToCart", { value: price * quantity });
+    trackAddToCart({ id: product.id, name: product.title, price, quantity });
   }
 
   const detailedItems: CartLineDetail[] = items.map((item) => ({

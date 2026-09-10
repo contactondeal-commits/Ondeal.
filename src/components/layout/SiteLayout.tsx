@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "./Header";
 import MainNav from "./MainNav";
 import Footer from "./Footer";
+import PromoBar from "./PromoBar";
 import CategoryMenu from "@/components/navigation/CategoryMenu";
 import ToastContainer from "@/components/ui/ToastContainer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
@@ -16,6 +17,11 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <a href="#main-content" className="visually-hidden">
         Aller au contenu principal
       </a>
+      {/* Owner (10/09/2026) : "vu que toute la boutique est à moins 50%
+          presque ça vaudrait le coup d'afficher la promo" — bannière montée
+          une seule fois ici, globalement, pour être visible sur toutes les
+          pages (comme ToastContainer / ScrollToTop juste en dessous). */}
+      <PromoBar />
       <Header onOpenCategoryMenu={() => setMenuOpen(true)} />
       <MainNav onOpenCategoryMenu={() => setMenuOpen(true)} />
       <CategoryMenu open={menuOpen} onClose={() => setMenuOpen(false)} />

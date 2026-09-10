@@ -5,7 +5,7 @@ import CategoryBlocks from "@/components/home/CategoryBlocks";
 import ProductSection from "@/components/home/ProductSection";
 import { categories, getAllCategoriesFlat } from "@/data/categories";
 import type { Product } from "@/types";
-import { fetchAllProducts, fetchBestsellers, fetchDeals, fetchNewArrivals, fetchProductsByCategory, fetchProductsByTag, sortProducts } from "@/services/productService";
+import { fetchAllProducts, fetchBestsellers, fetchDeals, fetchNewArrivals, fetchProductsByCategory, sortProducts } from "@/services/productService";
 
 // Mission autonome (15/08/2026) — audit SEO réel : la balise title de la
 // page d'accueil (la page la plus stratégique du site pour le SEO) était
@@ -117,53 +117,22 @@ const FEATURED_CATEGORY_ID = "bijoux";
 const FEATURED_CATEGORY_TITLE = "Bijoux — à découvrir";
 const FEATURED_CATEGORY_HREF = "/category/bijoux";
 
-/**
- * Mission "RESTAURATION CAMPAGNE RENTRÉE" (20/08/2026) — section "Sélection
- * Rentrée" (ancre /#rentree, ciblée par le CTA du slide Hero et la carte
- * "Rentrée scolaire" de CategoryBlocks) disparue du site suite à un
- * déploiement Vercel effectué depuis une copie locale de travail incomplète
- * (voir CHANGELOG / rapport d'incident). Restaurée initialement avec 11 vrais
- * produits Shopify figés par id (uniquement des cartables).
- *
- * Mission "CORRECTIF CTA RENTRÉE" (20/08/2026) — retour client explicite :
- * cliquer sur la carte/section "Rentrée scolaire" ne devait pas amener
- * uniquement des sacs. La section couvre maintenant TOUT le rayon fournitures
- * scolaires & bureau réellement en boutique, récupéré EN LIVE par le tag
- * Shopify `cat-bureau-papeterie` (voir fetchProductsByTag,
- * productService.ts — même tag que le pipeline d'import CJ/BigBuy/DSers,
- * 160 produits actifs vérifiés le 20/08/2026 : cartables, trousses,
- * classeurs, cahiers, étiquettes, calculatrices, etc.) plutôt qu'une liste
- * figée de 11 ids ne représentant qu'un seul type de produit. Toujours du
- * live Shopify (prix/stock à jour, jamais une valeur figée) — un produit
- * dépublié/archivé disparaît simplement de la sélection, sans erreur ni
- * donnée inventée (même comportement que la page /wishlist, voir
- * productService.ts).
- *
- * Mission "CATÉGORIE RENTRÉE SCOLAIRE DÉDIÉE" (20/08/2026) — retour client :
- * le lien "Tout voir" pointait vers une recherche plein texte
- * ("/search?q=fournitures scolaires bureau") qui ne retrouvait quasiment
- * aucun des 210 produits réels du rayon (la recherche Shopify ne fait PAS de
- * correspondance par tag) — un seul résultat en pratique, signalé comme bug
- * par le client. "Rentrée scolaire" est désormais une vraie catégorie
- * (src/data/categories.ts, id "rentree-scolaire") qui réunit papeterie/
- * bureau ET informatique via CATEGORY_ID_UNIONS (category-mapping.ts) — le
- * lien pointe maintenant vers cette page catégorie, garantie de retrouver
- * exactement les mêmes produits que cette section.
- */
-const RENTREE_TITLE = "Rentrée — fournitures scolaires & bureau (code RENTREE20 : -20% sur la commande)";
-const RENTREE_SEE_ALL_HREF = "/category/rentree-scolaire";
-const RENTREE_TAG = "cat-bureau-papeterie";
-const RENTREE_PRODUCT_COUNT = 12;
+// Owner (10/09/2026) — section "Sélection Rentrée" retirée de la page
+// d'accueil : le code promo mis en avant dans son titre (RENTREE20) est
+// expiré depuis le 07/09/2026 et la section continuait pourtant de
+// s'afficher, annonçant une réduction qui ne fonctionne plus au clic. La
+// catégorie "Rentrée scolaire" (src/data/categories.ts) reste accessible
+// normalement depuis le menu/carrousel de catégories — seule cette section
+// promotionnelle dédiée, désormais mensongère, est supprimée.
 
 export default async function HomePage() {
-  const [bestsellers, deals, newArrivals, allProducts, categoryHeroProducts, featuredCategoryProducts, rentreeProducts] = await Promise.all([
+  const [bestsellers, deals, newArrivals, allProducts, categoryHeroProducts, featuredCategoryProducts] = await Promise.all([
     fetchBestsellers(10),
     fetchDeals(10),
     fetchNewArrivals(10),
     fetchAllProducts(),
     fetchCategoryHeroProducts(),
     fetchProductsByCategory([FEATURED_CATEGORY_ID]),
-    fetchProductsByTag(RENTREE_TAG, RENTREE_PRODUCT_COUNT),
   ]);
   const recommendations = sortProducts(allProducts, "rating").slice(0, 10);
   const showDeals = deals.length >= MIN_DEALS_TO_SHOW_SECTION;
@@ -174,11 +143,6 @@ export default async function HomePage() {
       <Hero />
       <ReassuranceBar />
       <CategoryBlocks heroProducts={categoryHeroProducts} />
-      {rentreeProducts.length > 0 && (
-        <div id="rentree">
-          <ProductSection title={RENTREE_TITLE} products={rentreeProducts} seeAllHref={RENTREE_SEE_ALL_HREF} />
-        </div>
-      )}
       {featuredCategoryTop.length > 0 && (
         <ProductSection title={FEATURED_CATEGORY_TITLE} products={featuredCategoryTop} seeAllHref={FEATURED_CATEGORY_HREF} />
       )}

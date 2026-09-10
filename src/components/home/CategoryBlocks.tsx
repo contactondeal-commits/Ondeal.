@@ -98,19 +98,15 @@ const CATALOGUE_CATEGORY: Category = {
   children: [],
 };
 
-// Catégories réellement affichées dans le carrousel : la carte "Rentrée
-// scolaire" en 1re position, "Voir le catalogue" en 2e position (voir
-// missions ci-dessus), puis toutes les autres vraies catégories de
-// navigation. "Rentrée scolaire" étant maintenant une vraie catégorie de
-// `categories` (voir ci-dessus), on l'en extrait pour la mettre en tête
-// plutôt que de la lister à sa position naturelle dans le tableau.
-const rentreeCategory = categories.find((c) => c.id === RENTREE_CATEGORY_ID);
-const otherCategories = categories.filter((c) => c.id !== RENTREE_CATEGORY_ID);
-const CATEGORIES_WITH_RENTREE: Category[] = [
-  ...(rentreeCategory ? [rentreeCategory] : []),
-  CATALOGUE_CATEGORY,
-  ...otherCategories,
-];
+// Owner (10/09/2026) — retrait de la mise en avant "Rentrée" : le code promo
+// RENTREE20 associé est expiré (fin 07/09/2026) et cette carte restait
+// pourtant épinglée en 1re position avec ruban + badge -20%, ce qui promettait
+// une réduction qui ne fonctionne plus au clic. "Rentrée scolaire" reste une
+// catégorie normale de `categories` (papeterie/bureau/informatique, toujours
+// utile hors saison) mais n'est plus épinglée ni traitée visuellement à part
+// — voir isRentree ci-dessous, volontairement neutralisé plutôt que la
+// catégorie elle-même supprimée.
+const CATEGORIES_WITH_RENTREE: Category[] = [CATALOGUE_CATEGORY, ...categories];
 
 // Accroches honnêtes utilisées quand aucune remise réelle n'existe sur le
 // produit vitrine de la catégorie — jamais de "-X%"/urgence inventée.
@@ -470,7 +466,11 @@ export default function CategoryBlocks({ heroProducts = {} }: CategoryBlocksProp
       >
         {loopedCategories.map((cat, catIndex) => {
           const isClone = catIndex >= CATEGORIES_WITH_RENTREE.length;
-          const isRentree = cat.id === RENTREE_CATEGORY_ID;
+          // Owner (10/09/2026) — ruban/badge promo "Rentrée" (RENTREE20,
+          // expiré) neutralisés : cette carte s'affiche désormais comme une
+          // catégorie normale, jamais `true` ci-dessous (voir constante
+          // CATEGORIES_WITH_RENTREE plus haut pour le contexte complet).
+          const isRentree = false && cat.id === RENTREE_CATEGORY_ID;
           const isCatalogue = cat.id === CATALOGUE_CATEGORY_ID;
           const hero = heroProducts[cat.id];
 

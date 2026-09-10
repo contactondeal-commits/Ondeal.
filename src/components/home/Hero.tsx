@@ -17,23 +17,12 @@ export interface HeroSlide {
   promoLabel?: string;
 }
 
-// Mission "RESTAURATION CAMPAGNE RENTRÉE" (20/08/2026) — cette diapositive
-// avait disparu du site suite à un déploiement Vercel effectué depuis une
-// copie locale de travail incomplète (voir CHANGELOG / rapport d'incident).
-// Restaurée à l'identique (mêmes textes, mêmes valeurs, même code promo
-// RENTREE20 déjà actif côté remises Shopify) à partir du HTML/JS réellement
-// servi par le dernier déploiement de production sain, jamais réinventée.
+// Owner (10/09/2026) — retrait complet de la campagne "Rentrée" : le code
+// promo RENTREE20 est expiré côté remises Shopify (fin 07/09/2026) et la
+// diapositive continuait pourtant de s'afficher en avant sur le site,
+// promettant une réduction qui ne fonctionne plus au clic. Supprimée plutôt
+// que désactivée pour ne laisser aucune trace de code mort/confusant.
 const DEFAULT_SLIDES: HeroSlide[] = [
-  {
-    id: "rentree",
-    title: "C'est la rentrée !",
-    subtitle: "Cartables, trousses et fournitures des plus grandes marques, prêts à partir.",
-    cta: "Voir la sélection rentrée",
-    href: "/#rentree",
-    bg: "linear-gradient(120deg, #4f46e5, #312e81)",
-    promoCode: "RENTREE20",
-    promoLabel: "-20% sur toute la commande",
-  },
   {
     id: "s1",
     title: "Découvrez nos meilleures offres",
@@ -49,7 +38,7 @@ const DEFAULT_SLIDES: HeroSlide[] = [
   },
   {
     id: "s2",
-    title: "La rentrée high-tech commence ici",
+    title: "Le high-tech au meilleur prix",
     subtitle: "Smartphones, ordinateurs et accessoires sélectionnés pour vous.",
     cta: "Voir la sélection",
     href: "/category/electronique",

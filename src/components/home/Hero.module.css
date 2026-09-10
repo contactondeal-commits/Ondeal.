@@ -53,22 +53,20 @@
   outline-offset: -3px;
 }
 
+/*
+  Owner (10/09/2026, suite) — "avec tout l'encadrer bleu sa serai mieu 😅"
+  (le `contain` précédent montrait bien tout, mais laissait un gros pavé
+  bleu vide au-dessus/en dessous de l'image, "en cadre") : le vrai problème
+  n'était pas `cover` vs `contain`, c'était que le `.stage` mobile avait un
+  ratio (4:3) différent de celui de l'image (2048×768 ≈ 2.67:1) — l'un des
+  deux recadre ou laisse du vide, quel que soit le réglage choisi. En
+  donnant au `.stage` le ratio RÉEL de l'image, à toutes les tailles
+  d'écran, il n'y a plus ni recadrage ni vide à combler : l'image remplit
+  exactement son cadre, point.
+*/
 @media (max-width: 767px) {
-  .stage {
-    aspect-ratio: 4 / 3;
-  }
-  /*
-    Owner (10/09/2026, suite) — "c'est la rassurance" / "est des info
-    importante" : en `cover`, l'image (ratio natif ~2.67:1) était recadrée
-    pour remplir le `.stage` mobile (ratio 4:3, plus "carré") — ses bords
-    gauche/droit sortaient du cadre, avec la bande de réassurance dessus.
-    En `contain` l'image entière reste visible (rien d'important n'est
-    plus jamais coupé) ; le dégradé de secours reste en `cover` derrière
-    pour combler l'espace laissé par le "letterboxing" au lieu d'un vide.
-  */
-  .slideLayer {
-    background-size: contain, cover;
-    background-color: #0c1f32;
+  .content {
+    padding: 28px 20px;
   }
 }
 

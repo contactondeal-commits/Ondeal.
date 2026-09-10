@@ -131,16 +131,31 @@ export default function Hero({ slides = DEFAULT_SLIDES, autoplayMs = 6000 }: Her
       <div className={styles.stage}>
         {slides.map((slide, i) => {
           const hasImage = Boolean(slide.image);
-          const background = hasImage
-            ? `url(${slide.image}) center / cover no-repeat, ${slide.bg}`
-            : slide.bg;
+          // Owner (10/09/2026, suite) — "c'est la rassurance" / "est des
+          // info importante" : la bande de réassurance (paiement, avis,
+          // expédition…) incrustée en bas des visuels était rognée sur
+          // mobile, parce que `background-size: cover` recadrait l'image
+          // au ratio 4/3 du .stage mobile (voir Hero.module.css) alors que
+          // l'image fait 2048×768 (~2.67:1) — les bords gauche/droit (donc
+          // une partie du texte de réassurance) sortaient du cadre.
+          // `background-size` n'est donc plus fixé ici en inline (ça
+          // empêcherait le CSS de le corriger par breakpoint) : seules
+          // l'image et le dégradé de secours sont posés ici, en deux
+          // calques ; `.slideLayer` (Hero.module.css) décide du
+          // `background-size` de chaque calque et bascule sur `contain`
+          // pour l'image en mobile, pour que rien d'important ne soit plus
+          // jamais coupé.
+          const backgroundImage = hasImage ? `url(${slide.image}), ${slide.bg}` : undefined;
+          const style = hasImage
+            ? { backgroundImage, backgroundPosition: "center", backgroundRepeat: "no-repeat" }
+            : { background: slide.bg };
           const active = i === index;
 
           return (
             <div
               key={slide.id}
               className={`${styles.slideLayer} ${active ? styles.slideLayerActive : ""}`}
-              style={{ background }}
+              style={style}
               aria-hidden={!active}
             >
               {hasImage ? (

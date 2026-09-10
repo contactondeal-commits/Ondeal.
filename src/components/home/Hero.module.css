@@ -26,6 +26,10 @@
   opacity: 0;
   transition: opacity 900ms var(--ease-out);
   pointer-events: none;
+  /* Deux calques d'arrière-plan possibles (voir Hero.tsx : `backgroundImage`
+     = "url(...), dégradé") — un `background-size` par calque, dans le même
+     ordre : l'image d'abord, le dégradé de secours ensuite. */
+  background-size: cover, cover;
 }
 
 .slideLayerActive {
@@ -52,6 +56,19 @@
 @media (max-width: 767px) {
   .stage {
     aspect-ratio: 4 / 3;
+  }
+  /*
+    Owner (10/09/2026, suite) — "c'est la rassurance" / "est des info
+    importante" : en `cover`, l'image (ratio natif ~2.67:1) était recadrée
+    pour remplir le `.stage` mobile (ratio 4:3, plus "carré") — ses bords
+    gauche/droit sortaient du cadre, avec la bande de réassurance dessus.
+    En `contain` l'image entière reste visible (rien d'important n'est
+    plus jamais coupé) ; le dégradé de secours reste en `cover` derrière
+    pour combler l'espace laissé par le "letterboxing" au lieu d'un vide.
+  */
+  .slideLayer {
+    background-size: contain, cover;
+    background-color: #0c1f32;
   }
 }
 

@@ -4,6 +4,27 @@
   background: var(--color-surface);
   border-block: 1px solid var(--color-border);
   padding: 12px 0;
+  /* Owner (10/09/2026, suite) — "c'est toujours couper on voit pas tout" :
+     avec un défilement continu, un badge est nécessairement à moitié sorti
+     de l'écran à tout instant (c'est le principe même du défilement) —
+     mais l'afficher tranché net donnait l'impression d'un bug plutôt que
+     d'un effet voulu. On fait fondre les bords en dégradé (masque CSS) :
+     le badge disparaît en douceur avant le bord plutôt que d'être coupé
+     à la verticale. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 32px,
+    #000 calc(100% - 32px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 32px,
+    #000 calc(100% - 32px),
+    transparent
+  );
 }
 
 .track {
@@ -50,6 +71,20 @@
   */
   .wrap {
     padding: 10px 0;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent
+    );
   }
   .track {
     gap: 16px;

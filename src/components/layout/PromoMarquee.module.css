@@ -41,12 +41,19 @@
 }
 
 @media (max-width: 767px) {
+  /*
+    Owner (10/09/2026) — "c'est deux fois plus important que sa defile
+    pour le mobile" : le défilement tournait déjà à toutes les tailles
+    d'écran (seule la durée changeait), mais on l'accélère nettement ici
+    pour que le mouvement soit immédiatement visible sur mobile, où c'est
+    la priorité.
+  */
   .wrap {
     padding: 10px 0;
   }
   .track {
-    gap: 18px;
-    animation-duration: 20s;
+    gap: 16px;
+    animation-duration: 12s;
   }
   .badge {
     height: 46px;
